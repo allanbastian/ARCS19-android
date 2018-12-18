@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#390049</color>
+    <color name="colorPrimaryDark">#390049</color>
+    <color name="colorAccent">#390049</color>
+    <color name="orange">#fba04b</color>
+    <color name="pink">#e34791</color>
+    <color name="primary_light"> #917f9f </color>
+    <color name="light_orange"> #e2b578 </color>
+    <color name="bottom_navigation_bar_color">#77025a</color>
+</resources>

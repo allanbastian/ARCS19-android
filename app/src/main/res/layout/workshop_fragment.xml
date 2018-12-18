@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:background="@color/colorPrimary"
+    android:fitsSystemWindows="true"
+    android:paddingBottom="40dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/toolbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="0.5"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/events"
+                    android:layout_margin="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_collapseMode="parallax"
+                    app:layout_collapseParallaxMultiplier="0.9"
+                    android:text="EVENTS"
+                    android:textColor="#fba04b"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:textSize="40sp"
+                    />
+
+
+                <com.yarolegovich.discretescrollview.DiscreteScrollView
+                    android:id="@+id/discreteScroll"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:layout_centerInParent="true"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    app:dsv_orientation="horizontal" />
+
+            </LinearLayout>
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Header"
+                    android:textStyle="bold"
+                    android:textColor="#fff"
+                    android:layout_gravity="center"
+                    android:textSize="30sp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:id="@+id/location"
+                    android:text="Technology Tower, VIT"
+                    android:layout_marginBottom="15dp"
+                    android:textColor="#fff"/>
+
+            </LinearLayout>
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:overScrollMode="always"
+        android:layout_height="fill_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            android:paddingBottom="40dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/discreteScroll"
+                android:id="@+id/description"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="20dp"
+                android:textColor="#fff"
+                android:layout_marginHorizontal="30dp"
+                android:text="Praesent ac lacus eu turpis viverra hendrerit in eget leo. Nulla tincidunt rhoncus turpis pulvinar egestas. Phasellus eget sem nibh. Nulla non mauris vel erat dapibus eleifend sed lobortis orci. In a tempor neque. "/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/orange_border_curve"
+                android:layout_margin="30dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/price"
+                    android:text="Rs. 1,322"
+                    android:textSize="20sp"
+                    android:textColor="@color/orange"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_margin="3dp"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/orange_button_curve"
+                    android:textColor="#fff"
+                    android:text="Book Now"
+                    android:id="@+id/book_button"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Amenities Avalible"
+                android:layout_marginHorizontal="30dp"
+                android:textColor="@color/primary_light"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="15dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/amenity1"
+                    android:src="@drawable/ic_wifi_white_24dp"
+                    />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/amenity2"
+                    android:layout_marginLeft="30dp"
+                    android:src="@drawable/snacks"
+                    />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+
+</android.support.design.widget.CoordinatorLayout>
