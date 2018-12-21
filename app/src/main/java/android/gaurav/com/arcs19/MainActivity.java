@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     SpaceNavigationView spaceNavigationView;
     WorkShopFragment workShopFragment;
+    BottomNavigationFragment bottomNavigationFragment;
 
 
 
@@ -25,15 +26,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Home fragment here
+        workShopFragment = new WorkShopFragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.fragment_container,workShopFragment).commit();
 
         //Bottom Space Navigation
         spaceNavigationView = findViewById(R.id.space);
         spaceNavigationView.initWithSaveInstanceState(savedInstanceState);
-        spaceNavigationView.showIconOnly();
-        spaceNavigationView.addSpaceItem(new SpaceItem("home", R.drawable.ic_home_white_24dp));
-        spaceNavigationView.addSpaceItem(new SpaceItem("workshops", R.drawable.workshops));
-        spaceNavigationView.addSpaceItem(new SpaceItem("hackathon", R.drawable.hackathon));
-        spaceNavigationView.addSpaceItem(new SpaceItem("support", R.drawable.support));
+        spaceNavigationView.addSpaceItem(new SpaceItem("Menu", R.drawable.ic_menu_white_24dp));
+        spaceNavigationView.addSpaceItem(new SpaceItem("Sponsors", R.drawable.sponsors));
 
         spaceNavigationView.setSpaceOnClickListener(new SpaceOnClickListener() {
             @Override
@@ -46,25 +49,20 @@ public class MainActivity extends AppCompatActivity {
 
                 switch(itemName)
                 {
-                    case "home" : break;
-
-                    case "workshops" :  workShopFragment = new WorkShopFragment();
-                        FragmentManager fragmentManager = getSupportFragmentManager();
-                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                        fragmentTransaction.add(R.id.fragment_container,workShopFragment).commit();
-                        break;
-
-                    case "hackathon" : break;
-
-                    case "support" : break;
-
+                    case "Menu" : bottomNavigationFragment = new BottomNavigationFragment();
+                                  bottomNavigationFragment.show(getSupportFragmentManager(),bottomNavigationFragment.getTag());
+                                  break;
                 }
             }
 
             @Override
             public void onItemReselected(int itemIndex, String itemName) {
-                Toast.makeText(MainActivity.this, itemIndex + " " + itemName, Toast.LENGTH_SHORT).show();
-            }
+                switch(itemName)
+                {
+                    case "Menu" : bottomNavigationFragment = new BottomNavigationFragment();
+                        bottomNavigationFragment.show(getSupportFragmentManager(),bottomNavigationFragment.getTag());
+                        break;
+                }            }
         });
 
 
