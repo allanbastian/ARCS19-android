@@ -1,5 +1,7 @@
 package android.gaurav.com.arcs19;
 
+//Also used for Sponsors.
+
 public class DiscreteScrollClass {
 
     int icon;
@@ -12,6 +14,14 @@ public class DiscreteScrollClass {
         this.icon = icon;
         this.name = name;
         this.des = des;
+    }
+
+    //Using this constructor for Sponsors, des can be used for storing url.
+
+    public DiscreteScrollClass(int icon, String name){
+        this.icon = icon;
+        this.name = name;
+        this.des = "N/A";
     }
 
     public int getIcon() {
