@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 public class SponsorFragment extends Fragment implements DiscreteScrollView.OnItemChangedListener,View.OnClickListener{
 
-    ArrayList<DiscreteScrollClass> sponsorList = new ArrayList<DiscreteScrollClass>();
+    ArrayList<DiscreteScrollClass> sponsorList = new ArrayList<DiscreteScrollClass>();;
     //TextView currentSponsorName;
     //TextView currentSponsorType;
     ImageView previousSponsorButton;
@@ -36,20 +36,20 @@ public class SponsorFragment extends Fragment implements DiscreteScrollView.OnIt
         View rootView = inflater.inflate(R.layout.fragment_sponsors, container, false);
 
         //The Sponsors' database.
-        sponsorList.add(new DiscreteScrollClass(R.drawable.machine,"Sponsor 1","https://www.google.com"));
-        sponsorList.add(new DiscreteScrollClass(R.drawable.artificial_intelligence,"Sponsor 2","https://www.google.com"));
-        sponsorList.add(new DiscreteScrollClass(R.drawable.machine,"Sponsor 3","https://www.google.com"));
-        sponsorList.add(new DiscreteScrollClass(R.drawable.artificial_intelligence,"Sponsor 4","https://www.google.com"));
+        sponsorList.add(new DiscreteScrollClass(R.drawable.machine,"Sponsor 1"));
+        sponsorList.add(new DiscreteScrollClass(R.drawable.artificial_intelligence,"Sponsor 2"));
+        sponsorList.add(new DiscreteScrollClass(R.drawable.machine,"Sponsor 3"));
+        sponsorList.add(new DiscreteScrollClass(R.drawable.artificial_intelligence,"Sponsor 4"));
 
 
-        previousSponsorButton = rootView.findViewById(R.id.previous_sponsor_button);
-        nextSponsorButton = rootView.findViewById(R.id.next_sponsor_button);
+        previousSponsorButton = (ImageView)rootView.findViewById(R.id.previous_sponsor_button);
+        nextSponsorButton = (ImageView)rootView.findViewById(R.id.next_sponsor_button);
 
-        itemPicker = rootView.findViewById(R.id.item_picker);
+        itemPicker = (DiscreteScrollView)rootView.findViewById(R.id.item_picker);
         itemPicker.setOrientation(DSVOrientation.HORIZONTAL);
         itemPicker.addOnItemChangedListener(this);
 
-        infiniteAdapter = InfiniteScrollAdapter.wrap(new SponsorAdapter(getContext(),sponsorList));
+        infiniteAdapter = InfiniteScrollAdapter.wrap(new SponsorAdapter(sponsorList));
 
         itemPicker.setAdapter(infiniteAdapter);
         itemPicker.setItemTransitionTimeMillis(150);
@@ -76,13 +76,7 @@ public class SponsorFragment extends Fragment implements DiscreteScrollView.OnIt
 
     private void smoothScrollToNextPosition( DiscreteScrollView scrollView, int pos) {
         InfiniteScrollAdapter adapter = (InfiniteScrollAdapter) scrollView.getAdapter();
-        int destination;
-        if  (pos< sponsorList.size()-1){
-             destination = pos + 1;
-        }else
-        {
-            destination = 0;
-        }
+        int destination = pos + 1;
         if (adapter != null) {
             destination = adapter.getClosestPosition(destination);
         }
