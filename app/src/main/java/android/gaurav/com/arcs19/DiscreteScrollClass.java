@@ -16,6 +16,13 @@ public class DiscreteScrollClass {
         this.des = des;
     }
 
+    //Using this constructor for Sponsors, des can be used for storing url.
+
+    public DiscreteScrollClass(int icon, String name){
+        this.icon = icon;
+        this.name = name;
+        this.des = "N/A";
+    }
 
     public int getIcon() {
         return icon;
