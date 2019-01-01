@@ -7,6 +7,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="64dp" />
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -38,10 +42,10 @@
             android:background="?android:selectableItemBackground"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/ic_chevron_left_purple_64dp" />
+            android:src="@drawable/ic_chevron_left_white_64dp" />
 
         <Space
-            android:layout_width="64dp"
+            android:layout_width="104dp"
             android:layout_height="match_parent" />
 
 
@@ -51,13 +55,13 @@
             android:background="?android:selectableItemBackground"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/ic_chevron_right_purple_64dp" />
+            android:src="@drawable/ic_chevron_right_white_64dp" />
 
 
     </LinearLayout>
 
     <Space
         android:layout_width="wrap_content"
-        android:layout_height="8dp" />
+        android:layout_height="64dp" />
 
 </LinearLayout>
