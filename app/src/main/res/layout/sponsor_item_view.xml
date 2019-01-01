@@ -3,7 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/sponsor_root_layout"
     android:layout_width="260dp"
     android:layout_height="320dp"
     app:cardBackgroundColor="@color/white_with_alpha"
