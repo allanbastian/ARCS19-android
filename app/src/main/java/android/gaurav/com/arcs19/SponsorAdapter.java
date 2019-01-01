@@ -36,7 +36,7 @@ public class SponsorAdapter extends RecyclerView.Adapter<SponsorAdapter.CustomVi
     @Override
     public CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View view = layoutInflater.inflate(R.layout.item_sponsor_view, parent, false);
+        View view = layoutInflater.inflate(R.layout.sponsor_item_view, parent, false);
         return new CustomViewHolder(view);
     }
 

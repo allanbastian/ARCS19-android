@@ -76,7 +76,13 @@ public class SponsorFragment extends Fragment implements DiscreteScrollView.OnIt
 
     private void smoothScrollToNextPosition( DiscreteScrollView scrollView, int pos) {
         InfiniteScrollAdapter adapter = (InfiniteScrollAdapter) scrollView.getAdapter();
-        int destination = pos + 1;
+        int destination;
+        if  (pos< sponsorList.size()-1){
+             destination = pos + 1;
+        }else
+        {
+            destination = 0;
+        }
         if (adapter != null) {
             destination = adapter.getClosestPosition(destination);
         }
