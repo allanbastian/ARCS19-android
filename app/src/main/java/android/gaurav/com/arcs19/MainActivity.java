@@ -1,5 +1,7 @@
 package android.gaurav.com.arcs19;
 
+import android.gaurav.com.arcs19.Fragments.BottomNavigationFragment;
+import android.gaurav.com.arcs19.Fragments.WorkShopFragment;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
