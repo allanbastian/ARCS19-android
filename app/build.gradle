@@ -33,6 +33,4 @@ dependencies {
     //Space Bottom Navigation
     implementation 'com.github.armcha:SpaceNavigationView:1.6.0'
 
-
-
 }
