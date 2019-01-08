@@ -1,24 +1,22 @@
 package android.gaurav.com.arcs19;
 
 import android.os.Bundle;
+import android.support.design.bottomappbar.BottomAppBar;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Toast;
-
-
-import com.luseen.spacenavigation.SpaceItem;
-import com.luseen.spacenavigation.SpaceNavigationView;
-import com.luseen.spacenavigation.SpaceOnClickListener;
 
 
 public class MainActivity extends AppCompatActivity {
 
 
-    SpaceNavigationView spaceNavigationView;
     WorkShopFragment workShopFragment;
     BottomNavigationFragment bottomNavigationFragment;
-
+    BottomAppBar bottomAppBar;
+    FloatingActionButton arcsFloatingActionButton;
 
 
     @Override
@@ -26,43 +24,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        bottomAppBar = findViewById(R.id.bottom_app_bar);
+        arcsFloatingActionButton = findViewById(R.id.arcs_floating_action_button);
+
         //Home fragment here
         workShopFragment = new WorkShopFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.fragment_container,workShopFragment).commit();
 
-        //Bottom Space Navigation
-        spaceNavigationView = findViewById(R.id.space);
-        spaceNavigationView.initWithSaveInstanceState(savedInstanceState);
-        spaceNavigationView.addSpaceItem(new SpaceItem("Menu", R.drawable.ic_menu_white_24dp));
-        spaceNavigationView.addSpaceItem(new SpaceItem("Sponsors", R.drawable.sponsors));
-
-        spaceNavigationView.setSpaceOnClickListener(new SpaceOnClickListener() {
+        bottomAppBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCentreButtonClick() {
-                Toast.makeText(MainActivity.this,"onCentreButtonClick", Toast.LENGTH_SHORT).show();
+            public void onClick(View v) {
+                bottomNavigationFragment = new BottomNavigationFragment();
+                bottomNavigationFragment.show(getSupportFragmentManager(),bottomNavigationFragment.getTag());
             }
-
-            @Override
-            public void onItemClick(int itemIndex, String itemName) {
-
-                switch(itemName)
-                {
-                    case "Menu" : bottomNavigationFragment = new BottomNavigationFragment();
-                                  bottomNavigationFragment.show(getSupportFragmentManager(),bottomNavigationFragment.getTag());
-                                  break;
-                }
-            }
-
-            @Override
-            public void onItemReselected(int itemIndex, String itemName) {
-                switch(itemName)
-                {
-                    case "Menu" : bottomNavigationFragment = new BottomNavigationFragment();
-                        bottomNavigationFragment.show(getSupportFragmentManager(),bottomNavigationFragment.getTag());
-                        break;
-                }            }
         });
 
 

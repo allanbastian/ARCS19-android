@@ -35,10 +35,11 @@ public class BottomNavigationFragment extends BottomSheetDialogFragment {
                     case R.id.convoke : break;
                     case R.id.team : break;
                 }
-
+                getDialog().cancel();
                 return true;
             }
         });
+
 
         return rootView;
 

@@ -7,5 +7,7 @@
     <color name="pink">#e34791</color>
     <color name="primary_light"> #917f9f </color>
     <color name="light_orange"> #e2b578 </color>
+    <color name="secondary_dark">#77025a</color>
     <color name="bottom_navigation_bar_color">#77025a</color>
+    <color name="white">#fff</color>
 </resources>

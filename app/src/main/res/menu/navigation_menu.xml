@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/schedule"
+        android:icon="@drawable/schedule"
+        android:title="Schedule"
+        />
+
+    <item
         android:id="@+id/workshops"
         android:icon="@drawable/workshops"
         android:title="Workshops"
@@ -21,9 +27,22 @@
         />
 
     <item
+        android:id="@+id/sponsors"
+        android:icon="@drawable/sponsors"
+        android:title="Sponsors"
+        />
+
+    <item
         android:id="@+id/team"
         android:icon="@drawable/team"
-        android:title="About Team"
+        android:title="Developers"
         />
+
+    <item
+        android:id="@+id/forum"
+        android:icon="@drawable/forum"
+        android:title="Forum"
+        />
+
 
 </menu>
