@@ -1,5 +1,6 @@
 package android.gaurav.com.arcs19;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -31,7 +32,7 @@ public class SignInFragment extends Fragment {
         logIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(getActivity(),MainActivity.class));
             }
         });
 
