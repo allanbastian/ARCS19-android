@@ -1,5 +1,6 @@
-package android.gaurav.com.arcs19;
+package android.gaurav.com.arcs19.Login;
 
+import android.gaurav.com.arcs19.R;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;

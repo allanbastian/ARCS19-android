@@ -1,6 +1,6 @@
-package android.gaurav.com.arcs19;
+package android.gaurav.com.arcs19.Login;
 
-import android.content.Intent;
+import android.gaurav.com.arcs19.R;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,27 +12,28 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class SignInFragment extends Fragment {
+public class SignUpFragment extends Fragment {
 
-    Button logIn;
-    EditText emailID, password;
+    Button signUp;
+    EditText emailID, password, phoneNumber;
     TextView alertMsg;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.sign_in_fragment,container,false);
+        View rootView = inflater.inflate(R.layout.signup_fragment,container,false);
 
-        logIn = rootView.findViewById(R.id.log_in_button);
+        signUp = rootView.findViewById(R.id.sign_up_button);
+        phoneNumber = rootView.findViewById(R.id.phone_numebr);
         emailID = rootView.findViewById(R.id.email_id);
         password = rootView.findViewById(R.id.password);
         alertMsg = rootView.findViewById(R.id.alert_msg);
 
-        logIn.setOnClickListener(new View.OnClickListener() {
+        signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(),MainActivity.class));
+
             }
         });
 
