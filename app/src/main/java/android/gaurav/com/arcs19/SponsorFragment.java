@@ -41,7 +41,7 @@ public class SponsorFragment extends Fragment implements DiscreteScrollView.OnIt
         sponsorList.add(new DiscreteScrollClass(R.drawable.machine,"Sponsor 3","https://www.google.com"));
         sponsorList.add(new DiscreteScrollClass(R.drawable.artificial_intelligence,"Sponsor 4","https://www.google.com"));
 
-
+        //buttons to go to previous and next sponsor
         previousSponsorButton = rootView.findViewById(R.id.previous_sponsor_button);
         nextSponsorButton = rootView.findViewById(R.id.next_sponsor_button);
 
@@ -55,7 +55,6 @@ public class SponsorFragment extends Fragment implements DiscreteScrollView.OnIt
         itemPicker.setItemTransitionTimeMillis(150);
         itemPicker.setItemTransformer(new ScaleTransformer.Builder().setMinScale(0.8f).build());
 
-        //onItemChanged(sponsorList.get(0));
 
         rootView.findViewById(R.id.previous_sponsor_button).setOnClickListener(this);
         rootView.findViewById(R.id.next_sponsor_button).setOnClickListener(this);
