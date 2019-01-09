@@ -10,4 +10,5 @@
     <color name="secondary_dark">#77025a</color>
     <color name="bottom_navigation_bar_color">#77025a</color>
     <color name="white">#fff</color>
+    <color name="blue">#0f3c7a</color>
 </resources>
