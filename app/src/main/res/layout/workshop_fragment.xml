@@ -48,7 +48,7 @@
                 <com.yarolegovich.discretescrollview.DiscreteScrollView
                     android:id="@+id/discreteScroll"
                     android:layout_width="match_parent"
-                    android:layout_marginTop="20dp"
+
                     android:layout_centerInParent="true"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
@@ -155,26 +155,49 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="15dp">
+                android:layout_marginTop="15dp"
+                >
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
                     android:id="@+id/amenity1"
-                    android:src="@drawable/ic_wifi_white_24dp"
-                    />
-
-                <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:src="@drawable/ic_wifi_white_24dp" />
+                <TextView
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:text="wifi"
+                    android:textColor="@color/space_white"/>
+
+                <ImageView
                     android:id="@+id/amenity2"
-                    android:layout_marginLeft="30dp"
-                    android:src="@drawable/snacks"
-                    />
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="80dp"
+                    android:src="@drawable/snacks" />
 
-
+                <TextView
+                    android:layout_width="160dp"
+                    android:layout_height="60dp"
+                    android:text="refreshments"
+                    android:textColor="@color/space_white"/>
             </LinearLayout>
-
+            <ImageView
+                android:layout_gravity="center"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:background="@drawable/ic_launcher_foreground"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/discreteScroll"
+                android:id="@+id/auth_description"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="20dp"
+                android:textColor="#fff"
+                android:layout_marginHorizontal="30dp"
+                android:text="Praesent ac lacus eu turpis viverra hendrerit in eget leo. Nulla tincidunt rhoncus turpis pulvinar egestas. Phasellus eget sem nibh. Nulla non mauris vel erat dapibus eleifend sed lobortis orci. In a tempor neque."/>
 
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
