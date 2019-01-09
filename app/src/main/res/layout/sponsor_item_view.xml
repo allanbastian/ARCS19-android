@@ -9,7 +9,11 @@
     app:cardBackgroundColor="@color/white_with_alpha"
     android:layout_gravity="center"
     app:cardCornerRadius="12dp"
+<<<<<<< HEAD
     app:cardElevation="16dp">
+=======
+    app:cardElevation="8dp">
+>>>>>>> 67c832021ce7f73b0da1249b4e96274da0b8d0d2
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -19,6 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="8dp" />
 
+<<<<<<< HEAD
                 <TextView
                     android:id="@+id/sponsor_name"
                     android:layout_width="match_parent"
@@ -30,6 +35,18 @@
                     android:textColor="@color/colorPrimary"
                     android:textSize="26sp"
                     tools:text="ARCS '19" />
+=======
+        <TextView
+            android:id="@+id/sponsor_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:layout_gravity="center_horizontal"
+            android:textSize="26sp"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimary"
+            tools:text="ARCS '19" />
+>>>>>>> 67c832021ce7f73b0da1249b4e96274da0b8d0d2
 
         <Space
             android:layout_width="wrap_content"

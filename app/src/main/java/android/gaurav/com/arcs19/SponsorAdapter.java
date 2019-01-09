@@ -2,7 +2,10 @@ package android.gaurav.com.arcs19;
 
 import android.content.Context;
 import android.content.Intent;
+<<<<<<< HEAD
 import android.graphics.Typeface;
+=======
+>>>>>>> 67c832021ce7f73b0da1249b4e96274da0b8d0d2
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
