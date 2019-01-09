@@ -23,6 +23,7 @@
                     android:id="@+id/sponsor_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
                     android:layout_gravity="center_horizontal"
                     android:textAlignment="center"
                     android:textAllCaps="true"
