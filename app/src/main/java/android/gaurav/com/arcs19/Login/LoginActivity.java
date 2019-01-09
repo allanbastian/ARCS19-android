@@ -1,5 +1,7 @@
 package android.gaurav.com.arcs19.Login;
 
+import android.content.Intent;
+import android.gaurav.com.arcs19.MainActivity;
 import android.gaurav.com.arcs19.R;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -8,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -15,15 +18,14 @@ import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
-    Button continueButton, signUpButton;
-    TextView alertMsg;
-    EditText emailID;
+    Button signUpButton;
+    ImageButton continueButton;
+    EditText emailID, password;
     RelativeLayout fragmentContainer;
     ProgressBar progressBar;
     FragmentManager fragmentManager;
-    SignInFragment signInFragment;
     SignUpFragment signUpFragment;
-    Boolean signInFrag, signUpFrag;
+    Boolean signUpFrag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,13 +34,12 @@ public class LoginActivity extends AppCompatActivity {
 
         continueButton = findViewById(R.id.continue_button);
         signUpButton = findViewById(R.id.sign_up_button);
-        alertMsg = findViewById(R.id.alert_msg);
         emailID = findViewById(R.id.email_id);
+        password = findViewById(R.id.password);
         fragmentContainer = findViewById(R.id.fragment_container);
-        progressBar = findViewById(R.id.progress_bar);
 
         //Flag variables for active fragment
-        signInFrag = signUpFrag = false;
+        signUpFrag = false;
 
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,14 +51,10 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 else {
                     //Starting SignIn Process
-                    progressBar.setVisibility(View.VISIBLE);
-                    fragmentManager = getSupportFragmentManager();
-                    fragmentContainer.setClickable(true);
-                    signInFragment = new SignInFragment();
-                    FragmentTransaction transaction = fragmentManager.beginTransaction();
-                    transaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_from_right);
-                    transaction.add(R.id.fragment_container, signInFragment).commit();
-                    signInFrag = true;
+
+
+                    startActivity(new Intent(LoginActivity.this,MainActivity.class));
+
                 }
             }
         });
@@ -82,23 +79,12 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if(signInFrag)
-        {
-            //Removing SignIn fragment to activity
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.setCustomAnimations(R.anim.enter_from_right,R.anim.exit_from_right);
-            transaction.remove(signInFragment).commit();
-            progressBar.setVisibility(View.GONE);
-            fragmentContainer.setClickable(false);
-            signInFrag = false;
-        }
-        else if(signUpFrag)
+        if(signUpFrag)
         {
             //Removing SignUp fragment to Login Activity
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.setCustomAnimations(R.anim.enter_from_right,R.anim.exit_from_right);
             transaction.remove(signUpFragment).commit();
-            progressBar.setVisibility(View.GONE);
             fragmentContainer.setClickable(false);
             signUpFrag = false;
         }
