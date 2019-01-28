@@ -9,7 +9,7 @@ public class DiscreteScrollClass {
     String des;
 
     public DiscreteScrollClass(){}
-
+    //using des for sponsors to store website url
     public DiscreteScrollClass(int icon, String name, String des) {
         this.icon = icon;
         this.name = name;
