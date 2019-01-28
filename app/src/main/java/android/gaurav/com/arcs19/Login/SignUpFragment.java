@@ -15,7 +15,7 @@ import android.widget.TextView;
 public class SignUpFragment extends Fragment {
 
     Button signUp;
-    EditText emailID, password, phoneNumber;
+    EditText emailID, password, phoneNumber, name;
     TextView alertMsg;
 
     @Nullable
@@ -26,6 +26,7 @@ public class SignUpFragment extends Fragment {
 
         signUp = rootView.findViewById(R.id.sign_up_button);
         phoneNumber = rootView.findViewById(R.id.phone_number);
+        name = rootView.findViewById(R.id.name);
         emailID = rootView.findViewById(R.id.email_id);
         password = rootView.findViewById(R.id.password);
         alertMsg = rootView.findViewById(R.id.alert_msg);
