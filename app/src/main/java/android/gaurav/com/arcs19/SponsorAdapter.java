@@ -2,7 +2,6 @@ package android.gaurav.com.arcs19;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
@@ -51,6 +50,7 @@ public class SponsorAdapter extends RecyclerView.Adapter<SponsorAdapter.CustomVi
     public void onBindViewHolder(@NonNull final SponsorAdapter.CustomViewHolder holder, final int i) {
         Glide.with(holder.itemView.getContext()).load(dataList.get(i).getIcon()).into(holder.image);
         holder.name.setText(dataList.get(i).getName());
+        // Opening Sponsor's website via browser
         holder.sponsor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
