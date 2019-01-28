@@ -33,7 +33,7 @@
         />
 
     <item
-        android:id="@+id/team"
+        android:id="@+id/developers"
         android:icon="@drawable/team"
         android:title="Developers"
         />

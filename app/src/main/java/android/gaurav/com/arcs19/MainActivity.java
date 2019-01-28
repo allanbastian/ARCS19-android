@@ -1,5 +1,6 @@
 package android.gaurav.com.arcs19;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.bottomappbar.BottomAppBar;
 import android.support.design.widget.FloatingActionButton;
@@ -17,12 +18,19 @@ public class MainActivity extends AppCompatActivity {
     BottomNavigationFragment bottomNavigationFragment;
     BottomAppBar bottomAppBar;
     FloatingActionButton arcsFloatingActionButton;
+    SharedPreferences sp;
+    String USERNAME = "", EMAIL="";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Initialising User
+        sp = getSharedPreferences("key", 0);
+        USERNAME = sp.getString("username","");         //Getting Username
+        EMAIL = sp.getString("email","");               //Getting email
 
         bottomAppBar = findViewById(R.id.bottom_app_bar);
         arcsFloatingActionButton = findViewById(R.id.arcs_floating_action_button);

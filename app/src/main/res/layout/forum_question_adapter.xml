@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="100dp">
+    <RelativeLayout
+        android:id="@+id/msg_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+       >
+
+
+        <TextView
+            android:id="@+id/details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:text="Gaurav Jha, 3-03-19 12:32PM"
+            android:textSize="14sp"
+            android:textColor="@color/primary_light"/>
+
+
+        <TextView
+            android:id="@+id/question_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/details"
+            android:textColor="@color/white"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="10dp"
+            android:text="Can you suggest me a haunting place?"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/question_bubble"
+           />
+
+    </RelativeLayout>
+</RelativeLayout>
