@@ -52,14 +52,14 @@ public class SponsorFragment extends Fragment implements DiscreteScrollView.OnIt
 
         itemPicker.setAdapter(infiniteAdapter);
         itemPicker.setItemTransitionTimeMillis(150);
-        itemPicker.setItemTransformer(new ScaleTransformer.Builder().setMinScale(0.8f).build());
+        itemPicker.setItemTransformer(new ScaleTransformer.Builder().setMinScale(0.75f).build());
 
 
         rootView.findViewById(R.id.previous_sponsor_button).setOnClickListener(this);
         rootView.findViewById(R.id.next_sponsor_button).setOnClickListener(this);
 
         itemPicker.setSlideOnFling(true);
-        itemPicker.setSlideOnFlingThreshold(2500);
+        itemPicker.setSlideOnFlingThreshold(5000);
 
         return rootView;
     }
