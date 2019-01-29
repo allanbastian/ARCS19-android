@@ -26,7 +26,7 @@ public class BottomNavigationFragment extends BottomSheetDialogFragment {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
-                int menuId = menuItem.getGroupId();
+                int menuId = menuItem.getItemId();
 
                 switch(menuId)
                 {
