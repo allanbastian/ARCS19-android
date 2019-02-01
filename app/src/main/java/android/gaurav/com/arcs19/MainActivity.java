@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-
+    FragmentHackathon fragmentHackathon;
     WorkShopFragment workShopFragment;
     BottomNavigationFragment bottomNavigationFragment;
     BottomAppBar bottomAppBar;

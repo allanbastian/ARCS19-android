@@ -1,13 +1,32 @@
 package android.gaurav.com.arcs19;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+public class Hackathon {
 
-public class Hackathon extends AppCompatActivity {
+    private String Question;
+    private String Describe;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_hackathon);
+    public Hackathon() {
+
+    }
+
+    public Hackathon(String question, String describe) {
+        Question = question;
+        Describe = describe;
+    }
+
+    public String getQuestion() {
+        return Question;
+    }
+
+    public void setQuestion(String question) {
+        Question = question;
+    }
+
+    public String getDescribe() {
+        return Describe;
+    }
+
+    public void setDescribe(String describe) {
+        Describe = describe;
     }
 }
