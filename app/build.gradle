@@ -33,4 +33,8 @@ dependencies {
     //Space Bottom Navigation
     implementation 'com.github.armcha:SpaceNavigationView:1.6.0'
 
+    //Firebase
+    implementation 'com.google.firebase:firebase-core:16.0.1'
+
 }
+apply plugin: 'com.google.gms.google-services'

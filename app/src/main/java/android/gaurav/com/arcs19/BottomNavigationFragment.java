@@ -1,5 +1,7 @@
 package android.gaurav.com.arcs19;
 
+import android.content.Intent;
+import android.gaurav.com.arcs19.Forum.ForumActivity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -33,7 +35,9 @@ public class BottomNavigationFragment extends BottomSheetDialogFragment {
                     case R.id.workshops : break;
                     case R.id.hackathon : break;
                     case R.id.convoke : break;
-                    case R.id.team : break;
+                    case R.id.developers : break;
+                    case R.id.forum : startActivity(new Intent(getContext(),ForumActivity.class));
+                        break;
                 }
                 getDialog().cancel();
                 return true;
