@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Profile">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/profile_toolbar">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageButton
+                android:id="@+id/qr_image"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/qr_image"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="15dp"
+                android:layout_alignParentTop="true"
+                android:scaleType="centerInside"
+                android:background="#fff"
+                />
+            <ImageView
+                android:id="@+id/profile_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/qr_image"
+                />
+            <TextView
+                android:id="@+id/profille_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/profile_image"
+                android:hint="Name"
+                android:layout_centerHorizontal="true"
+                android:textColor="#000"
+                android:layout_margin="20dp"
+                android:textSize="25sp"/>
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:id="@+id/reg_section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/profile_toolbar"
+        android:padding="5dp"
+        >
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:fontFamily=""
+                android:textColor="#433f3f"
+                android:text="Reg.No."
+                android:padding="5dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="#433f3f"
+                android:text="Mail "
+                android:padding="5dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:padding="5dp"
+                android:textColor="#433f3f"
+                android:text="Contact" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="7"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:id="@+id/profile_mail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:hint="reg"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/profile_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:hint="mail"
+                android:layout_weight="1"
+                android:lines="1"
+                android:textAlignment="center"
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/profile_reg_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:hint="phone"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+    <com.yarolegovich.discretescrollview.DiscreteScrollView
+        android:id="@+id/profileScroll"
+        android:layout_width="match_parent"
+        android:layout_below="@id/reg_section"
+        android:layout_marginTop="20dp"
+        android:layout_centerInParent="true"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="20dp"
+        app:dsv_orientation="horizontal" />
+
+
+</RelativeLayout>
