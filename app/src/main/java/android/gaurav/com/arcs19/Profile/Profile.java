@@ -1,13 +1,10 @@
-package android.gaurav.com.arcs19;
+package android.gaurav.com.arcs19.Profile;
 
+import android.gaurav.com.arcs19.R;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.support.v7.widget.Toolbar;
 
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
 import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
@@ -16,7 +13,6 @@ import java.util.ArrayList;
 
 
 public class Profile extends AppCompatActivity {
-    View view;
     DiscreteScrollView scrollView;
     ArrayList<ProfileScrollClass> items;
     ProfileScrollAdapter adapter;
@@ -25,8 +21,7 @@ public class Profile extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_profile);
-        Toolbar toolbar = findViewById(R.id.profile_toolbar);
-        ImageButton imageButton = findViewById(R.id.qr_image);
+        ImageButton imageButton = findViewById(R.id.qr_code_button);
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -1,5 +1,6 @@
-package android.gaurav.com.arcs19;
+package android.gaurav.com.arcs19.Profile;
 
+import android.gaurav.com.arcs19.R;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;

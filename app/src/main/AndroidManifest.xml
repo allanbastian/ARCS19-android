@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
         </activity>
-        <activity android:name=".Profile" android:parentActivityName=".MainActivity">
+        <activity android:name=".Profile.Profile" android:parentActivityName=".MainActivity">
         </activity>
         <activity android:name=".Login.LoginActivity">
             <intent-filter>

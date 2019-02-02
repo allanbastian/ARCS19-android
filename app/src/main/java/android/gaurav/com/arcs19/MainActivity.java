@@ -1,6 +1,7 @@
 package android.gaurav.com.arcs19;
 
 import android.content.Intent;
+import android.gaurav.com.arcs19.Profile.Profile;
 import android.os.Bundle;
 import android.support.design.bottomappbar.BottomAppBar;
 import android.support.design.widget.FloatingActionButton;
@@ -8,7 +9,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         arcsFloatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,Profile.class);
+                Intent intent = new Intent(MainActivity.this, Profile.class);
                 startActivity(intent);
             }
         });

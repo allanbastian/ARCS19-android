@@ -1,4 +1,4 @@
-package android.gaurav.com.arcs19;
+package android.gaurav.com.arcs19.Profile;
 
 public class ProfileScrollClass {
     int icon;
