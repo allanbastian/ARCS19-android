@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "632980327232",
+    "firebase_url": "https://arcs19.firebaseio.com",
+    "project_id": "arcs19",
+    "storage_bucket": "arcs19.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:632980327232:android:6910bfb104578e99",
+        "android_client_info": {
+          "package_name": "android.gaurav.com.arcs19"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "632980327232-3td2tfv85odiil8c3nssbdt7tr2ooig5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "android.gaurav.com.arcs19",
+            "certificate_hash": "653d0ddbe1fbb48f22a8b56e5546621210a2d833"
+          }
+        },
+        {
+          "client_id": "632980327232-p02infmalomb9f2min2u4ffgbvh4adre.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBI9Qx7VCH2dDCBLv1sm4Yf5WV3agplpQo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "632980327232-p02infmalomb9f2min2u4ffgbvh4adre.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
