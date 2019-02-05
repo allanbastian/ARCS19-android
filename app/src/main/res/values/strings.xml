@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">ARCS19</string>
+<<<<<<< HEAD
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+=======
+    <string name="at_the_rate">"@"</string>
+>>>>>>> Profile
 </resources>
