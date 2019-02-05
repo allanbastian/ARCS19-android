@@ -6,6 +6,7 @@ import android.gaurav.com.arcs19.ConvokeFragment;
 import android.gaurav.com.arcs19.Forum.ForumActivity;
 import android.gaurav.com.arcs19.FragmentHackathon;
 import android.gaurav.com.arcs19.R;
+import android.gaurav.com.arcs19.Schedule.SchedulePage;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -49,6 +50,9 @@ public class BottomNavigationFragment extends BottomSheetDialogFragment {
                     case R.id.hackathon : /*Fragment fragment = new FragmentHackathon();
                         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.fragment_container,fragment).commit();*/
+                    case R.id.schedule : /*Fragment fragment = new SchedulePage();
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.fragment_container, fragment).commit();*/
                         break;
                 }
                 getDialog().cancel();

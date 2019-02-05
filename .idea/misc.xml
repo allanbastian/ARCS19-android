@@ -2,6 +2,9 @@
 <project version="4">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Schedule
   <component name="CMakeSettings">
     <configurations>
       <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
@@ -12,6 +15,7 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+<<<<<<< HEAD
   </component>
 =======
 =======
@@ -79,4 +83,7 @@
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
 >>>>>>> Profile
+=======
+  </component>
+>>>>>>> Schedule
 </project>
