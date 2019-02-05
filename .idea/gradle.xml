@@ -8,18 +8,6 @@
         </compositeConfiguration>
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-        <option name="modules">
-          <set>
-            <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/app" />
-          </set>
-        </option>
->>>>>>> Profile
-=======
->>>>>>> Schedule
         <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>
