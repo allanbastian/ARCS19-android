@@ -27,6 +27,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
+
     //Discrete Scroll View
     implementation 'com.yarolegovich:discrete-scrollview:1.4.9'
 
@@ -36,5 +37,9 @@ dependencies {
     //Firebase
     implementation 'com.google.firebase:firebase-core:16.0.1'
 
+    //For custom shaped ImageView
+    implementation 'com.github.siyamed:android-shape-imageview:0.9.3'
+
 }
 apply plugin: 'com.google.gms.google-services'
+
