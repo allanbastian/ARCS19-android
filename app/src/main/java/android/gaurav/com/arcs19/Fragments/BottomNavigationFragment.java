@@ -1,7 +1,9 @@
-package android.gaurav.com.arcs19;
+package android.gaurav.com.arcs19.Fragments;
 
 import android.content.Intent;
+import android.gaurav.com.arcs19.ConvokeFragment;
 import android.gaurav.com.arcs19.Forum.ForumActivity;
+import android.gaurav.com.arcs19.R;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -36,13 +38,13 @@ public class BottomNavigationFragment extends BottomSheetDialogFragment {
                 {
                     case R.id.workshops : break;
                     case R.id.hackathon : break;
-                    case R.id.developers : break;
                     case R.id.forum : startActivity(new Intent(getContext(),ForumActivity.class));
                         break;
                     case R.id.convoke : Fragment fragment = new ConvokeFragment();
                         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.fragment_container, fragment).commit();
                                         break;
+                    case R.id.developers : break;
                 }
                 getDialog().cancel();
                 return true;

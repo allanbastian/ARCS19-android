@@ -1,6 +1,8 @@
 package android.gaurav.com.arcs19;
 
 import android.content.SharedPreferences;
+import android.gaurav.com.arcs19.Fragments.BottomNavigationFragment;
+import android.gaurav.com.arcs19.Fragments.WorkShopFragment;
 import android.os.Bundle;
 import android.support.design.bottomappbar.BottomAppBar;
 import android.support.design.widget.FloatingActionButton;
