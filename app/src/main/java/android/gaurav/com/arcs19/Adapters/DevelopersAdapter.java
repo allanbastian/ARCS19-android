@@ -22,7 +22,7 @@ public class DevelopersAdapter extends RecyclerView.Adapter<DevelopersAdapter.My
         public MyViewHolder(View view) {
             super(view);
             title = (TextView) view.findViewById(R.id.title);
-            post = (TextView) view.findViewById(R.id.count);
+            post = (TextView) view.findViewById(R.id.developer_post);
         }
     }
 
