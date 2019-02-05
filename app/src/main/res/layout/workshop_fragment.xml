@@ -37,7 +37,7 @@
                     android:layout_height="wrap_content"
                     app:layout_collapseMode="parallax"
                     app:layout_collapseParallaxMultiplier="0.9"
-                    android:text="EVENTS"
+                    android:text="WORKSHOPS"
                     android:textColor="#fba04b"
                     android:textStyle="bold"
                     android:layout_gravity="center"
@@ -48,6 +48,7 @@
                 <com.yarolegovich.discretescrollview.DiscreteScrollView
                     android:id="@+id/discreteScroll"
                     android:layout_width="match_parent"
+
                     android:layout_centerInParent="true"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
@@ -63,26 +64,49 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="20dp"
+                android:layout_margin="20dp"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/header"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Header"
-                    android:textStyle="bold"
-                    android:textColor="#fff"
-                    android:layout_gravity="center"
-                    android:textSize="30sp"
-                    />
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:id="@+id/workshop_previous_button"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_chevron_left_white_64dp"/>
+
+                    <TextView
+                        android:id="@+id/workshop_name"
+                        android:layout_width="0dp"
+                        android:layout_weight="14"
+                        android:gravity="center"
+                        android:layout_height="wrap_content"
+                        android:text="Header"
+                        android:textStyle="bold"
+                        android:textColor="#fff"
+                        android:layout_gravity="center"
+                        android:textSize="30sp"
+                        />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:id="@+id/workshop_next_button"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_chevron_right_white_64dp"/>
+
+                </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:id="@+id/location"
-                    android:text="Technology Tower, VIT"
+                    android:id="@+id/workshop_location"
+                    android:text="Technology Tower,VIT"
                     android:layout_marginBottom="15dp"
                     android:textColor="#fff"/>
 
@@ -106,7 +130,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/discreteScroll"
-                android:id="@+id/description"
+                android:id="@+id/workshop_description"
+                android:textAlignment="center"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="20dp"
@@ -123,7 +148,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/price"
+                    android:id="@+id/workshop_price"
                     android:text="Rs. 1,322"
                     android:textSize="20sp"
                     android:textColor="@color/orange"
@@ -136,7 +161,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@drawable/orange_button_curve"
-                    android:textColor="#fff"
+                    android:textColor="@color/black"
                     android:text="Book Now"
                     android:id="@+id/book_button"
                     android:textStyle="bold"/>
@@ -147,6 +172,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Amenities Avalible"
+                android:fontFamily="@font/montserratregular"
                 android:layout_marginHorizontal="30dp"
                 android:textColor="@color/primary_light"/>
 
@@ -154,26 +180,75 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="15dp">
+                android:layout_marginTop="15dp"
+                >
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
                     android:id="@+id/amenity1"
-                    android:src="@drawable/ic_wifi_white_24dp"
-                    />
-
-                <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:src="@drawable/ic_wifi_white_24dp" />
+                <TextView
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:text="wifi"
+                    android:fontFamily="@font/montserratregular"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/space_white"/>
+
+                <ImageView
                     android:id="@+id/amenity2"
-                    android:layout_marginLeft="30dp"
-                    android:src="@drawable/snacks"
-                    />
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="80dp"
+                    android:src="@drawable/snacks" />
 
-
+                <TextView
+                    android:layout_width="160dp"
+                    android:layout_height="60dp"
+                    android:text="refreshments"
+                    android:paddingLeft="10dp"
+                    android:fontFamily="@font/montserratregular"
+                    android:textColor="@color/space_white"/>
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="24dp"
+                android:background="@color/orange"
+
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/workshop_speaker_img"
+                    android:layout_gravity="center"
+                    android:layout_margin="16dp"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/ic_launcher_foreground" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/workshop_speaker_name"
+                    android:text="Speaker name"
+                    android:layout_marginBottom="16dp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/workshop_speaker_description"
+                    android:textAlignment="center"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginHorizontal="30dp"/>
+
+            </LinearLayout>
 
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
