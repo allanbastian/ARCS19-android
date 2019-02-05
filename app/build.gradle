@@ -4,7 +4,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "android.gaurav.com.arcs19"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -34,11 +34,17 @@ dependencies {
     //Space Bottom Navigation
     implementation 'com.github.armcha:SpaceNavigationView:1.6.0'
 
+
     //Firebase
     implementation 'com.google.firebase:firebase-core:16.0.1'
 
     //For custom shaped ImageView
     implementation 'com.github.siyamed:android-shape-imageview:0.9.3'
+
+    api 'com.android.support:design:28.0.0-alpha3'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'com.android.support:cardview-v7:28.0.0'
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
 
 }
 apply plugin: 'com.google.gms.google-services'
