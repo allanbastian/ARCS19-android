@@ -2,9 +2,8 @@ package android.gaurav.com.arcs19;
 
 import android.content.SharedPreferences;
 import android.content.Intent;
-import android.gaurav.com.arcs19.Hackathon.HackathonFragment;
 import android.gaurav.com.arcs19.Profile.Profile;
-import android.gaurav.com.arcs19.Workshop.WorkShopFragment;
+import android.gaurav.com.arcs19.Schedule.SchedulePageFragment;
 import android.os.Bundle;
 import android.support.design.bottomappbar.BottomAppBar;
 import android.support.design.widget.FloatingActionButton;
@@ -16,8 +15,7 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
-    HackathonFragment fragmentHackathon;
-    WorkShopFragment workShopFragment;
+    SchedulePageFragment schedulePageFragment;
     BottomNavigationFragment bottomNavigationFragment;
     BottomAppBar bottomAppBar;
     FloatingActionButton arcsFloatingActionButton;
@@ -39,10 +37,10 @@ public class MainActivity extends AppCompatActivity {
         arcsFloatingActionButton = findViewById(R.id.arcs_floating_action_button);
 
         //Home fragment here
-        workShopFragment = new WorkShopFragment();
+        schedulePageFragment = new SchedulePageFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.fragment_container,workShopFragment).commit();
+        fragmentTransaction.add(R.id.fragment_container,schedulePageFragment).commit();
 
         bottomAppBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

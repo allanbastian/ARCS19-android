@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 
-public class SchedulePage extends Fragment {
+public class SchedulePageFragment extends Fragment {
 
     TabLayout tabLayout;
     ViewPager viewPager;

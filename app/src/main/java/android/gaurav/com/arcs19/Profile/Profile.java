@@ -20,7 +20,7 @@ public class Profile extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_profile);
+        setContentView(R.layout.activity_profile);
         ImageButton imageButton = findViewById(R.id.qr_code_button);
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override

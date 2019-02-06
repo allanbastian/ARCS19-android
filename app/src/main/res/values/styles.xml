@@ -9,7 +9,7 @@
     </style>
 
     <!-- Base application theme for Android Custom Font -->
-    <style name="AppTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="android:typeface">monospace</item>
         <item name="colorPrimary">@color/colorPrimary</item>

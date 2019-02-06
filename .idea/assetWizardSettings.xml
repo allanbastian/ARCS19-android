@@ -5,9 +5,6 @@
       <map>
         <entry key="vectorWizard">
           <value>
-<<<<<<< HEAD
-            <PersistentState />
-=======
             <PersistentState>
               <option name="children">
                 <map>
@@ -21,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/navigation/ic_arrow_back_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/hardware/ic_keyboard_arrow_left_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -31,9 +28,9 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="fcffd9" />
-                            <entry key="outputName" value="ic_arrow_back_black_24dp" />
-                            <entry key="sourceFile" value="C:\Users\agang" />
+                            <entry key="color" value="ffffff" />
+                            <entry key="outputName" value="ic_keyboard_arrow_left_white_24dp" />
+                            <entry key="sourceFile" value="C:\Users\Gaurav Jha" />
                           </map>
                         </option>
                       </PersistentState>
@@ -42,7 +39,6 @@
                 </map>
               </option>
             </PersistentState>
->>>>>>> workshop
           </value>
         </entry>
       </map>

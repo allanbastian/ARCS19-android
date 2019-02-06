@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Profile.Profile">
+    tools:context=".Profile.Profile"
+    android:backgroundTint="@color/colorPrimaryDark">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
@@ -23,7 +24,9 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary"
+            >
 
             <ImageButton
                 android:id="@+id/back_button"
@@ -32,8 +35,8 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginStart="15dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/ic_keyboard_arrow_left_black_24dp"
-                android:background="@color/white"/>
+                android:src="@drawable/ic_keyboard_arrow_left_white_24dp"
+                android:background="@color/colorPrimary"/>
 
             <ImageButton
                 android:id="@+id/qr_code_button"
@@ -71,7 +74,7 @@
                 android:layout_below="@+id/profile_image_card"
                 android:text="Name"
                 android:layout_centerHorizontal="true"
-                android:textColor="#000"
+                android:textColor="@color/white"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="20dp"
                 android:textSize="25sp"/>
@@ -86,7 +89,7 @@
         android:layout_width="match_parent"
         android:overScrollMode="always"
         android:layout_height="match_parent"
-        android:background="@color/white"
+        android:background="@color/colorPrimary"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
