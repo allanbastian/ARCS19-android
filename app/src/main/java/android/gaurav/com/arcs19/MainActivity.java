@@ -1,10 +1,10 @@
 package android.gaurav.com.arcs19;
 
 import android.content.SharedPreferences;
-import android.gaurav.com.arcs19.Fragments.BottomNavigationFragment;
-import android.gaurav.com.arcs19.Fragments.WorkShopFragment;
 import android.content.Intent;
+import android.gaurav.com.arcs19.Hackathon.HackathonFragment;
 import android.gaurav.com.arcs19.Profile.Profile;
+import android.gaurav.com.arcs19.Workshop.WorkShopFragment;
 import android.os.Bundle;
 import android.support.design.bottomappbar.BottomAppBar;
 import android.support.design.widget.FloatingActionButton;
@@ -16,7 +16,7 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
-    FragmentHackathon fragmentHackathon;
+    HackathonFragment fragmentHackathon;
     WorkShopFragment workShopFragment;
     BottomNavigationFragment bottomNavigationFragment;
     BottomAppBar bottomAppBar;

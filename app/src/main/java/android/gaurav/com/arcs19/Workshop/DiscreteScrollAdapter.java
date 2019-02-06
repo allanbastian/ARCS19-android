@@ -1,12 +1,13 @@
-package android.gaurav.com.arcs19;
+package android.gaurav.com.arcs19.Workshop;
 
+import android.gaurav.com.arcs19.DiscreteScrollClass;
+import android.gaurav.com.arcs19.R;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 

@@ -1,7 +1,8 @@
-package android.gaurav.com.arcs19;
+package android.gaurav.com.arcs19.Hackathon;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.gaurav.com.arcs19.R;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
@@ -15,13 +16,13 @@ import android.widget.Toast;
 
 import java.util.List;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder>{
+public class HackathonRecyclerAdapter extends RecyclerView.Adapter<HackathonRecyclerAdapter.MyViewHolder>{
 
     Context mContext;
-    List<Hackathon> mData;
+    List<HackathonClass> mData;
     Dialog myDialog;
 
-    public RecyclerViewAdapter(Context mContext, List<Hackathon> mData) {
+    public HackathonRecyclerAdapter(Context mContext, List<HackathonClass> mData) {
         this.mContext = mContext;
         this.mData = mData;
     }

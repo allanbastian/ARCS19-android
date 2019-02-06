@@ -1,4 +1,4 @@
-package android.gaurav.com.arcs19;
+package android.gaurav.com.arcs19.Convoke;
 
 public class ConvokeClass {
     private String mDeveloperName; //For convoke speaker's / developers's name

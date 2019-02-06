@@ -1,15 +1,15 @@
-package android.gaurav.com.arcs19;
+package android.gaurav.com.arcs19.Hackathon;
 
-public class Hackathon {
+public class HackathonClass {
 
     private String Question;
     private String Describe;
 
-    public Hackathon() {
+    public HackathonClass() {
 
     }
 
-    public Hackathon(String question, String describe) {
+    public HackathonClass(String question, String describe) {
         Question = question;
         Describe = describe;
     }

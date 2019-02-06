@@ -1,7 +1,9 @@
-package android.gaurav.com.arcs19;
+package android.gaurav.com.arcs19.Sponsor;
 
 import android.content.Context;
 import android.content.Intent;
+import android.gaurav.com.arcs19.DiscreteScrollClass;
+import android.gaurav.com.arcs19.R;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
