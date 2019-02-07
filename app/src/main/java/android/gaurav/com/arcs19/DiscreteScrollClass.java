@@ -10,7 +10,12 @@ public class DiscreteScrollClass {
 
     public DiscreteScrollClass(){}
     //using des for sponsors to store website url
-    public DiscreteScrollClass(int icon, String name, String des) {}
+    public DiscreteScrollClass(int icon, String name, String des) {
+        this.icon=icon;
+        this.name=name;
+        this.des= des;
+
+    }
 
 
     public DiscreteScrollClass(int icon, String name, String des,String loc,String authdesc,int price,int authimg,String sname) {
