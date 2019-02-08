@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.gaurav.com.arcs19.MainActivity;
 import android.gaurav.com.arcs19.R;
+import android.os.Handler;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -30,6 +32,20 @@ public class LoginActivity extends AppCompatActivity {
     SharedPreferences sp;
     String USERNAME = "USERNAME";
 
+    LinearLayout signInField, signUpField;
+    TextView arcsText;
+
+
+    //Splash screen Animation
+    Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            signInField.setVisibility(View.VISIBLE);
+            signUpField.setVisibility(View.VISIBLE);
+            arcsText.setVisibility(View.VISIBLE);
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +56,14 @@ public class LoginActivity extends AppCompatActivity {
         emailID = findViewById(R.id.email_id);
         password = findViewById(R.id.password);
         fragmentContainer = findViewById(R.id.fragment_container);
+
+        signInField = findViewById(R.id.sign_in_field);
+        signUpField = findViewById(R.id.sign_up_field);
+        arcsText = findViewById(R.id.arcs_text);
+
+        Handler handler = new Handler();
+        handler.postDelayed(runnable,2000);             //Post delay animation for Splash Screen
+
 
         //Initialising SP
         sp = getSharedPreferences("key", 0);
