@@ -66,7 +66,7 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
+                Logout();
 
             }
         });
