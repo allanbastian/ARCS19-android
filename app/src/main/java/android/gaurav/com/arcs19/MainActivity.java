@@ -16,7 +16,7 @@ import android.view.View;
 public class MainActivity extends AppCompatActivity {
 
     SchedulePageFragment schedulePageFragment;
-    BottomNavigationFragment bottomNavigationFragment;
+    BottomNavigationFragment bottomNavigationFragment = new BottomNavigationFragment();;
     BottomAppBar bottomAppBar;
     FloatingActionButton arcsFloatingActionButton;
     SharedPreferences sp;
@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
         bottomAppBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bottomNavigationFragment = new BottomNavigationFragment();
                 bottomNavigationFragment.show(getSupportFragmentManager(),bottomNavigationFragment.getTag());
             }
         });

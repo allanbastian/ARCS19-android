@@ -1,5 +1,6 @@
 package android.gaurav.com.arcs19.Convoke;
 
+import android.content.SharedPreferences;
 import android.gaurav.com.arcs19.R;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -15,12 +16,27 @@ import java.util.ArrayList;
 public class ConvokeFragment extends Fragment {
 
     //convokeList is used to store the list of convoke speakers
-    ArrayList<ConvokeClass> convokeList = new ArrayList<ConvokeClass>();;
+    ArrayList<ConvokeClass> convokeList = new ArrayList<ConvokeClass>();
+
+    //Cache
+    SharedPreferences sp;
+    SharedPreferences.Editor editor;
 
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_convoke, container, false);
+
+        //Cache
+        sp = this.getActivity().getSharedPreferences("key",0);
+
+        sp.getBoolean("cacheAvailable",false);
+
+        editor = sp.edit();
+        editor.putBoolean("cache",false);
+
+
+
 
         //List of Convoke speakers- Caching .
 

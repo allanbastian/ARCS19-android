@@ -21,15 +21,13 @@
             android:textSize="20dp"/>
 
 
-
-
         <android.support.design.widget.TabLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:id="@+id/tab_bar"
             app:tabTextColor="@color/primary_light"
-            app:tabIndicatorColor="@color/white"
-            app:tabSelectedTextColor="@color/white"
+            app:tabIndicatorColor="@color/orange"
+            app:tabSelectedTextColor="@color/orange"
             android:background="@color/colorPrimaryDark">
 
 

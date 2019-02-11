@@ -5,6 +5,7 @@
     android:id="@+id/navigation_view_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:orientation="vertical"
     android:background="@color/space_transparent"
     app:behavior_hideable="true"
     android:layout_alignParentBottom="true"
@@ -18,10 +19,19 @@
         android:background="@drawable/bottom_nav_bg"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="4dp"
-        android:paddingBottom="40dp"
+        android:paddingBottom="20dp"
         app:headerLayout="@layout/bottom_nav_header"
-        app:itemTextColor="#ffff"
-        app:itemIconTint="#ffff"
+        app:itemTextColor="@color/white"
+        app:itemIconTint="@color/white"
+        app:itemBackground="@drawable/menu_items_background"
         app:menu="@menu/navigation_menu" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:scaleType="fitCenter"
+        android:background="@color/bottom_navigation_bar_color"
+        android:padding="20dp"
+        android:src="@drawable/ieee_cs_logo"/>
 
 </LinearLayout>

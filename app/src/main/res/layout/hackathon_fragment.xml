@@ -2,139 +2,169 @@
 <RelativeLayout android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_marginBottom="50dp">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/navigation_view_layout"
-        android:paddingBottom="60dp">
+        android:layout_above="@+id/navigation_view_layout">
 
-<LinearLayout
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
-    
-    <android.support.v7.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/hackathon_recyclerview"></android.support.v7.widget.RecyclerView>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:text="Teams:"
-        android:paddingRight="2dp"
-        android:textColor="@android:color/white"
-        android:textSize="25sp"
-        android:fontFamily="@font/montserratregular"
-        android:padding="20dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/dashed_outline">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="QUESTIONS"
+                    android:textColor="@color/orange"
+                    android:fontFamily="@font/montserratregular"
+                    android:textSize="24sp"
+                    android:layout_margin="4dp"
+                    android:gravity="center" />
+                <android.support.v7.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="8dp"
+                    android:id="@+id/hackathon_recyclerview"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="italic"
-        android:text="Thunderbolt"
-        android:textColor="#FF8C00"
-        android:paddingRight="10dp"
-        android:textSize="25sp"
-        android:fontFamily="@font/montserratregular"
-        android:padding="2dp"/>
+            </LinearLayout>
 
-    </LinearLayout>
+            <LinearLayout
+                android:layout_margin="20dp"
+                android:background="@drawable/dashed_outline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="left">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="1."
-            android:textColor="#FFf"
-            android:textSize="25sp"
-            android:fontFamily="@font/montserratregular"
-            android:padding="10dp"/>
+                <LinearLayout
+                    android:id="@+id/display_team_name_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center"
+                    android:layout_margin="16dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Team:"
+                        android:gravity="center"
+                        android:layout_margin="8dp"
+                        android:paddingRight="2dp"
+                        android:textColor="@color/orange"
+                        android:textSize="25sp"
+                        android:fontFamily="@font/montserratregular"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="italic"
-            android:text="Siddharth Goradia"
-            android:textColor="#FF8C00"
-            android:paddingRight="10dp"
-            android:textSize="25sp"
-            android:fontFamily="@font/montserratregular"
-            android:padding="2dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/hackathon_team_name_tv"
+                        android:textColor="@android:color/white"
+                        android:text="Thunderbolt"
+                        android:gravity="center"
+                        android:textSize="25sp"
+                        android:fontFamily="@font/montserratregular"
+                        android:padding="2dp"/>
+                </LinearLayout>
 
-    </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/team_name_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="left">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="2."
-            android:textColor="#FFf"
-            android:textSize="25sp"
-            android:fontFamily="@font/montserratregular"
-            android:padding="10dp"/>
+                    <EditText
+                        android:id="@+id/et_team_name"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:maxLines="1"
+                        android:inputType="text"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:hint="Team Name"
+                        android:textColor="@color/white"
+                        app:backgroundTint="@color/white_with_alpha"
+                        android:textColorHint="@color/orange"
+                        android:layout_height="wrap_content" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="italic"
-            android:text="Allan James"
-            android:textColor="#FF8C00"
-            android:paddingRight="10dp"
-            android:textSize="25sp"
-            android:fontFamily="@font/montserratregular"
-            android:padding="2dp"/>
+                    <ImageButton
+                        android:id="@+id/team_name_button"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_arrow_forward_white_24dp"
+                        android:background="@drawable/primary_color"/>
 
-    </LinearLayout>
+                </LinearLayout>
+                <!--<android.support.v7.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/hackathon_team_list"/>-->a
+            </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="left">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="3."
-            android:textColor="#fff"
-            android:textSize="25sp"
-            android:fontFamily="@font/montserratregular"
-            android:padding="10dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="UPLOAD"
+                    android:textColor="@color/orange"
+                    android:fontFamily="@font/montserratregular"
+                    android:textSize="24sp"
+                    android:layout_margin="4dp"
+                    android:gravity="center" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="italic"
-            android:text="Drake J"
-            android:textColor="#FF8C00"
-            android:paddingRight="10dp"
-            android:textSize="25sp"
-            android:fontFamily="@font/montserratregular"
-            android:padding="2dp"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="DOCUMENT"
+                    android:gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="24dp"
+                    android:textColor="@color/colorPrimary"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/montserratregular"
+                    android:textSize="24sp"
+                    android:background="@drawable/orange_button_curve"
+                    />
 
-    </LinearLayout>
+                <Button
+                    android:id="@+id/link_upload_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="PROJECT LINK"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimary"
+                    android:background="@drawable/orange_button_curve"
+                    android:fontFamily="@font/montserratregular"
+                    android:textSize="24sp"/>
 
-</LinearLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
     </ScrollView>
 </RelativeLayout>
 

@@ -42,7 +42,6 @@ public class Profile extends AppCompatActivity {
         backButton = findViewById(R.id.back_button);
         signOutButton = findViewById(R.id.sign_out_button);
 
-
         sp = getSharedPreferences("key",0);
 
         USERNAME = sp.getString("email","");

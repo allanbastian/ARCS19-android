@@ -4,14 +4,12 @@ public class HackathonClass {
 
     private String Question;
     private String Describe;
+    private int Logo;
 
-    public HackathonClass() {
-
-    }
-
-    public HackathonClass(String question, String describe) {
+    public HackathonClass(String question, String describe, int logo) {
         Question = question;
         Describe = describe;
+        Logo = logo;
     }
 
     public String getQuestion() {
@@ -24,6 +22,10 @@ public class HackathonClass {
 
     public String getDescribe() {
         return Describe;
+    }
+
+    public int getLogo() {
+        return Logo;
     }
 
     public void setDescribe(String describe) {

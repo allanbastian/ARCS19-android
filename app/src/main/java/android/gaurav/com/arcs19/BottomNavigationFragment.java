@@ -26,6 +26,7 @@ public class BottomNavigationFragment extends BottomSheetDialogFragment {
     Fragment fragment;
     FragmentTransaction transaction;
     Intent intent;
+    int previousSelectedItem = 0;
 
     @Nullable
     @Override
@@ -35,50 +36,67 @@ public class BottomNavigationFragment extends BottomSheetDialogFragment {
 
         navigationView = rootView.findViewById(R.id.navigation_view);
 
+        if(previousSelectedItem != 0){
+            navigationView.setCheckedItem(previousSelectedItem);
+        }else {
+            navigationView.setCheckedItem(R.id.schedule);
+        }
+
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
                 int menuId = menuItem.getItemId();
+                menuItem.setCheckable(true);
 
                 switch(menuId)
                 {
                     case R.id.workshops : fragment = new WorkShopFragment();
                         transaction = getActivity().getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.fragment_container, fragment).commit();
+                        previousSelectedItem = menuId;
+                        menuItem.setChecked(true);
                                         break;
 
                     case R.id.hackathon : fragment = new HackathonFragment();
                         transaction = getActivity().getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.fragment_container, fragment).commit();
+                        previousSelectedItem = menuId;
+                        menuItem.setChecked(true);
                                         break;
 
                     case R.id.convoke : fragment = new ConvokeFragment();
                         transaction = getActivity().getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.fragment_container, fragment).commit();
+                        previousSelectedItem = menuId;
+                        menuItem.setChecked(true);
                                         break;
 
                     case R.id.schedule: fragment = new SchedulePageFragment();
                         transaction = getActivity().getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.fragment_container, fragment).commit();
+                        previousSelectedItem = menuId;
+                        menuItem.setChecked(true);
                                         break;
 
                     case R.id.developers: fragment = new DeveloperFragment();
                         transaction = getActivity().getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.fragment_container, fragment).commit();
+                        previousSelectedItem = menuId;
+                        menuItem.setChecked(true);
                                         break;
 
                     case R.id.sponsors: fragment = new SponsorFragment();
                         transaction = getActivity().getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.fragment_container, fragment).commit();
+                        previousSelectedItem = menuId;
+                        menuItem.setChecked(true);
                         break;
 
                     case R.id.forum: intent = new Intent(getActivity(), ForumActivity.class);
                                         startActivity(intent);
                                         break;
-
-
-
 
                 }
 

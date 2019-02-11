@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#390049</color>
-    <color name="colorPrimaryDark">#390049</color>
-    <color name="colorAccent">#390049</color>
-    <color name="orange">#fba04b</color>
+    <color name="colorPrimary">#151515</color>
+    <color name="colorPrimaryDark">#151515</color>
+    <color name="colorAccent">#151515</color>
+    <color name="primary_light"> #7a7a7a </color>
+    <color name="arcs_logo_primary">#390049</color>
+    <color name="arcs_logo_orange">#fba04b</color>
+    <color name="orange">#faa419</color>
     <color name="pink">#e34791</color>
-    <color name="primary_light"> #917f9f </color>
+    <color name="arcs_logo_primary_light"> #917f9f </color>
     <color name="light_orange"> #e2b578 </color>
     <color name="secondary_dark">#77025a</color>
-    <color name="bottom_navigation_bar_color">#77025a</color>
+    <color name="bottom_navigation_bar_color">#151515</color>
     <color name="white">#fff</color>
     <color name="blue">#0f3c7a</color>
     <color name="black">#000</color>

@@ -6,36 +6,42 @@
         android:id="@+id/schedule"
         android:icon="@drawable/schedule"
         android:title="Schedule"
+        android:checkable="true"
         />
 
     <item
         android:id="@+id/workshops"
         android:icon="@drawable/workshops"
         android:title="Workshops"
+        android:checkable="true"
         />
 
     <item
         android:id="@+id/hackathon"
         android:icon="@drawable/hackathon"
         android:title="Hackathon"
+        android:checkable="true"
         />
 
     <item
         android:id="@+id/convoke"
         android:icon="@drawable/convoke"
         android:title="Convoke"
+        android:checkable="true"
         />
 
     <item
         android:id="@+id/sponsors"
         android:icon="@drawable/sponsors"
         android:title="Sponsors"
+        android:checkable="true"
         />
 
     <item
         android:id="@+id/developers"
         android:icon="@drawable/team"
         android:title="Developers"
+        android:checkable="true"
         />
 
     <item
