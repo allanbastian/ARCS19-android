@@ -8,6 +8,7 @@
         android:id="@+id/msg_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:layout_alignParentLeft="true"
         >
 
@@ -18,7 +19,7 @@
             android:layout_height="wrap_content"
             android:text="ADMIN, 3-03-19 12:36PM"
             android:textSize="14sp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="5dp"
             android:textColor="@color/primary_light"/>
 
 

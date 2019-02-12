@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary">
 
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/query_recycler"
         android:layout_width="match_parent"
@@ -47,6 +48,14 @@
         android:layout_gravity="center_vertical"/>
 
     </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:visibility="gone"
+        android:layout_centerInParent="true"
+        android:indeterminateTint="@color/orange"/>
 
 
 </RelativeLayout>

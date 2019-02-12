@@ -31,7 +31,7 @@ public class ForumAdapter extends RecyclerView.Adapter {
 
         ForumClass currentItem = messageList.get(position);
         //If the message is by admin
-        if(currentItem.getMsgtype().equals("User"))
+        if(currentItem.getType().equals("user"))
         {
             return QUESTION_VIEW;
         }
@@ -87,7 +87,7 @@ public class ForumAdapter extends RecyclerView.Adapter {
         void bind(ForumClass currentMsg)
         {
             questionContainer.setText(currentMsg.getMessage());
-            details.setText(currentMsg.getUsername() + " " + currentMsg.getTimestamp());
+            details.setText(currentMsg.getUser() + " " + currentMsg.getTimestamp());
         }
     }
 
@@ -104,7 +104,7 @@ public class ForumAdapter extends RecyclerView.Adapter {
         void bind(ForumClass currentMsg)
         {
             responseContainer.setText(currentMsg.getMessage());
-            details.setText(currentMsg.getUsername() + " " + currentMsg.getTimestamp());
+            details.setText(currentMsg.getUser() + " " + currentMsg.getTimestamp());
         }
     }
 

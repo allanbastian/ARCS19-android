@@ -3,24 +3,33 @@ package android.gaurav.com.arcs19.Forum;
 public class ForumClass {
 
 
-    String username, message, msgtype, timestamp;
+    String user, email, message, type, timestamp;
 
     ForumClass(){}
 
-    ForumClass(String username, String message, String msgtype,String timestamp)
+    ForumClass(String user, String email, String message, String type,String timestamp)
     {
-        this.username = username;
+        this.user = user;
+        this.email = email;
         this.message = message;
-        this.msgtype = msgtype;
+        this.type = type;
         this.timestamp = timestamp;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUser() {
+        return user;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getMessage() {
@@ -31,12 +40,12 @@ public class ForumClass {
         this.message = message;
     }
 
-    public String getMsgtype() {
-        return msgtype;
+    public String getType() {
+        return type;
     }
 
-    public void setMsgtype(String msgtype) {
-        this.msgtype = msgtype;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getTimestamp() {
