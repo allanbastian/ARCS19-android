@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="android.gaurav.com.arcs19">
+    package="android.ieeecsvit.com.arcs19">
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".Arcs19Application"
+        android:name="android.ieeecsvit.com.arcs19.Arcs19Application"
         android:allowBackup="true"
         android:icon="@drawable/arcs"
         android:label="@string/app_name"
@@ -12,10 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".MainActivity"
+        <activity android:name="android.ieeecsvit.com.arcs19.MainActivity"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".Login.LoginActivity"
+        <activity android:name="android.ieeecsvit.com.arcs19.Login.LoginActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,9 +23,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Forum.ForumActivity"
+        <activity android:name="android.ieeecsvit.com.arcs19.Forum.ForumActivity"
             android:screenOrientation="portrait"></activity>
-        <activity android:name=".Profile.Profile"
+        <activity android:name="android.ieeecsvit.com.arcs19.Profile.Profile"
             android:screenOrientation="portrait"></activity>
     </application>
 
