@@ -33,5 +33,10 @@
         <item name="android:windowExitAnimation">@anim/slide_down</item>
     </style>
 
+    //Menu item style
+    <style name="NavigationDrawerStyle">
+        <item name="android:textStyle">bold</item>
+    </style>
+
 
 </resources>

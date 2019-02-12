@@ -20,6 +20,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginTop="4dp"
         android:paddingBottom="20dp"
+        app:itemTextAppearance="@style/NavigationDrawerStyle"
         app:headerLayout="@layout/bottom_nav_header"
         app:itemTextColor="@color/white"
         app:itemIconTint="@color/white"
