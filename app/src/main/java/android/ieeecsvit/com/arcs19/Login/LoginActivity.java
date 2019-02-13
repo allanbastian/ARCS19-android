@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,12 +29,14 @@ public class LoginActivity extends AppCompatActivity {
     ProgressBar progressBar;
     FragmentManager fragmentManager;
     SignUpFragment signUpFragment;
-    Boolean signUpFrag, loginStatus;
+    Boolean signUpFrag, loginStatus, otpFrag, passwordFrag;
     SharedPreferences sp;
     String USERNAME = "USERNAME";
 
     LinearLayout signInField, signUpField;
-    TextView arcsText;
+    TextView arcsText, forgotPassword;
+
+    OTPFragment otpFragment;
 
 
     //Splash screen Animation
@@ -56,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
         emailID = findViewById(R.id.email_id);
         password = findViewById(R.id.password);
         fragmentContainer = findViewById(R.id.fragment_container);
-
+        forgotPassword = findViewById(R.id.forgot_password);
         signInField = findViewById(R.id.sign_in_field);
         signUpField = findViewById(R.id.sign_up_field);
         arcsText = findViewById(R.id.arcs_text);
@@ -89,25 +92,7 @@ public class LoginActivity extends AppCompatActivity {
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(emailID.getText().toString().equals(""))
-                {
-                    //If email field ia empty
-                    Toast.makeText(getApplicationContext(),"Enter emailID to continue",Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    //Starting SignIn Process
-                    SharedPreferences.Editor editor = sp.edit();
-                    editor.putBoolean("loginStatus",true);                          //Login Session True
-                    editor.putString("email",emailID.getText().toString());         //Email
-                    editor.putString("password",password.getText().toString());     //Password
-                    editor.apply();
-
-                    //Initialising the username
-                    editor.putString("username",USERNAME);
-
-                    startActivity(new Intent(LoginActivity.this,MainActivity.class));
-
-                }
+                login();
             }
         });
 
@@ -127,8 +112,66 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        //Forgot Password
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                //Starting OTP process
+                fragmentManager = getSupportFragmentManager();
+                fragmentContainer.setClickable(true);
+                otpFragment = new OTPFragment();
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.setCustomAnimations(R.anim.enter_from_right,R.anim.exit_from_right);
+                transaction.add(R.id.fragment_container,otpFragment).commit();
+                otpFrag = true;
+            }
+        });
+
     }
 
+    void login()
+    {
+        String email = emailID.getText().toString();
+        String pass = password.getText().toString();
+
+        if (email.isEmpty()) {
+            emailID.setError("Email is required");
+            emailID.requestFocus();
+            return;
+        }
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            emailID.setError("Please enter a valid email");
+            emailID.requestFocus();
+            return;
+        }
+
+        if (pass.isEmpty()) {
+            password.setError("Password is required");
+            password.requestFocus();
+            return;
+        }
+
+        if (pass.length() < 8) {
+            password.setError("Minimum length of password should be 8");
+            password.requestFocus();
+            return;
+        }
+
+        //Starting SignIn Process
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putBoolean("loginStatus",true);                          //Login Session True
+        editor.putString("email",emailID.getText().toString());         //Email
+        editor.putString("password",password.getText().toString());     //Password
+        editor.apply();
+
+        //Initialising the username
+        editor.putString("username",USERNAME);
+
+        startActivity(new Intent(LoginActivity.this,MainActivity.class));
+    }
 
     @Override
     public void onBackPressed() {
@@ -140,6 +183,15 @@ public class LoginActivity extends AppCompatActivity {
             transaction.remove(signUpFragment).commit();
             fragmentContainer.setClickable(false);
             signUpFrag = false;
+        }
+        else if(otpFrag)
+        {
+            //Removing SignUp fragment to Login Activity
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.setCustomAnimations(R.anim.enter_from_right,R.anim.exit_from_right);
+            transaction.remove(getSupportFragmentManager().findFragmentById(R.id.fragment_container)).commit();
+            fragmentContainer.setClickable(false);
+            otpFrag = false;
         }
         else
             super.onBackPressed();

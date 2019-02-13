@@ -55,7 +55,7 @@
             android:layout_height="wrap_content"
             android:paddingVertical="30dp"
             android:layout_below="@id/logo_field"
-            android:visibility="gone"
+            android:visibility=""
             android:orientation="vertical"
             >
             <EditText
@@ -94,6 +94,15 @@
                 android:paddingVertical="10dp"
                 android:textColorHint="@color/arcs_logo_primary_light"
                 android:inputType="textPassword"/>
+
+            <TextView
+                android:id="@+id/forgot_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Forgot Password?"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/orange"/>
 
 
             <ImageButton
