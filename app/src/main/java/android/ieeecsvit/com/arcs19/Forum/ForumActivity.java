@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -25,6 +26,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.Semaphore;
 
 public class ForumActivity extends AppCompatActivity {
 
@@ -42,7 +44,7 @@ public class ForumActivity extends AppCompatActivity {
     DatabaseReference ref;
 
     //Key of the new message
-    int key = 1;
+    int key = 0;
 
     //Connection status
     boolean connected = false;
@@ -125,10 +127,10 @@ public class ForumActivity extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 ForumClass object = dataSnapshot.getValue(ForumClass.class);
+                key = Integer.parseInt(dataSnapshot.getKey()) + 1;
                 queries.add(object);
                 forumAdapter = new ForumAdapter(getApplicationContext(), queries);
                 queryRecyler.setAdapter(forumAdapter);
-                key++;
                 progressBar.setVisibility(View.GONE);
             }
 
@@ -159,7 +161,7 @@ public class ForumActivity extends AppCompatActivity {
     {
         //Message is sent if the app is connected to firebase
         if(connected) {
-            //Setting the timestamp format
+
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM hh:mmaa");
             String timestamp = simpleDateFormat.format(new Date());
 
