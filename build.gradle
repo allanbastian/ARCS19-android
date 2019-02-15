@@ -14,7 +14,7 @@ buildscript {
         // in the individual module build.gradle files
 
         //Firebase
-        classpath 'com.google.gms:google-services:4.0.1'
+        classpath 'com.google.gms:google-services:4.1.0'
     }
 }
 

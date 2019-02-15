@@ -7,7 +7,7 @@ public class ConvokeClass {
     private String mDeveloperFacebook; //For convoke speaker's / developers's facebook
     //private String mDeveloperInstagram;
     //private String mDeveloperTwitter;
-    private int mDeveloperImage; //For convoke speaker's / developers's image
+    private String mDeveloperImage; //For convoke speaker's / developers's image
     private boolean mDeveloperBookmark = false; //boolean if the Convoke Speaker is bookmarked
 
     /*public DeveloperClass(String developerName, String developerCountry, String developerGithub, String developerFacebook,String developerInstagram, String developerTwitter, int developerImage){
@@ -21,7 +21,7 @@ public class ConvokeClass {
 
     }*/
 
-    public ConvokeClass(String developerName, String developerCountry, String developerGithub, String developerFacebook, int developerImage){
+    public ConvokeClass(String developerName, String developerCountry, String developerGithub, String developerFacebook, String developerImage){
         mDeveloperName = developerName;
         mDeveloperCountry = developerCountry;
         mDeveloperGithub = developerGithub;
@@ -60,7 +60,7 @@ public class ConvokeClass {
         return mDeveloperTwitter;
     }*/
 
-    public int getmConvokeImage() {
+    public String getmConvokeImage() {
         return mDeveloperImage;
     }
 

@@ -3,11 +3,14 @@ package android.ieeecsvit.com.arcs19.Convoke;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.ieeecsvit.com.arcs19.R;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +27,7 @@ public class ConvokeAdapter extends RecyclerView.Adapter<ConvokeAdapter.CustomVi
     private ArrayList<ConvokeClass> dataList;
     private Context context;
 
-    public ConvokeAdapter(Context context, ArrayList<ConvokeClass> dataList){
+    public ConvokeAdapter(Context context, ArrayList<ConvokeClass> dataList) {
 
         this.dataList = dataList;
         this.context = context;
@@ -38,7 +41,7 @@ public class ConvokeAdapter extends RecyclerView.Adapter<ConvokeAdapter.CustomVi
         private CheckBox bookmark;
         private ImageView facebook;
         //private ImageView instagram;
-       //private ImageView twitter;
+        //private ImageView twitter;
         private Button follow;
 
 
@@ -64,18 +67,18 @@ public class ConvokeAdapter extends RecyclerView.Adapter<ConvokeAdapter.CustomVi
     public CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.item_convoke_view, parent, false);
-        return new CustomViewHolder(parent.getContext(),view);
+        return new CustomViewHolder(parent.getContext(), view);
     }
 
     @SuppressLint("ResourceAsColor")
     @Override
     public void onBindViewHolder(@NonNull final ConvokeAdapter.CustomViewHolder holder, final int i) {
+        Bitmap bitmap;
         holder.country.setText(dataList.get(i).getmConvokeCountry());
         holder.name.setText(dataList.get(i).getmConvokeName());
-        holder.image.setImageResource(dataList.get(i).getmConvokeImage());
+        holder.image.setImageBitmap(StringToBitMap(dataList.get(i).getmConvokeImage()));
         holder.bookmark.setOnCheckedChangeListener(null);
         holder.bookmark.setChecked(dataList.get(i).getmConvokeBookmark());
-
 
 
         holder.bookmark.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -141,12 +144,22 @@ public class ConvokeAdapter extends RecyclerView.Adapter<ConvokeAdapter.CustomVi
         });
 
 
-
-
     }
 
     @Override
     public int getItemCount() {
         return dataList.size();
+    }
+
+
+    public Bitmap StringToBitMap(String encodedString) {
+        try {
+            byte[] encodeByte = Base64.decode(encodedString, Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+            return bitmap;
+        } catch (Exception e) {
+            e.getMessage();
+            return null;
+        }
     }
 }

@@ -55,7 +55,6 @@
             android:layout_height="wrap_content"
             android:paddingVertical="30dp"
             android:layout_below="@id/logo_field"
-            android:visibility=""
             android:orientation="vertical"
             >
             <EditText

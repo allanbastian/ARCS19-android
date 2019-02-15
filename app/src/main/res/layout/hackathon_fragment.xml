@@ -23,6 +23,8 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:background="@drawable/dashed_outline">
+
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -32,6 +34,16 @@
                     android:textSize="24sp"
                     android:layout_margin="4dp"
                     android:gravity="center" />
+
+                <ProgressBar
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="24dp"
+                    android:id="@+id/question_upload_progressbar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:indeterminateTint ="@color/orange"
+                    android:layout_gravity="center_horizontal" />
+
                 <android.support.v7.widget.RecyclerView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -131,6 +143,7 @@
                     android:gravity="center" />
 
                 <Button
+                    android:id="@+id/project_doc_upload"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="DOCUMENT"
@@ -141,8 +154,10 @@
                     android:textAlignment="center"
                     android:fontFamily="@font/montserratregular"
                     android:textSize="24sp"
-                    android:background="@drawable/orange_button_curve"
+                    android:background="@drawable/orange_button_clicked_curve"
                     />
+
+
 
                 <Button
                     android:id="@+id/link_upload_button"
@@ -152,9 +167,18 @@
                     android:gravity="center"
                     android:textAlignment="center"
                     android:textColor="@color/colorPrimary"
-                    android:background="@drawable/orange_button_curve"
+                    android:background="@drawable/orange_button_clicked_curve"
                     android:fontFamily="@font/montserratregular"
                     android:textSize="24sp"/>
+
+                <ProgressBar
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="24dp"
+                    android:id="@+id/doc_upload_progressbar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:indeterminateTint ="@color/orange"
+                    android:layout_gravity="center_horizontal" />
 
 
                 <Space
