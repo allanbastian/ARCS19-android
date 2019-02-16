@@ -29,8 +29,6 @@ public class DeveloperFragment extends Fragment {
         developerList.add(new DiscreteScrollClass(0,"Gaurav Jha", "Developer"));
         developerList.add(new DiscreteScrollClass(0,"Devarsh Patel", "Developer"));
         developerList.add(new DiscreteScrollClass(0,"Anish Ganguly", "Developer"));
-        developerList.add(new DiscreteScrollClass(0,"Harsha Agarwal", "Developer"));
-        developerList.add(new DiscreteScrollClass(0,"Ankush Chaudhari", "Developer"));
         developerList.add(new DiscreteScrollClass(0,"Koushik Saha", "Developer"));
 
 
