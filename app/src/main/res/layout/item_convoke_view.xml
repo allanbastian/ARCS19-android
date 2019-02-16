@@ -1,27 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView
-    android:id="@+id/developer_details"
+    android:id="@+id/convoke_root_item"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
     android:layout_width="match_parent"
-    android:layout_height="360dp"
-    app:cardBackgroundColor="@color/white_with_alpha"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/orange"
     android:layout_gravity="center"
     android:layout_marginTop="16dp"
     android:layout_marginLeft="32dp"
     android:layout_marginRight="32dp"
     android:layout_marginBottom="16dp"
     app:cardCornerRadius="24dp"
-    app:cardElevation="8dp">
+    app:cardElevation="12dp">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_alignParentTop="true">
 
@@ -39,21 +42,34 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:textAlignment="center"
+                    android:fontFamily="@font/montserrat_regular"
                     android:textSize="26sp"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/secondary_dark"
                     tools:text="Trisha Samson" />
 
                 <TextView
                     android:layout_width="match_parent"
+                    android:fontFamily="@font/montserrat_regular"
                     android:layout_height="wrap_content"
-                    android:id="@+id/developer_country"
+                    android:id="@+id/convoke_topic"
                     android:textAlignment="center"
                     android:textSize="14sp"
                     android:layout_marginTop="8dp"
                     android:text="Germany"
-                    android:textColor="@color/colorPrimary"/>
+                    android:textColor="@color/secondary_dark"/>
 
-                <Button
+            <TextView
+                android:layout_margin="16dp"
+                android:id="@+id/convoke_details"
+                android:fontFamily="@font/montserrat_regular"
+                android:layout_width="match_parent"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:text="She will be at VIT"
+                android:textAlignment="center"
+                android:layout_height="wrap_content" />
+
+                <!--<Button
                     android:id="@+id/convoke_follow_button"
                     android:layout_gravity="center_horizontal"
                     android:layout_width="wrap_content"
@@ -62,7 +78,7 @@
                     android:layout_height="32dp"
                     android:text="Follow"
                     android:background="@drawable/convoke_follow_button_layout"
-                    android:drawableLeft="@drawable/ic_add_black_8dp"/>
+                    android:drawableLeft="@drawable/ic_add_black_8dp"/>-->
 
                 <Space
                     android:layout_width="wrap_content"
@@ -76,7 +92,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_margin="16dp"
-            android:layout_alignParentBottom="true">
+            >
 
             <CheckBox
                 android:id="@+id/developer_bookmark"
@@ -114,7 +130,7 @@
 
         </LinearLayout>
 
-    </RelativeLayout>
+    </LinearLayout>
 
 
 

@@ -13,6 +13,7 @@ import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.google.firebase.FirebaseError;
 import com.google.firebase.database.DataSnapshot;
@@ -20,6 +21,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
@@ -28,11 +31,14 @@ public class ConvokeFragment extends Fragment {
 
     FirebaseDatabase firebaseDatabase;
     private DatabaseReference ref;
+    StorageReference storageReference, speakerImage;
 
-    String speakerName, speakerDetails, speakerImage, speakerTopic;
+    String speakerName, speakerDetails, speakerFacebook, speakerTopic;
     Bitmap bitmap;
     int image;
     View rootView;
+    RecyclerView convokeRecycler;
+    ProgressBar convokeProgress;
     //convokeList is used to store the list of convoke speakers
     ArrayList<ConvokeClass> convokeList = new ArrayList<ConvokeClass>();
 
@@ -54,12 +60,16 @@ public class ConvokeFragment extends Fragment {
 
         editor = sp.edit();
         editor.putBoolean("cache",false);*/
+        ConvokeAdapter adapter = new ConvokeAdapter(getContext(),convokeList);
+        convokeRecycler = rootView.findViewById(R.id.convoke_recycler_view);
+        convokeRecycler.setVisibility(View.GONE);
+        convokeProgress=rootView.findViewById(R.id.convoke_fragment_progressbar);
 
         //Initialise Firebase
         firebaseDatabase = FirebaseDatabase.getInstance();
         ref = firebaseDatabase.getReference().child("Convoke");         //Convoke node
         ref.keepSynced(true);                                       //Synced with database
-
+        storageReference = FirebaseStorage.getInstance().getReference().child("Convoke");
 
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -67,11 +77,15 @@ public class ConvokeFragment extends Fragment {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     speakerName = snapshot.getKey().toString();
                     speakerDetails = snapshot.child("details").getValue().toString();
-                    speakerImage = snapshot.child("photo").getValue().toString();
+                    //all images of the speakers should be in same file format.
+                    speakerImage = storageReference.child(speakerName+".png");
+                    speakerFacebook = snapshot.child("facebook_link").getValue().toString();
                     speakerTopic = snapshot.child("topic").getValue().toString();
-                    convokeList.add(new ConvokeClass(speakerName, speakerTopic, "https://www.github.com", "https://www.facebook.com",speakerImage));
+                    convokeList.add(new ConvokeClass(speakerName, speakerTopic,speakerDetails, speakerFacebook,speakerImage));
 
                 }
+                convokeProgress.setVisibility(View.GONE);
+                convokeRecycler.setVisibility(View.VISIBLE);
 
             }
 
@@ -108,10 +122,10 @@ public class ConvokeFragment extends Fragment {
 
          */
 
-        ConvokeAdapter adapter = new ConvokeAdapter(getContext(),convokeList);
-        RecyclerView recyclerView= rootView.findViewById(R.id.developer_recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(adapter);
+
+
+        convokeRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
+        convokeRecycler.setAdapter(adapter);
 
         return rootView;
     }
