@@ -94,6 +94,7 @@ public class Profile extends AppCompatActivity {
         editor.remove("password").commit();
         editor.remove("loginStatus").commit();
         startActivity(new Intent(Profile.this, LoginActivity.class));
+        finish();
     }
 
 }

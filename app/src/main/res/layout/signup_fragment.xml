@@ -13,11 +13,13 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingHorizontal="20dp"
-            android:layout_centerInParent="true"
-            android:paddingVertical="10dp">
+            android:animateLayoutChanges="true"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
 
 
 
@@ -35,7 +37,7 @@
                     android:layout_height="wrap_content"
                     android:text="RCS"
                     android:textStyle="bold"
-                    android:layout_marginLeft="90dp"
+                    android:layout_marginStart="90dp"
                     android:textSize="40dp"
                     android:textColor="@color/white"
                     android:layout_alignBottom="@id/arcs_logo"
@@ -60,12 +62,15 @@
                 android:drawablePadding="10dp"
                 android:textColor="@color/white"
                 android:textCursorDrawable="@drawable/cursor_color"
-                android:layout_marginVertical="10dp"
                 android:background="@drawable/edit_text_login"
                 android:drawableLeft="@drawable/ic_local_phone_black_24dp"
                 android:hint="PHONE"
-                android:paddingHorizontal="20dp"
-                android:paddingVertical="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
                 android:textSize="14sp"
                 android:textColorHint="@color/primary_light"
                 android:inputType="text"/>
@@ -77,16 +82,65 @@
                 android:drawablePadding="10dp"
                 android:id="@+id/name"
                 android:textColor="@color/white"
-                android:layout_marginVertical="10dp"
                 android:textCursorDrawable="@drawable/cursor_color"
                 android:background="@drawable/edit_text_login"
-                android:drawableLeft="@drawable/ic_mail_outline_black_24dp"
+                android:drawableLeft="@drawable/ic_person_outline_black_24dp"
                 android:hint="NAME"
-                android:paddingHorizontal="20dp"
-                android:paddingVertical="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
                 android:textSize="14sp"
                 android:textColorHint="@color/primary_light"
                 android:inputType="text"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="GENDER"
+                android:textColor="@color/primary_light"
+                android:textStyle="bold"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"/>
+
+            <RadioGroup
+                android:id="@+id/gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/male"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Male"
+                    android:textColor="@color/white"
+                    android:layout_weight="1"
+                    android:buttonTint="@color/orange"/>
+
+                <RadioButton
+                    android:id="@+id/female"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Female"
+                    android:textColor="@color/white"
+                    android:buttonTint="@color/orange"/>
+
+                <RadioButton
+                    android:id="@+id/others"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Others"
+                    android:textColor="@color/white"
+                    android:buttonTint="@color/orange"/>
+
+            </RadioGroup>
+
 
             <EditText
                 android:layout_width="match_parent"
@@ -94,13 +148,16 @@
                 android:drawablePadding="10dp"
                 android:id="@+id/email_id"
                 android:textColor="@color/white"
-                android:layout_marginVertical="10dp"
                 android:textCursorDrawable="@drawable/cursor_color"
                 android:background="@drawable/edit_text_login"
                 android:drawableLeft="@drawable/ic_mail_outline_black_24dp"
                 android:hint="EMAIL"
-                android:paddingHorizontal="20dp"
-                android:paddingVertical="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
                 android:textSize="14sp"
                 android:textColorHint="@color/primary_light"
                 android:inputType="text"/>
@@ -115,19 +172,211 @@
                 android:textColor="@color/white"
                 android:drawablePadding="10dp"
                 android:textCursorDrawable="@drawable/cursor_color"
-                android:layout_marginVertical="10dp"
                 android:hint="PASSWORD"
-                android:paddingHorizontal="20dp"
-                android:paddingVertical="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
                 android:textColorHint="@color/primary_light"
                 android:inputType="textPassword"/>
 
+            <EditText
+                android:id="@+id/confirm_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/white"
+                android:textCursorDrawable="@drawable/cursor_color"
+                android:background="@drawable/edit_text_login"
+                android:drawableLeft="@drawable/ic_lock_outline_black_24dp"
+                android:textSize="14sp"
+                android:drawablePadding="10dp"
+                android:hint="CONFIRM PASSWORD"
+                android:layout_marginBottom="10dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:textColorHint="@color/primary_light"
+                android:inputType="textPassword"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="T-Shirt SIZE"
+                    android:textColor="@color/primary_light"/>
+
+                <Spinner
+                    android:id="@+id/t_shirt_size"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:popupBackground="@color/primary_light"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:paddingBottom="10dp"
+                    android:layout_marginStart="20dp"
+                    android:paddingTop="10dp"
+                    android:background="@drawable/orange_border_curve">
+
+                </Spinner>
+
+            </LinearLayout>
+
+            <CheckBox
+                android:id="@+id/member"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="IEEE Member"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white"
+                android:buttonTint="@color/orange"/>
+
+            <LinearLayout
+                android:id="@+id/membership_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    android:id="@+id/membership_number"
+                    android:textColor="@color/white"
+                    android:textCursorDrawable="@drawable/cursor_color"
+                    android:background="@drawable/edit_text_login"
+                    android:drawableLeft="@drawable/ic_person_outline_black_24dp"
+                    android:hint="MEMBERSHIP NO."
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:textSize="14sp"
+                    android:textColorHint="@color/primary_light"
+                    android:inputType="number"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    android:id="@+id/section"
+                    android:textColor="@color/white"
+                    android:textCursorDrawable="@drawable/cursor_color"
+                    android:background="@drawable/edit_text_login"
+                    android:drawableLeft="@drawable/ic_location_on_black_24dp"
+                    android:hint="IEEE SECTION"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:textSize="14sp"
+                    android:textColorHint="@color/primary_light"
+                    android:inputType="text"/>
+
+
+            </LinearLayout>
+
+
+            <CheckBox
+                android:id="@+id/vitian"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I am from VIT"
+                android:textColor="@color/white"
+                android:buttonTint="@color/orange"/>
+
+            <EditText
+                android:id="@+id/university"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="10dp"
+                android:textColor="@color/white"
+                android:textCursorDrawable="@drawable/cursor_color"
+                android:background="@drawable/edit_text_login"
+                android:drawableLeft="@drawable/ic_university_24dp"
+                android:hint="UNIVERSITY"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:textSize="14sp"
+                android:textColorHint="@color/primary_light"
+                android:inputType="text"/>
+
+            <LinearLayout
+                android:id="@+id/vitian_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:orientation="vertical"
+                >
+
+                <EditText
+                    android:id="@+id/reg_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    android:textColor="@color/white"
+                    android:textCursorDrawable="@drawable/cursor_color"
+                    android:background="@drawable/edit_text_login"
+                    android:drawableLeft="@drawable/ic_location_on_black_24dp"
+                    android:hint="REGISTRATION NO."
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:textSize="14sp"
+                    android:textColorHint="@color/primary_light"
+                    android:inputType="text"/>
+
+                <EditText
+                    android:id="@+id/room_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:textCursorDrawable="@drawable/cursor_color"
+                    android:background="@drawable/edit_text_login"
+                    android:drawableLeft="@drawable/ic_location_on_black_24dp"
+                    android:hint="ROOM NUMBER"
+                    android:textSize="14sp"
+                    android:textColorHint="@color/primary_light"
+                    android:inputType="text"/>
+
+
+            </LinearLayout>
 
             <Button
                 android:id="@+id/sign_up_button"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
                 android:layout_marginHorizontal="80dp"
                 android:text="sign up"
                 android:textColor="@color/white"
