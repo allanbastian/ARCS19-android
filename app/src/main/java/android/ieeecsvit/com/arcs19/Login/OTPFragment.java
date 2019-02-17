@@ -1,5 +1,6 @@
 package android.ieeecsvit.com.arcs19.Login;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.ieeecsvit.com.arcs19.R;
 import android.os.Bundle;
@@ -13,14 +14,17 @@ import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class OTPFragment extends Fragment {
 
     EditText digit1, digit2, digit3, digit4, emailID;
     Button continueButton;
+    TextView alertMsg;
     String otp;
     LinearLayout otpField;
 
@@ -42,6 +46,7 @@ public class OTPFragment extends Fragment {
         digit4 = rootView.findViewById(R.id.digit4);
         otpField = rootView.findViewById(R.id.otp_field);
         emailID = rootView.findViewById(R.id.email_id);
+        alertMsg = rootView.findViewById(R.id.alert_msg);
 
         digit1.addTextChangedListener(new GenericTextWatcher(digit1));
         digit2.addTextChangedListener(new GenericTextWatcher(digit2));
@@ -76,6 +81,12 @@ public class OTPFragment extends Fragment {
                     editor.putString("username",email);
                     emailID.setVisibility(View.GONE);
                     otpField.setVisibility(View.VISIBLE);
+                    alertMsg.setText("Enter the 4 digit OTP sent on your Email ID");
+                    emailPassed = true;
+
+                    InputMethodManager imm = (InputMethodManager) getActivity()
+                            .getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
 
                 }
                 else
@@ -115,6 +126,9 @@ public class OTPFragment extends Fragment {
         }
         //Required OTP
         otp = digit1.getText().toString() + digit2.getText().toString() + digit3.getText().toString() + digit4.getText().toString();
+        InputMethodManager imm = (InputMethodManager) getActivity()
+                .getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
 
         changePasswordFragment = new ChangePasswordFragment();
         FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
@@ -150,6 +164,7 @@ public class OTPFragment extends Fragment {
                         digit4.requestFocus();
                     break;
                 case R.id.digit4:
+                    continueButton.requestFocus();
                     break;
             }
         }
@@ -162,6 +177,26 @@ public class OTPFragment extends Fragment {
         @Override
         public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
             // TODO Auto-generated method stub
+            String text = arg0.toString();
+            switch(view.getId())
+            {
+                case R.id.digit1:
+                    if(text.length()>1)
+                        digit1.setText(String.valueOf(text.charAt(text.length()-1)));
+                    break;
+                case R.id.digit2:
+                    if(text.length()>1)
+                        digit2.setText(String.valueOf(text.charAt(text.length()-1)));
+                    break;
+                case R.id.digit3:
+                    if(text.length()>1)
+                        digit3.setText(String.valueOf(text.charAt(text.length()-1)));
+                    break;
+                case R.id.digit4:
+                    if(text.length()>1)
+                        digit4.setText(String.valueOf(text.charAt(text.length()-1)));
+                    break;
+            }
         }
     }
 

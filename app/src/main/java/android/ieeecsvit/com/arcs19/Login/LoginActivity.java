@@ -171,6 +171,7 @@ public class LoginActivity extends AppCompatActivity {
         editor.putString("username",USERNAME);
 
         startActivity(new Intent(LoginActivity.this,MainActivity.class));
+        finish();
     }
 
     @Override

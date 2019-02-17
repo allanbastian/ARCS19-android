@@ -1,10 +1,13 @@
 package android.ieeecsvit.com.arcs19.Login;
 
+import android.content.Intent;
+import android.ieeecsvit.com.arcs19.MainActivity;
 import android.ieeecsvit.com.arcs19.R;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,7 +67,12 @@ public class ChangePasswordFragment extends Fragment {
             confirmPassword.requestFocus();
             return;
         }
+
+        //API Called
+
+        getActivity().onBackPressed();
     }
+
 
 
 }
