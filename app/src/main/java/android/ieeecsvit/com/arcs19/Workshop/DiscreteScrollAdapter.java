@@ -1,6 +1,8 @@
 package android.ieeecsvit.com.arcs19.Workshop;
 
+import android.content.Context;
 import android.ieeecsvit.com.arcs19.DiscreteScrollClass;
+import android.ieeecsvit.com.arcs19.GlideApp;
 import android.ieeecsvit.com.arcs19.R;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -9,12 +11,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class DiscreteScrollAdapter extends RecyclerView.Adapter<DiscreteScrollAdapter.ScrollViewHolder>{
 
+    Context mContext;
+    List<DiscreteScrollClass> dataList;
 
-    ArrayList<DiscreteScrollClass> dataList;
+    public DiscreteScrollAdapter(Context mContext, List<DiscreteScrollClass> dataList) {
+        this.mContext = mContext;
+        this.dataList = dataList;
+    }
+
+    /*ArrayList<DiscreteScrollClass> dataList;
 
     public DiscreteScrollAdapter()
     {
@@ -24,11 +33,11 @@ public class DiscreteScrollAdapter extends RecyclerView.Adapter<DiscreteScrollAd
         dataList.add(new DiscreteScrollClass(R.drawable.artificial_intelligence, "Artificial Intelligence", "This is for AI #AIROXXX", "Technology Tower,VIT", "speak on AI" , 1000, R.drawable.artificial_intelligence,"Mr. AI"));
         dataList.add(new DiscreteScrollClass(R.drawable.machine, "Machine Learning", "This is for ML #MLROXXX", "Technology Tower,VIT", "ARCS2k19",  1001, R.drawable.machine, "Mr. ML"));
 
-    }
+    }*/
 
-    public ArrayList<DiscreteScrollClass> setList(){
+    /*public ArrayList<DiscreteScrollClass> setList(){
         return dataList;
-    }
+    }*/
 
     public class ScrollViewHolder extends RecyclerView.ViewHolder{
 
@@ -63,13 +72,10 @@ public class DiscreteScrollAdapter extends RecyclerView.Adapter<DiscreteScrollAd
     @Override
     public void onBindViewHolder(@NonNull ScrollViewHolder holder, int position) {
 
-        holder.icon.setImageResource(dataList.get(position).getIcon());
-        /*holder.title.setText(dataList.get(position).getName());
-        holder.price.setText(dataList.get(position).getPrice());
-        holder.wDesc.setText(dataList.get(position).getDes());
-        holder.authImg.setImageResource(dataList.get(position).getAuthImg());
-        holder.authDesc.setText(dataList.get(position).getAuthDesc());
-        holder.loc.setText(dataList.get(position).getLocation());*/
+        //setting the image from firebase into the discrete scroll adapter
+        GlideApp.with(mContext).load(dataList.get(position).getImage()).into(holder.icon);
+
+        //holder.icon.setImageResource(dataList.get(position).getIcon());
     }
 
     @Override

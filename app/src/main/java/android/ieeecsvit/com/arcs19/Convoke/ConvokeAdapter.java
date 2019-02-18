@@ -1,5 +1,7 @@
 package android.ieeecsvit.com.arcs19.Convoke;
 
+import android.animation.Animator;
+import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -37,7 +39,9 @@ public class ConvokeAdapter extends RecyclerView.Adapter<ConvokeAdapter.CustomVi
         this.context = context;
     }
 
-    class CustomViewHolder extends RecyclerView.ViewHolder {
+     class CustomViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+         private int originalHeight = 0;
+         private boolean isViewExpanded = false;
         private CardView convokeItem;
         private ImageView image;
         private TextView name;
@@ -64,6 +68,11 @@ public class ConvokeAdapter extends RecyclerView.Adapter<ConvokeAdapter.CustomVi
             //twitter = itemView.findViewById(R.id.developer_twitter);
             //follow = itemView.findViewById(R.id.convoke_follow_button);
 
+
+        }
+
+        @Override
+        public void onClick(View v) {
 
         }
     }
@@ -154,14 +163,65 @@ public class ConvokeAdapter extends RecyclerView.Adapter<ConvokeAdapter.CustomVi
         holder.convokeItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(holder.details.getVisibility() == View.VISIBLE){
-                    holder.details.setVisibility(View.GONE);
+                if(holder.details.getVisibility() == View.GONE){
+                    holder.details.setVisibility(View.VISIBLE);
+
+                    final int widthSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+                    final int heightSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+                    holder.details.measure(widthSpec, heightSpec);
+
+                    ValueAnimator mAnimator = slideAnimator(0, holder.details.getMeasuredHeight());
+                    mAnimator.start();
                 }
                 else {
-                    holder.details.setVisibility(View.VISIBLE);
+                    int finalHeight = holder.details.getHeight();
+
+                    ValueAnimator mAnimator = slideAnimator(finalHeight, 0);
+
+                    mAnimator.addListener(new Animator.AnimatorListener() {
+                        @Override
+                        public void onAnimationStart(Animator animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animator animator) {
+                            //Height=0, but it set visibility to GONE
+                            holder.details.setVisibility(View.GONE);
+                        }
+
+                        @Override
+                        public void onAnimationCancel(Animator animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animator animation) {
+
+                        }
+                    });
+                    mAnimator.start();
                 }
             }
+            private ValueAnimator slideAnimator(int start, int end) {
+
+                ValueAnimator animator = ValueAnimator.ofInt(start, end);
+
+                animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                    @Override
+                    public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                        //Update Height
+                        int value = (Integer) valueAnimator.getAnimatedValue();
+                        ViewGroup.LayoutParams layoutParams = holder.details.getLayoutParams();
+                        layoutParams.height = value;
+                        holder.details.setLayoutParams(layoutParams);
+                    }
+                });
+                return animator;
+            }
         });
+
+
 
 
     }
@@ -182,4 +242,6 @@ public class ConvokeAdapter extends RecyclerView.Adapter<ConvokeAdapter.CustomVi
             return null;
         }
     }
+
+
 }

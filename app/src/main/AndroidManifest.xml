@@ -4,6 +4,9 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
+    <uses-sdk android:minSdkVersion="23"
+         />
+
     <application
         android:name="android.ieeecsvit.com.arcs19.Arcs19Application"
         android:allowBackup="true"

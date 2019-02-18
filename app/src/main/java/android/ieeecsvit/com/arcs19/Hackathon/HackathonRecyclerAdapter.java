@@ -2,6 +2,7 @@ package android.ieeecsvit.com.arcs19.Hackathon;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.ieeecsvit.com.arcs19.GlideApp;
 import android.ieeecsvit.com.arcs19.R;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -59,7 +60,8 @@ public class HackathonRecyclerAdapter extends RecyclerView.Adapter<HackathonRecy
         myViewHolder.tv_Question.setText(mData.get(i).getQuestion());
         //myViewHolder.projectLink.setVisibility(View.GONE);
         //myViewHolder.tv_Describe.setText(mData.get(i).getDescribe());
-        myViewHolder.tv_logo.setImageResource(mData.get(i).getLogo());
+        GlideApp.with(mContext).load(mData.get(i).getLogo()).into(myViewHolder.tv_logo);
+        //myViewHolder.tv_logo.setImageResource(mData.get(i).getLogo());
     }
 
     @Override

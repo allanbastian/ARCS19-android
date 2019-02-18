@@ -53,7 +53,7 @@ public class HackathonFragment extends Fragment {
     private ProgressBar docUplaodProgress, questionUploadProgress;
     String domain, question, name, link;
 
-    StorageReference storageReference, filepath;
+    StorageReference storageReference, filepath, icon;
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference hackathonRef,fileUploadref;
@@ -67,11 +67,11 @@ public class HackathonFragment extends Fragment {
 
         //Initialise Firebase
         firebaseDatabase = FirebaseDatabase.getInstance();
-        storageReference = FirebaseStorage.getInstance().getReference();
+        storageReference = FirebaseStorage.getInstance().getReference().child("Hackathon");
         hackathonRef = firebaseDatabase.getReference().child("Hackathon");   //Hackathon database reference
         fileUploadref = firebaseDatabase.getReference().child("FileUpload"); //FileUpload database reference
         hackathonRef.keepSynced(true);                                       //Synced with database
-
+        fileUploadref.keepSynced(true);
         //Traversing the Hackathon branch for collecting the domains and questions, and storing in lstquestion
 
 
@@ -112,9 +112,10 @@ public class HackathonFragment extends Fragment {
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     if(!snapshot.getKey().toString().equals("coupons")) {
-                        domain= snapshot.getKey().toString();
+                        domain= snapshot.getKey().toString(); //
                         question= snapshot.child("question").getValue().toString();
-                        lstquestion.add(new HackathonClass(domain,question, R.drawable.artificial_intelligence));
+                        icon = storageReference.child(domain+".png");
+                        lstquestion.add(new HackathonClass(domain,question, icon));
                     }
                 }
                 questionUploadProgress.setVisibility(View.GONE);

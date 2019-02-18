@@ -336,7 +336,7 @@
                     android:textColor="@color/white"
                     android:textCursorDrawable="@drawable/cursor_color"
                     android:background="@drawable/edit_text_login"
-                    android:drawableLeft="@drawable/ic_location_on_black_24dp"
+                    android:drawableLeft="@drawable/ic_registration_number_24dp"
                     android:hint="REGISTRATION NO."
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"

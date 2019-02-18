@@ -1,15 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:background="@color/colorPrimary"
     android:fitsSystemWindows="true"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <ProgressBar
+        android:layout_marginTop="20dp"
+        android:id="@+id/workshop_fragment_progressbar"
+        android:layout_marginBottom="24dp"
+        android:layout_gravity="center"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:indeterminateTint ="@color/orange"
+        android:layout_centerInParent="true"/>
+
 
     <android.support.design.widget.AppBarLayout
-        android:id="@+id/app_bar"
+        android:id="@+id/workshop_app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true">
@@ -115,6 +126,7 @@
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.widget.NestedScrollView
+        android:id="@+id/workshop_nested_scroll"
         android:layout_width="match_parent"
         android:overScrollMode="always"
         android:layout_height="fill_parent"
@@ -124,6 +136,17 @@
             android:layout_width="match_parent"
             android:orientation="vertical"
             android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/workshop_date"
+                android:text="28th March, 2019"
+                android:gravity="center"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_margin="16dp"
+                android:textColor="#fff"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -199,7 +222,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="24dp"
-                android:background="@color/orange"
+                android:background="@color/secondary_dark"
                 android:orientation="vertical"
                 android:gravity="center">
 
@@ -233,7 +256,11 @@
                     android:textColor="#fff"
                     android:text="Praesent ac lacus eu turpis viverra hendrerit in eget leo. Nulla tincidunt rhoncus turpis pulvinar egestas. Phasellus eget sem nibh. Nulla non mauris vel erat dapibus eleifend sed lobortis orci. In a tempor neque."/>
 
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp" />
             </LinearLayout>
+
 
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
