@@ -9,7 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         >
 
 
@@ -18,8 +18,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="ADMIN, 3-03-19 12:36PM"
+            android:fontFamily="@font/montserratregular"
             android:textSize="14sp"
-            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
             android:textColor="@color/primary_light"/>
 
 
@@ -30,9 +31,12 @@
             android:layout_below="@id/details"
             android:textColor="@color/white"
             android:text="Here you go !"
-            android:paddingHorizontal="20dp"
-            android:layout_alignParentLeft="true"
-            android:paddingVertical="10dp"
+            android:fontFamily="@font/montserratregular"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_alignParentStart="true"
             android:background="@drawable/response_bubble"
             />
 

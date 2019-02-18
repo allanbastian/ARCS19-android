@@ -33,6 +33,6 @@
         android:scaleType="fitCenter"
         android:background="@color/bottom_navigation_bar_color"
         android:padding="20dp"
-        android:src="@drawable/ieee_cs_logo"/>
+        android:src="@drawable/ieee_cs_logo_tm_orange_white_text"/>
 
 </LinearLayout>

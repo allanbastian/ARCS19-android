@@ -24,26 +24,34 @@
 
 
             <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:id="@+id/logo_field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="true"
+                android:gravity="center"
+                >
+
                 <ImageView
                     android:id="@+id/arcs_logo"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/arcs"
-                    />
+                    android:src="@drawable/arcs"/>
+
                 <TextView
+                    android:id="@+id/arcs_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="RCS"
+                    android:layout_toRightOf="@id/arcs_logo"
+                    android:layout_alignBottom="@id/arcs_logo"
                     android:textStyle="bold"
-                    android:layout_marginStart="90dp"
+                    android:gravity="bottom"
+                    android:paddingBottom="20dp"
                     android:textSize="40dp"
                     android:textColor="@color/white"
-                    android:layout_alignBottom="@id/arcs_logo"
-                    android:layout_marginBottom="20dp"
                     />
             </RelativeLayout>
+
 
             <TextView
                 android:id="@+id/alert_msg"

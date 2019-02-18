@@ -29,6 +29,7 @@
         android:layout_alignParentBottom="true"
         android:layout_margin="5dp"
         android:layout_weight="30"
+        android:fontFamily="@font/montserratregular"
         android:layout_height="wrap_content"
         android:textSize="15dp"
         android:maxLines="5"

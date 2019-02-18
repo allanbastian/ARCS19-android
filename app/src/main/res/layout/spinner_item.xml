@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:textSize="14sp"
+    android:fontFamily="@font/montserratregular"
     android:gravity="center"
     android:textColor="@color/white"
     android:layout_marginBottom="20dp"

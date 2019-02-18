@@ -17,9 +17,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="5dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="5dp"
             android:text="Gaurav Jha, 3-03-19 12:32PM"
+            android:fontFamily="@font/montserratregular"
             android:textSize="14sp"
             android:textColor="@color/primary_light"/>
 
@@ -30,10 +31,13 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/details"
             android:textColor="@color/white"
-            android:paddingHorizontal="20dp"
-            android:paddingVertical="10dp"
+            android:fontFamily="@font/montserratregular"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:text="Can you suggest me a haunting place?"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:background="@drawable/question_bubble"
            />
 
