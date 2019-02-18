@@ -135,7 +135,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="Others"
+                    android:text="Other"
                     android:textColor="@color/white"
                     android:buttonTint="@color/orange"/>
 
@@ -369,6 +369,26 @@
                     android:inputType="text"/>
 
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/progress_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <ProgressBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:indeterminateTint="@color/orange"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Creating User..."
+                    android:textColor="@color/primary_light"/>
             </LinearLayout>
 
             <Button

@@ -30,7 +30,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:src="@drawable/arcs"
-                android:layout_marginLeft="30dp"/>
+                android:layout_marginStart="30dp"/>
 
                 <TextView
                     android:id="@+id/arcs_text"
@@ -38,7 +38,7 @@
                     android:layout_height="wrap_content"
                     android:text="RCS"
                     android:visibility="gone"
-                    android:layout_marginLeft="120dp"
+                    android:layout_marginStart="120dp"
                     android:layout_alignBottom="@id/arcs_logo"
                     android:textStyle="bold"
                     android:gravity="bottom"
@@ -53,7 +53,8 @@
             android:id="@+id/sign_in_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingVertical="30dp"
+            android:paddingTop="30dp"
+            android:paddingBottom="30dp"
             android:visibility="gone"
             android:layout_below="@id/logo_field"
             android:orientation="vertical"
@@ -108,16 +109,42 @@
                 android:layout_marginTop="15dp"
                 android:textColor="@color/orange"/>
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="true">
 
-            <ImageButton
-                android:id="@+id/continue_button"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="end"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="25dp"
-                android:src="@drawable/ic_arrow_forward_white_24dp"
-                android:background="@drawable/primary_color"/>
+                <ProgressBar
+                    android:id="@+id/progress_bar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_marginTop="20dp"
+                    android:indeterminateTint="@color/orange"
+                    android:layout_centerHorizontal="true"
+                    />
+
+                <TextView
+                    android:id="@+id/signing_in"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Signing In..."
+                    android:visibility="gone"
+                    android:textColor="@color/primary_light"
+                    android:layout_below="@id/progress_bar"
+                    android:layout_centerHorizontal="true"/>
+
+
+                <ImageButton
+                    android:id="@+id/continue_button"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="25dp"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/ic_arrow_forward_white_24dp"
+                    android:background="@drawable/primary_color"/>
+            </RelativeLayout>
 
         </LinearLayout>
 

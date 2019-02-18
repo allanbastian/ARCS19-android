@@ -1,6 +1,8 @@
 package android.ieeecsvit.com.arcs19.Login;
 
 import android.content.Context;
+import android.ieeecsvit.com.arcs19.APIClient;
+import android.ieeecsvit.com.arcs19.APIInterface;
 import android.ieeecsvit.com.arcs19.R;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -32,11 +34,16 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.regex.Pattern;
 
-public class SignUpFragment extends Fragment implements AdapterView.OnItemSelectedListener {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class SignUpFragment extends Fragment {
 
     Button signUp;
     EditText emailID, password, confirmPassword, phoneNumber, name, university, regNumber, roomNumber, membershipNumber, section;
@@ -44,13 +51,15 @@ public class SignUpFragment extends Fragment implements AdapterView.OnItemSelect
     CheckBox member, vitian;
     RadioGroup gender;
     Spinner tSize;
-    LinearLayout membershipDetails, vitianDetails;
+    LinearLayout membershipDetails, vitianDetails, progressSection;
 
     ArrayList<String> sizeArray;
 
     String currentSize = "SIZE";
 
-    String API_KEY = "6Lf96n8UAAAAAIPzsRSuQtoOldpI14e76_a3oz9g";
+    String RECAPTCHA_KEY = "6Lf96n8UAAAAAIPzsRSuQtoOldpI14e76_a3oz9g";
+    APIInterface apiInterface;
+
 
     @Nullable
     @Override
@@ -76,6 +85,10 @@ public class SignUpFragment extends Fragment implements AdapterView.OnItemSelect
         tSize = rootView.findViewById(R.id.t_shirt_size);
         membershipDetails = rootView.findViewById(R.id.membership_details);
         vitianDetails = rootView.findViewById(R.id.vitian_details);
+        progressSection = rootView.findViewById(R.id.progress_section);
+
+        //APi Interface Initialisation
+        apiInterface = APIClient.getClient().create(APIInterface.class);
 
         //Setting up the size list for the spinner
         sizeArray = new ArrayList<String>();
@@ -88,6 +101,17 @@ public class SignUpFragment extends Fragment implements AdapterView.OnItemSelect
         sizeArray.add("XXL");
         ArrayAdapter<String> sizeAdapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_item,sizeArray);        //Size adapter
         tSize.setAdapter(sizeAdapter);
+        tSize.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                currentSize = sizeArray.get(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
 
         member.setOnClickListener(new View.OnClickListener() {
@@ -129,7 +153,7 @@ public class SignUpFragment extends Fragment implements AdapterView.OnItemSelect
                         .getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
                 //Starting the signUp process
-                signUpProcess();
+                inputValidation();
             }
         });
 
@@ -137,7 +161,7 @@ public class SignUpFragment extends Fragment implements AdapterView.OnItemSelect
     }
 
 
-    private void signUpProcess()
+    private void inputValidation()
     {
         String email = emailID.getText().toString();                    //Email string
         String pass = password.getText().toString();                    //Password String
@@ -149,6 +173,7 @@ public class SignUpFragment extends Fragment implements AdapterView.OnItemSelect
         String ieeeNo = membershipNumber.getText().toString();          //IEEE Membership Number
         String roomNo = roomNumber.getText().toString();                //Hostel room number
         String ieeeSec = section.getText().toString();                  //IEEE Section
+        String genderText = "";                                         //Gender
 
         //Checking if the fields are empty
         if (email.isEmpty()) {
@@ -240,6 +265,9 @@ public class SignUpFragment extends Fragment implements AdapterView.OnItemSelect
                 return;
             }
         }
+        else {
+            ieeeNo = ieeeSec = "";
+        }
 
         if(vitian.isChecked())
         {
@@ -264,16 +292,33 @@ public class SignUpFragment extends Fragment implements AdapterView.OnItemSelect
                 return;
             }
         }
+        else
+        {
+            roomNo = regNo = "";
+        }
+
+        switch (gender.getCheckedRadioButtonId())
+        {
+            case R.id.male : genderText = "Male";
+                            break;
+
+            case R.id.female : genderText = "Female";
+                break;
+
+            case R.id.others : genderText = "Other";
+                break;
+        }
 
         //API Calling
-
+        APIwithrecaptcha(email,pass,username,genderText,roomNo,mobNo,ieeeNo,ieeeSec,uni,regNo);
 
     }
 
-    private void recaptcha()
+    private void APIwithrecaptcha(final String email, final String pass, final String username, final String genderText, final String roomNo, final String mobNo
+            , final String ieeeNo, final String ieeeSec,final String uni, final String regNo)
     {
-        SafetyNet.getClient(getActivity()).verifyWithRecaptcha(API_KEY)
-                .addOnSuccessListener((Executor) this,
+        SafetyNet.getClient(getActivity()).verifyWithRecaptcha(RECAPTCHA_KEY)
+                .addOnSuccessListener(getActivity(),
                         new OnSuccessListener<SafetyNetApi.RecaptchaTokenResponse>() {
                             @Override
                             public void onSuccess(SafetyNetApi.RecaptchaTokenResponse response) {
@@ -283,10 +328,49 @@ public class SignUpFragment extends Fragment implements AdapterView.OnItemSelect
                                 if (!userResponseToken.isEmpty()) {
                                     // Validate the user response token using the
                                     // reCAPTCHA siteverify API.
+                                    progressSection.setVisibility(View.VISIBLE);
+                                    Log.e("response token",userResponseToken);
+                                    UserClass userClass;
+                                    if(vitian.isChecked())
+                                    {
+                                        userClass = new UserClass(email,pass,username,genderText,roomNo,mobNo,ieeeNo, currentSize, ieeeSec,uni,regNo,userResponseToken,(member.isChecked()));
+                                    }
+                                    else {
+                                        userClass = new UserClass(email,pass,username,genderText,mobNo,ieeeNo, currentSize, ieeeSec,uni,userResponseToken,(member.isChecked()));
+                                    }
+                                    Call<HashMap<String,String>> call = apiInterface.createUser(userClass);
+                                    call.enqueue(new Callback<HashMap<String, String>>() {
+                                        @Override
+                                        public void onResponse(Call<HashMap<String, String>> call, Response<HashMap<String, String>> response) {
+                                            HashMap<String,String> hashMap = new HashMap<String, String>();
+                                            String resMsg = hashMap.get("message");
+                                            if(resMsg.equals("success"))
+                                            {
+                                                Toast.makeText(getActivity(),"Success",Toast.LENGTH_SHORT).show();
+                                                progressSection.setVisibility(View.GONE);
+                                            }
+                                            else
+                                            {
+                                                Toast.makeText(getActivity(),resMsg,Toast.LENGTH_SHORT).show();
+                                                progressSection.setVisibility(View.GONE);
+
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onFailure(Call<HashMap<String, String>> call, Throwable t) {
+                                            Toast.makeText(getActivity(),"Failed",Toast.LENGTH_SHORT).show();
+                                            progressSection.setVisibility(View.GONE);
+                                        }
+                                    });
+
                                 }
+                                else
+                                    Log.e("response Token","empty");
+                                    progressSection.setVisibility(View.GONE);
                             }
                         })
-                .addOnFailureListener((Executor) this, new OnFailureListener() {
+                .addOnFailureListener(getActivity(), new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         if (e instanceof ApiException) {
@@ -301,18 +385,10 @@ public class SignUpFragment extends Fragment implements AdapterView.OnItemSelect
                             // A different, unknown type of error occurred.
                             Log.e("Error", e.getMessage());
                         }
+                        progressSection.setVisibility(View.GONE);
                     }
                 });
 
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        currentSize = sizeArray.get(position);
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
 }
