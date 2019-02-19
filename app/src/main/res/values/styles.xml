@@ -36,6 +36,7 @@
     //Menu item style
     <style name="NavigationDrawerStyle">
         <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/montserratregular</item>
     </style>
 
 

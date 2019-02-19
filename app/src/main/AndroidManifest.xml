@@ -30,6 +30,8 @@
             android:screenOrientation="portrait"></activity>
         <activity android:name="android.ieeecsvit.com.arcs19.Profile.Profile"
             android:screenOrientation="portrait"></activity>
+        <activity android:name=".RegisterWebView"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

@@ -1,8 +1,10 @@
 package android.ieeecsvit.com.arcs19.Workshop;
 
+import android.content.Intent;
 import android.ieeecsvit.com.arcs19.DiscreteScrollClass;
 import android.ieeecsvit.com.arcs19.GlideApp;
 import android.ieeecsvit.com.arcs19.R;
+import android.ieeecsvit.com.arcs19.RegisterWebView;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -134,7 +136,7 @@ public class WorkShopFragment extends Fragment implements DiscreteScrollView.OnI
         bookNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bookNow.setBackgroundResource(R.drawable.orange_button_clicked_curve);
+                startActivity(new Intent(getActivity(), RegisterWebView.class));
             }
         });
 

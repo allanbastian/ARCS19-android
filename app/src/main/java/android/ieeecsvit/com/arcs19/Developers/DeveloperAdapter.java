@@ -2,13 +2,17 @@ package android.ieeecsvit.com.arcs19.Developers;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.ieeecsvit.com.arcs19.DiscreteScrollClass;
+import android.ieeecsvit.com.arcs19.GlideApp;
 import android.ieeecsvit.com.arcs19.R;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -16,15 +20,17 @@ import java.util.ArrayList;
 public class DeveloperAdapter extends RecyclerView.Adapter<DeveloperAdapter.CustomViewHolder> {
 
     private ArrayList<DiscreteScrollClass> dataList;
+    private Context mContext;
 
-    public DeveloperAdapter(ArrayList<DiscreteScrollClass> dataList){
+    public DeveloperAdapter(ArrayList<DiscreteScrollClass> dataList, Context mContext){
 
         this.dataList = dataList;
+        this.mContext = mContext;
     }
 
     class CustomViewHolder extends RecyclerView.ViewHolder {
-        private TextView name;
-        private TextView post;
+        private TextView name,post;
+        private ImageView image,linkedin,github;
 
 
         public CustomViewHolder(Context context, View itemView) {
@@ -32,6 +38,9 @@ public class DeveloperAdapter extends RecyclerView.Adapter<DeveloperAdapter.Cust
             super(itemView);
             post = itemView.findViewById(R.id.developer_post);
             name = itemView.findViewById(R.id.developer_name);
+            image = itemView.findViewById(R.id.developer_image);
+            linkedin = itemView.findViewById(R.id.developers_linkedin);
+            github = itemView.findViewById(R.id.developers_github);
 
 
 
@@ -51,7 +60,31 @@ public class DeveloperAdapter extends RecyclerView.Adapter<DeveloperAdapter.Cust
     public void onBindViewHolder(@NonNull final DeveloperAdapter.CustomViewHolder holder, final int i) {
         holder.name.setText(dataList.get(i).getName());
         holder.post.setText(dataList.get(i).getDes());
-        };
+        holder.github.setClickable(true);
+        holder.linkedin.setClickable(true);
+        GlideApp.with(mContext).load(dataList.get(i).getImage()).into(holder.image);
+        holder.github.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent.setData(Uri.parse(dataList.get(i).getSname()));
+                mContext.startActivity(intent);
+            }
+        });
+
+        holder.linkedin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent.setData(Uri.parse(dataList.get(i).getsDesc()));
+                mContext.startActivity(intent);
+            }
+        });
+    };
 
 
 

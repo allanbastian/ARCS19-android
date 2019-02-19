@@ -18,5 +18,6 @@
     <dimen name="ic_album_overflow_width">20dp</dimen>
     <dimen name="ic_album_overflow_height">30dp</dimen>
     <dimen name="ic_album_overflow_margin_top">10dp</dimen>
-
+    <dimen name="logo_height">10dp</dimen>
+    <dimen name="logo_width">10dp</dimen>
 </resources>

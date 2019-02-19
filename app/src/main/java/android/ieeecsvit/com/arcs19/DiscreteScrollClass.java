@@ -78,4 +78,44 @@ public class DiscreteScrollClass {
     {return price;}
     public String getAuthName()
     {return sname;}
+
+    public void setImage(StorageReference image) {
+        this.image = image;
+    }
+
+    public void setsImage(StorageReference sImage) {
+        this.sImage = sImage;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public String getSname() {
+        return sname;
+    }
+
+    public void setSname(String sname) {
+        this.sname = sname;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getLoc() {
+        return loc;
+    }
+
+    public void setLoc(String loc) {
+        this.loc = loc;
+    }
+
+    public String getsDesc() {
+        return sDesc;
+    }
+
+    public void setsDesc(String sDesc) {
+        this.sDesc = sDesc;
+    }
 }
