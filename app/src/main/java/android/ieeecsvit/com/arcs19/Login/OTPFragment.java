@@ -126,9 +126,11 @@ public class OTPFragment extends Fragment {
         }
         //Required OTP
         otp = digit1.getText().toString() + digit2.getText().toString() + digit3.getText().toString() + digit4.getText().toString();
-        InputMethodManager imm = (InputMethodManager) getActivity()
-                .getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
+        try {
+            InputMethodManager imm = (InputMethodManager) getActivity()
+                    .getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
+        }catch (Exception e){}
 
         changePasswordFragment = new ChangePasswordFragment();
         FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
