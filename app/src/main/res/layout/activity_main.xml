@@ -35,6 +35,27 @@
         app:layout_anchorGravity="center"
         app:layout_anchor="@id/bottom_app_bar"/>
 
+    <LinearLayout
+        android:id="@+id/progress_section"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical">
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateTint="@color/orange"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Loading..."
+            android:fontFamily="@font/montserratregular"
+            android:textColor="@color/primary_light"/>
+
+    </LinearLayout>
 
 
 </android.support.design.widget.CoordinatorLayout>

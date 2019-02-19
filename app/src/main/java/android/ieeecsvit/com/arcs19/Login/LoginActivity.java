@@ -89,6 +89,8 @@ public class LoginActivity extends AppCompatActivity {
 
         scaleDP = getApplicationContext().getResources().getDisplayMetrics().density;
 
+        signUpFrag = loginStatus = otpFrag = false;
+
         Handler handler = new Handler();
         handler.postDelayed(runnable,2000);             //Post delay animation for Splash Screen
 
@@ -148,7 +150,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(getApplicationContext(),"This feature is currently unavilable",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"This feature is currently unavailable",Toast.LENGTH_SHORT).show();
 
               /*  //Starting OTP process
                 fragmentManager = getSupportFragmentManager();

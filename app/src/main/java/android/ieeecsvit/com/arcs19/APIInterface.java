@@ -23,7 +23,7 @@ public interface APIInterface {
     @POST("api/login")
     Call<HashMap<String,Boolean>> loginUser(@Field("email") String email, @Field("password") String password);
 
-    @GET
+    @GET("api/user/app-profile")
     Call<UserClass> getProfile(@Header("token") String jwtToken);
 
 /*
