@@ -1,5 +1,6 @@
 package android.ieeecsvit.com.arcs19.Login;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.ieeecsvit.com.arcs19.APIClient;
@@ -13,9 +14,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -37,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
     ProgressBar progressBar;
     FragmentManager fragmentManager;
     SignUpFragment signUpFragment;
+    ImageView arcsLogo;
     Boolean signUpFrag, loginStatus, otpFrag, passwordFrag;
     SharedPreferences sp;
     String USERNAME = "USERNAME";
@@ -48,11 +52,17 @@ public class LoginActivity extends AppCompatActivity {
 
     APIInterface apiInterface;
 
+    float scaleDP;
 
     //Splash screen Animation
     Runnable runnable = new Runnable() {
         @Override
         public void run() {
+            int dps = (int) (100 * scaleDP + 0.5f);
+            arcsLogo.requestLayout();
+            arcsLogo.getLayoutParams().height = dps;
+            arcsLogo.getLayoutParams().width = dps;
+            arcsLogo.setScaleType(ImageView.ScaleType.FIT_XY);
             signInField.setVisibility(View.VISIBLE);
             signUpField.setVisibility(View.VISIBLE);
             arcsText.setVisibility(View.VISIBLE);
@@ -75,6 +85,9 @@ public class LoginActivity extends AppCompatActivity {
         arcsText = findViewById(R.id.arcs_text);
         progressBar = findViewById(R.id.progress_bar);
         signingIn = findViewById(R.id.signing_in);
+        arcsLogo = findViewById(R.id.arcs_logo);
+
+        scaleDP = getApplicationContext().getResources().getDisplayMetrics().density;
 
         Handler handler = new Handler();
         handler.postDelayed(runnable,2000);             //Post delay animation for Splash Screen
@@ -105,6 +118,11 @@ public class LoginActivity extends AppCompatActivity {
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Closing the keyboard\
+                InputMethodManager inputManager = (InputMethodManager)
+                        getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                        InputMethodManager.HIDE_NOT_ALWAYS);
                 login();
             }
         });
@@ -130,15 +148,16 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                Toast.makeText(getApplicationContext(),"This feature is currently unavilable",Toast.LENGTH_SHORT).show();
 
-                //Starting OTP process
+              /*  //Starting OTP process
                 fragmentManager = getSupportFragmentManager();
                 fragmentContainer.setClickable(true);
                 otpFragment = new OTPFragment();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
                 transaction.setCustomAnimations(R.anim.enter_from_right,R.anim.exit_from_right);
                 transaction.add(R.id.fragment_container,otpFragment).commit();
-                otpFrag = true;
+                otpFrag = true;*/
             }
         });
 
@@ -199,8 +218,9 @@ public class LoginActivity extends AppCompatActivity {
                     editor.putString("username", USERNAME);
                     progressBar.setVisibility(View.GONE);
                     signingIn.setVisibility(View.GONE);
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     finish();
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+
                 }
                 else
                 {
