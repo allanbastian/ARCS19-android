@@ -15,6 +15,7 @@
             android:layout_height="wrap_content"
             android:background="@color/colorPrimaryDark"
             android:text="Schedule"
+            android:textAllCaps="true"
             android:fontFamily="@font/montserratregular"
             android:textColor="@color/white"
             android:textAlignment="center"

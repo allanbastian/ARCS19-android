@@ -11,7 +11,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.yarolegovich.discretescrollview.DSVOrientation;
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
 import com.yarolegovich.discretescrollview.InfiniteScrollAdapter;
@@ -27,25 +35,63 @@ public class SponsorFragment extends Fragment implements DiscreteScrollView.OnIt
     ImageView previousSponsorButton;
     ImageView nextSponsorButton;
 
+    ProgressBar sponsorsProgress;
+
+    String name, url;
+
     DiscreteScrollView itemPicker;
     InfiniteScrollAdapter infiniteAdapter;
 
+    StorageReference storageReference, icon;
+    DatabaseReference sponsorRef;
 
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_sponsors, container, false);
 
+        itemPicker = rootView.findViewById(R.id.sponsors_item_picker);
+        sponsorsProgress = rootView.findViewById(R.id.sponsors_fragment_progressbar);
+        itemPicker.setVisibility(View.GONE);
+
+        //Setting up firebase
+        storageReference = FirebaseStorage.getInstance().getReference().child("Sponsors"); //Reference of firebase stoorage for the sponsors logos
+        sponsorRef = FirebaseDatabase.getInstance().getReference().child("Sponsors");       //Database reference
+        sponsorRef.keepSynced(true);
+
         //The Sponsors' database.
-        sponsorList.add(new DiscreteScrollClass(R.drawable.machine,"Sponsor 1","https://www.google.com"));
+        sponsorRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        name= snapshot.getKey().toString();                         //Sponsor's name
+                        url= snapshot.child("url").getValue().toString();           //Sponsor's website
+                        icon = storageReference.child(name+".png");                 //Sponsor's Logo
+                        sponsorList.add(new DiscreteScrollClass(icon,name, url, null, null));
+
+                }
+                sponsorsProgress.setVisibility(View.GONE);
+                itemPicker.setVisibility(View.VISIBLE);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+        /*sponsorList.add(new DiscreteScrollClass(R.drawable.machine,"Sponsor 1","https://www.google.com"));
         sponsorList.add(new DiscreteScrollClass(R.drawable.artificial_intelligence,"Sponsor 2","https://www.google.com"));
         sponsorList.add(new DiscreteScrollClass(R.drawable.machine,"Sponsor 3","https://www.google.com"));
         sponsorList.add(new DiscreteScrollClass(R.drawable.artificial_intelligence,"Sponsor 4","https://www.google.com"));
-
+*/
         previousSponsorButton = rootView.findViewById(R.id.previous_sponsor_button);
         nextSponsorButton = rootView.findViewById(R.id.next_sponsor_button);
 
-        itemPicker = rootView.findViewById(R.id.item_picker);
+
         itemPicker.setOrientation(DSVOrientation.HORIZONTAL);
         itemPicker.addOnItemChangedListener(this);
 

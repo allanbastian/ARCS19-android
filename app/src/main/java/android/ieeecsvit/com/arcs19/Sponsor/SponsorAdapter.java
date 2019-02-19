@@ -50,7 +50,7 @@ public class SponsorAdapter extends RecyclerView.Adapter<SponsorAdapter.CustomVi
 
     @Override
     public void onBindViewHolder(@NonNull final SponsorAdapter.CustomViewHolder holder, final int i) {
-        Glide.with(holder.itemView.getContext()).load(dataList.get(i).getIcon()).into(holder.image);
+        Glide.with(holder.itemView.getContext()).load(dataList.get(i).getImage()).into(holder.image);
         holder.name.setText(dataList.get(i).getName());
         // Opening Sponsor's website via browser
         holder.sponsor.setOnClickListener(new View.OnClickListener() {
@@ -59,7 +59,7 @@ public class SponsorAdapter extends RecyclerView.Adapter<SponsorAdapter.CustomVi
                 Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_VIEW);
                 intent.addCategory(Intent.CATEGORY_BROWSABLE);
-                intent.setData(Uri.parse(dataList.get(i).getDes()));
+                intent.setData(Uri.parse(dataList.get(i).getsDesc()));
                 context.startActivity(intent);
             }
         });

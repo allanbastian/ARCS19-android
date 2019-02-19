@@ -17,8 +17,15 @@
         android:layout_weight="1"
         android:orientation="vertical">
 
+        <ProgressBar
+            android:id="@+id/sponsors_fragment_progressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:indeterminateTint="@color/orange"
+            android:layout_gravity="center"/>
+
         <com.yarolegovich.discretescrollview.DiscreteScrollView
-            android:id="@+id/item_picker"
+            android:id="@+id/sponsors_item_picker"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical" />
@@ -44,7 +51,7 @@
             android:src="@drawable/ic_chevron_left_white_64dp" />
 
         <Space
-            android:layout_width="104dp"
+            android:layout_width="120dp"
             android:layout_height="match_parent" />
 
 
@@ -61,6 +68,6 @@
 
     <Space
         android:layout_width="wrap_content"
-        android:layout_height="64dp" />
+        android:layout_height="100dp" />
 
 </LinearLayout>
