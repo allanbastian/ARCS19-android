@@ -21,18 +21,22 @@
             android:padding="10dp"
             android:textSize="20sp"/>
 
-
-        <android.support.design.widget.TabLayout
+        <com.gigamole.navigationtabstrip.NavigationTabStrip
+            android:id="@+id/navigation_tab"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:id="@+id/tab_bar"
-            app:tabTextColor="@color/primary_light"
-            app:tabIndicatorColor="@color/orange"
-            app:tabSelectedTextColor="@color/orange"
-            android:background="@color/colorPrimaryDark">
+            android:layout_height="42dp"
+            android:layout_gravity="center"
+            app:nts_active_color="@color/orange"
+            app:nts_color="@color/orange"
+            app:nts_corners_radius="3.5dp"
+            app:nts_factor="0.8"
+            app:nts_gravity="bottom"
+            app:nts_inactive_color="@color/primary_light"
+            app:nts_type="point"
+            app:nts_typeface="@font/montserratregular"
+            app:nts_weight="7dp"/>
 
 
-        </android.support.design.widget.TabLayout>
 
         <android.support.v4.view.ViewPager
             android:id="@+id/view_pager"
@@ -44,5 +48,7 @@
 
 
     </android.support.design.widget.AppBarLayout>
+
+
 
 </RelativeLayout>

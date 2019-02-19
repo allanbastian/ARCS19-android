@@ -11,23 +11,30 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.gigamole.navigationtabstrip.NavigationTabStrip;
+
 public class SchedulePageFragment extends Fragment {
 
     TabLayout tabLayout;
     ViewPager viewPager;
     SchedulePagerAdapter schedulePagerAdapter;
+    NavigationTabStrip navigationTabStrip;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.schedule_page,container,false);
 
-        tabLayout = rootView.findViewById(R.id.tab_bar);
         viewPager = rootView.findViewById(R.id.view_pager);
+        navigationTabStrip = rootView.findViewById(R.id.navigation_tab);
 
         schedulePagerAdapter = new SchedulePagerAdapter(getChildFragmentManager());
         viewPager.setAdapter(schedulePagerAdapter);
-        tabLayout.setupWithViewPager(viewPager);
+
+        navigationTabStrip.setTitles("Day 1", "Day 2", "Day 3", "Day 4");
+        navigationTabStrip.setViewPager(viewPager,0);
+
+
 
         return rootView;
     }

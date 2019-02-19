@@ -1,37 +1,39 @@
 package android.ieeecsvit.com.arcs19.Schedule;
 
 public class ScheduleItemClass {
-    String agenda, timing;
-    String iconName;
+    String name, time;
+    String icon;
 
-    public ScheduleItemClass(String agenda, String timing, String iconName)
+    public ScheduleItemClass(){}
+
+    public ScheduleItemClass(String name, String time, String icon)
     {
-        this.agenda = agenda;
-        this.timing = timing;
-        this.iconName = iconName;
+        this.name = name;
+        this.time = time;
+        this.icon = icon;
     }
 
-    public String getAgenda() {
-        return agenda;
+    public String getName() {
+        return name;
     }
 
-    public void setAgenda(String agenda) {
-        this.agenda = agenda;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getTiming() {
-        return timing;
+    public String getTime() {
+        return time;
     }
 
-    public void setTiming(String timing) {
-        this.timing = timing;
+    public void setTime(String time) {
+        this.time = time;
     }
 
-    public String getIconName() {
-        return iconName;
+    public String getIcon() {
+        return icon;
     }
 
-    public void setIconName(String iconName) {
-        this.iconName = iconName;
+    public void setIcon(String icon) {
+        this.icon = icon;
     }
 }

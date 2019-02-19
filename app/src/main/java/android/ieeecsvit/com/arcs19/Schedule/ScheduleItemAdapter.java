@@ -45,11 +45,11 @@ public class ScheduleItemAdapter extends ArrayAdapter<ScheduleItemClass> {
 
         if(scheduleItemClass!=null) {
             //Inflating item layout
-            agenda.setText(scheduleItemClass.getAgenda());
-            timing.setText(scheduleItemClass.getTiming());
+            agenda.setText(scheduleItemClass.getName());
+            timing.setText(scheduleItemClass.getTime());
 
             //Set Image
-            int id = getContext().getResources().getIdentifier("drawable/"+scheduleItemClass.getIconName(), null, getContext().getPackageName());
+            int id = getContext().getResources().getIdentifier("drawable/"+scheduleItemClass.getIcon(), null, getContext().getPackageName());
             icon.setImageResource(id);
 
         }
