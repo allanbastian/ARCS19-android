@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         USERNAME = sp.getString("username","");                         //Getting Username
         EMAIL = sp.getString("email","");                               //Getting email
         token = sp.getString("jwtToken","");                            //JWT Token
-        updatedAvail = sp.getBoolean("updatedAvail",false);             //Is the profile downloaded
+        updatedAvail = sp.getBoolean("updateAvail",false);             //Is the profile downloaded
 
         if(!updatedAvail)
         {
