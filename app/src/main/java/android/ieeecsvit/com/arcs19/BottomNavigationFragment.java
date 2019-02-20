@@ -1,6 +1,7 @@
 package android.ieeecsvit.com.arcs19;
 
 import android.content.Intent;
+import android.ieeecsvit.com.arcs19.Combo.ComboFragment;
 import android.ieeecsvit.com.arcs19.Convoke.ConvokeFragment;
 import android.ieeecsvit.com.arcs19.Developers.DeveloperFragment;
 import android.ieeecsvit.com.arcs19.Forum.ForumActivity;
@@ -88,6 +89,13 @@ public class BottomNavigationFragment extends BottomSheetDialogFragment {
                                         break;
 
                     case R.id.sponsors: fragment = new SponsorFragment();
+                        transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.fragment_container, fragment).commit();
+                        previousSelectedItem = menuId;
+                        menuItem.setChecked(true);
+                        break;
+
+                    case R.id.combos: fragment = new ComboFragment();
                         transaction = getActivity().getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.fragment_container, fragment).commit();
                         previousSelectedItem = menuId;

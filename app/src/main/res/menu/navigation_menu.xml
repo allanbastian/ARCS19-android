@@ -17,18 +17,27 @@
         />
 
     <item
+        android:id="@+id/convoke"
+        android:icon="@drawable/convoke"
+        android:title="Convoke"
+        android:checkable="true"
+        />
+
+    <item
+        android:id="@+id/combos"
+        android:icon="@drawable/combo"
+        android:title="Combos"
+        android:checkable="true"
+        />
+
+    <item
         android:id="@+id/hackathon"
         android:icon="@drawable/hackathon"
         android:title="Hackathon"
         android:checkable="true"
         />
 
-    <item
-        android:id="@+id/convoke"
-        android:icon="@drawable/convoke"
-        android:title="Convoke"
-        android:checkable="true"
-        />
+
 
     <item
         android:id="@+id/sponsors"

@@ -33,7 +33,7 @@
                     android:text="QUESTIONS"
                     android:textColor="@color/orange"
                     android:fontFamily="@font/montserratregular"
-                    android:textSize="24sp"
+                    android:textSize="25sp"
                     android:layout_margin="4dp"
                     android:gravity="center" />
 
@@ -56,7 +56,6 @@
 
             <LinearLayout
                 android:layout_margin="20dp"
-                android:background="@drawable/dashed_outline"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -86,6 +85,8 @@
                         android:id="@+id/hackathon_team_name_tv"
                         android:textColor="@android:color/white"
                         android:text="Thunderbolt"
+                        android:autoSizeTextType="uniform"
+                        android:maxLines="1"
                         android:gravity="center"
                         android:textSize="25sp"
                         android:fontFamily="@font/montserratregular"
@@ -106,9 +107,10 @@
                         android:layout_weight="1"
                         android:maxLines="1"
                         android:inputType="text"
-                        android:layout_marginRight="8dp"
                         android:layout_marginEnd="8dp"
                         android:hint="Team Name"
+                        android:backgroundTint="@color/orange"
+                        android:fontFamily="@font/montserrat_regular"
                         android:textCursorDrawable="@drawable/cursor_color"
                         android:textColor="@color/white"
                         app:backgroundTint="@color/white_with_alpha"
@@ -126,7 +128,7 @@
                 <!--<android.support.v7.widget.RecyclerView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/hackathon_team_list"/>-->a
+                    android:id="@+id/hackathon_team_list"/>-->
             </LinearLayout>
 
             <LinearLayout
@@ -140,7 +142,7 @@
                     android:text="UPLOAD"
                     android:textColor="@color/orange"
                     android:fontFamily="@font/montserratregular"
-                    android:textSize="24sp"
+                    android:textSize="25sp"
                     android:layout_margin="4dp"
                     android:gravity="center" />
 
@@ -155,7 +157,7 @@
                     android:textColor="@color/colorPrimary"
                     android:textAlignment="center"
                     android:fontFamily="@font/montserratregular"
-                    android:textSize="24sp"
+                    android:textSize="20sp"
                     android:background="@drawable/orange_button_clicked_curve"
                     />
 
@@ -171,7 +173,7 @@
                     android:textColor="@color/colorPrimary"
                     android:background="@drawable/orange_button_clicked_curve"
                     android:fontFamily="@font/montserratregular"
-                    android:textSize="24sp"/>
+                    android:textSize="20sp"/>
 
                 <ProgressBar
                     android:layout_marginTop="20dp"

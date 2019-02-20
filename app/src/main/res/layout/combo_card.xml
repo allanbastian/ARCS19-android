@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="420dp"
+    android:layout_margin="20dp"
+    app:cardBackgroundColor="@color/secondary_dark"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center"
+    app:cardCornerRadius="8dp"
+    android:elevation="14dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentTop="true">
+
+            <ImageView
+                android:id="@+id/combo_image"
+                android:layout_width="match_parent"
+                android:layout_height="150dp" />
+
+            <TextView
+                android:id="@+id/combo_id"
+                android:layout_margin="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="COMBO 1"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:fontFamily="@font/montserrat_regular"
+                android:textSize="20sp"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/combo_info_brief"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:maxLines="4"
+                android:textColor="@color/white"
+                android:autoSizeTextType="uniform"
+                android:textSize="18sp"
+                android:text="This is the best combo for this price!"
+                android:fontFamily="@font/montserrat_regular"
+                android:textAlignment="center"/>
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="8dp">
+
+            <TextView
+                android:id="@+id/combo_price"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_margin="10dp"
+                android:layout_height="wrap_content"
+                android:text="Rs. 500"
+
+                android:fontFamily="@font/montserrat_regular"
+                android:textSize="20sp"
+                android:textColor="@color/orange"/>
+
+            <TextView
+                android:id="@+id/combo_view_more"
+                android:layout_width="match_parent"
+                android:layout_margin="8dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:fontFamily="@font/montserrat_regular"
+                android:gravity="center"
+                android:text="View more"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

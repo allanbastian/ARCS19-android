@@ -42,14 +42,14 @@
 
                 <TextView
                     android:id="@+id/events"
-                    android:layout_margin="30dp"
+                    android:layout_margin="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="WORKSHOPS"
                     android:fontFamily="@font/montserratregular"
-                    android:textColor="#fba04b"
+                    android:textColor="@color/orange"
                     android:layout_gravity="center"
-                    android:textSize="40sp"
+                    android:textSize="25sp"
                     />
 
 
@@ -99,7 +99,7 @@
                         android:fontFamily="@font/montserratregular"
                         android:textColor="#fff"
                         android:layout_gravity="center"
-                        android:textSize="30sp"
+                        android:textSize="25sp"
                         />
 
                     <ImageView

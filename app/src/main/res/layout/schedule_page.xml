@@ -20,7 +20,7 @@
             android:textColor="@color/white"
             android:textAlignment="center"
             android:padding="10dp"
-            android:textSize="20sp"/>
+            android:textSize="25sp"/>
 
         <com.gigamole.navigationtabstrip.NavigationTabStrip
             android:id="@+id/navigation_tab"

@@ -33,8 +33,7 @@
                 android:autoSizeTextType="uniform"
                 android:maxLines="1"
                 android:textColor="@android:color/white"
-                android:textSize="22sp"
-                android:textStyle="bold"
+                android:textSize="16sp"
                 android:padding="5dp"/>
 
             <ImageView
