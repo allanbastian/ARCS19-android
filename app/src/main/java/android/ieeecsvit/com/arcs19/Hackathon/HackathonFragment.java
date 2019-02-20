@@ -2,6 +2,7 @@ package android.ieeecsvit.com.arcs19.Hackathon;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.ieeecsvit.com.arcs19.R;
@@ -52,6 +53,11 @@ public class HackathonFragment extends Fragment {
     private ImageButton enterButton, uploadEnter;
     private ProgressBar docUplaodProgress, questionUploadProgress;
     String domain, question, name, link;
+
+    SharedPreferences sp;
+    SharedPreferences.Editor editor;
+
+    String TeamName;
 
     StorageReference storageReference, filepath, icon;
 
@@ -106,6 +112,10 @@ public class HackathonFragment extends Fragment {
         questionUploadProgress = v.findViewById(R.id.question_upload_progressbar);
         docUplaodProgress.setVisibility(View.GONE);
 
+        sp = getActivity().getSharedPreferences("key", 0);
+
+
+
         hackathonRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -154,26 +164,43 @@ public class HackathonFragment extends Fragment {
             }
         });
 
-        //Upload links wohr only after team name is set up
-        enterButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                name = getName.getText().toString();
-                if(!name.isEmpty()){
-                    teamName.setText(name);
-                    displayTeam.setVisibility(View.VISIBLE);
-                    teamNameLayout.setVisibility(View.GONE);
-                    docUploadButton.setBackgroundResource(R.drawable.orange_button_curve);
-                    linkUploadButton.setBackgroundResource(R.drawable.orange_button_curve);
-                    docUploadButton.setEnabled(true);
-                    linkUploadButton.setEnabled(true);
+        //Upload links work only after team name is set up
 
-                } else {
-                    Toast.makeText(getContext(), "Field can not be empty", Toast.LENGTH_SHORT).show();
+        if (sp.getString("teamName",null)==null) {
+            enterButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    name = getName.getText().toString();
+                    editor = sp.edit();
+                    editor.putString("teamName", name);
+                    editor.apply();
+                    if (!name.isEmpty()) {
+                        teamName.setText(name);
+                        displayTeam.setVisibility(View.VISIBLE);
+                        teamNameLayout.setVisibility(View.GONE);
+                        docUploadButton.setBackgroundResource(R.drawable.orange_button_curve);
+                        linkUploadButton.setBackgroundResource(R.drawable.orange_button_curve);
+                        docUploadButton.setEnabled(true);
+                        linkUploadButton.setEnabled(true);
+
+                    } else {
+                        Toast.makeText(getContext(), "Field can not be empty", Toast.LENGTH_SHORT).show();
+                    }
+
                 }
+            });
 
-            }
-        });
+        }else{
+
+            teamName.setText(sp.getString("teamName",null));
+            displayTeam.setVisibility(View.VISIBLE);
+            teamNameLayout.setVisibility(View.GONE);
+            docUploadButton.setBackgroundResource(R.drawable.orange_button_curve);
+            linkUploadButton.setBackgroundResource(R.drawable.orange_button_curve);
+            docUploadButton.setEnabled(true);
+            linkUploadButton.setEnabled(true);
+
+        }
 
 
         linkUploadButton.setOnClickListener(new View.OnClickListener() {

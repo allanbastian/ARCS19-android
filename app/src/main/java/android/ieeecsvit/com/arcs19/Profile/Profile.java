@@ -152,6 +152,7 @@ public class Profile extends AppCompatActivity {
         editor.remove("phoneNumber").commit();
         editor.remove("updateAvail").commit();
         editor.remove("loginStatus").commit();
+        editor.remove("teamName").commit();
         startActivity(new Intent(Profile.this, LoginActivity.class));
         finish();
     }
