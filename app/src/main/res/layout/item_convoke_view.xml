@@ -6,57 +6,67 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:clickable="true"
     android:foreground="?android:attr/selectableItemBackground"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_width="300dp"
+    android:layout_height="400dp"
     app:cardBackgroundColor="@color/orange"
     android:layout_gravity="center"
     android:layout_marginTop="16dp"
-    android:layout_marginLeft="32dp"
-    android:layout_marginRight="32dp"
+    android:layout_marginLeft="40dp"
+    android:layout_marginRight="40dp"
     android:layout_marginBottom="16dp"
-    app:cardCornerRadius="24dp"
+    app:cardCornerRadius="8dp"
     app:cardElevation="12dp">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_alignParentTop="true">
+            android:orientation="vertical">
 
-            <com.github.siyamed.shapeimageview.RoundedImageView
-                android:id="@+id/convoke_image"
+            <android.support.v7.widget.CardView
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_gravity="center"
+                app:cardBackgroundColor="@color/orange"
+                app:cardCornerRadius="90dp"
+                android:elevation="24dp">
+
+                <com.github.siyamed.shapeimageview.RoundedImageView
+                    android:id="@+id/convoke_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:siRadius="80dp"
+                    android:scaleType="centerCrop"
+                    tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+            </android.support.v7.widget.CardView>
+
+            <TextView
+                android:id="@+id/convoke_name"
                 android:layout_width="match_parent"
-                android:layout_height="140dp"
-                app:siRadius="24dp"
-                android:scaleType="centerCrop"
-                tools:srcCompat="@tools:sample/backgrounds/scenic" />
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:fontFamily="@font/montserrat_regular"
+                android:textSize="26sp"
+                android:textColor="@color/secondary_dark"
+                tools:text="Trisha Samson" />
 
-                <TextView
-                    android:id="@+id/convoke_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:textAlignment="center"
-                    android:fontFamily="@font/montserrat_regular"
-                    android:textSize="26sp"
-                    android:textColor="@color/secondary_dark"
-                    tools:text="Trisha Samson" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:fontFamily="@font/montserrat_regular"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/convoke_topic"
-                    android:textAlignment="center"
-                    android:textSize="14sp"
-                    android:layout_marginTop="8dp"
-                    android:text="Germany"
-                    android:textColor="@color/secondary_dark"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:fontFamily="@font/montserrat_regular"
+                android:layout_height="wrap_content"
+                android:id="@+id/convoke_topic"
+                android:textAlignment="center"
+                android:textSize="14sp"
+                android:layout_marginTop="8dp"
+                android:text="Germany"
+                android:textColor="@color/secondary_dark"/>
 
             <TextView
                 android:layout_margin="16dp"
@@ -69,22 +79,24 @@
                 android:textAlignment="center"
                 android:layout_height="wrap_content" />
 
-                <!--<Button
-                    android:id="@+id/convoke_follow_button"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_width="wrap_content"
-                    android:textColor="@android:color/white"
-                    android:layout_margin="12dp"
-                    android:layout_height="32dp"
-                    android:text="Follow"
-                    android:background="@drawable/convoke_follow_button_layout"
-                    android:drawableLeft="@drawable/ic_add_black_8dp"/>-->
+            <!--<Button
+                android:id="@+id/convoke_follow_button"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:textColor="@android:color/white"
+                android:layout_margin="12dp"
+                android:layout_height="32dp"
+                android:text="Follow"
+                android:background="@drawable/convoke_follow_button_layout"
+                android:drawableLeft="@drawable/ic_add_black_8dp"/>-->
 
-                <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="4dp" />
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="4dp" />
 
         </LinearLayout>
+
+
 
 
         <LinearLayout
@@ -92,13 +104,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/convoke_follow_bar"
             android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
             android:layout_margin="16dp">
-
-            <CheckBox
-                android:id="@+id/developer_bookmark"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:button="@drawable/bookmark_selector"/>
 
             <Space
                 android:layout_width="0dp"
@@ -130,7 +137,9 @@
 
         </LinearLayout>
 
-    </LinearLayout>
+
+
+    </RelativeLayout>
 
 
 

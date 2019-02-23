@@ -39,15 +39,14 @@ public class ConvokeAdapter extends RecyclerView.Adapter<ConvokeAdapter.CustomVi
         this.context = context;
     }
 
-     class CustomViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-         private int originalHeight = 0;
-         private boolean isViewExpanded = false;
+    class CustomViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        private int originalHeight = 0;
+        private boolean isViewExpanded = false;
         private CardView convokeItem;
         private ImageView image;
         private TextView name;
         private TextView details;
         private TextView topic;
-        private CheckBox bookmark;
         private ImageView facebook;
         //private ImageView instagram;
         //private ImageView twitter;
@@ -62,7 +61,6 @@ public class ConvokeAdapter extends RecyclerView.Adapter<ConvokeAdapter.CustomVi
             topic = itemView.findViewById(R.id.convoke_topic);
             name = itemView.findViewById(R.id.convoke_name);
             image = itemView.findViewById(R.id.convoke_image);
-            bookmark = itemView.findViewById(R.id.developer_bookmark);
             facebook = itemView.findViewById(R.id.developer_facebook);
             //instagram = itemView.findViewById(R.id.developer_instagram);
             //twitter = itemView.findViewById(R.id.developer_twitter);
@@ -96,14 +94,6 @@ public class ConvokeAdapter extends RecyclerView.Adapter<ConvokeAdapter.CustomVi
         //holder.image.setImageResource(dataList.get(i).getmConvokeImage());
         //example .load(FirebaseStorage.getInstance().getReference().child("Convoke").child("speakerName.png")) works
         GlideApp.with(context).load(dataList.get(i).getmStorageReference()).into(holder.image);
-        holder.bookmark.setOnCheckedChangeListener(null);
-        holder.bookmark.setChecked(dataList.get(i).getmConvokeBookmark());
-        holder.bookmark.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                dataList.get(holder.getAdapterPosition()).setmConvokeBookmark(isChecked);
-            }
-        });
 
 
         /*if (holder.bookmark.isChecked()){

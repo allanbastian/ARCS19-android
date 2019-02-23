@@ -3,9 +3,12 @@ package android.ieeecsvit.com.arcs19.Convoke;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.ieeecsvit.com.arcs19.Combo.ComboAdapter;
+import android.ieeecsvit.com.arcs19.DiscreteScrollClass;
 import android.ieeecsvit.com.arcs19.R;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -23,11 +26,15 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.yarolegovich.discretescrollview.DSVOrientation;
+import com.yarolegovich.discretescrollview.DiscreteScrollView;
+import com.yarolegovich.discretescrollview.InfiniteScrollAdapter;
+import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
-public class ConvokeFragment extends Fragment {
+public class ConvokeFragment extends Fragment implements DiscreteScrollView.OnItemChangedListener{
 
     FirebaseDatabase firebaseDatabase;
     private DatabaseReference ref;
@@ -37,7 +44,8 @@ public class ConvokeFragment extends Fragment {
     Bitmap bitmap;
     int image;
     View rootView;
-    RecyclerView convokeRecycler;
+    DiscreteScrollView convokeRecycler;
+    InfiniteScrollAdapter infiniteAdapter;
     ProgressBar convokeProgress;
     //convokeList is used to store the list of convoke speakers
     ArrayList<ConvokeClass> convokeList = new ArrayList<ConvokeClass>();
@@ -122,12 +130,31 @@ public class ConvokeFragment extends Fragment {
 
          */
 
+        convokeRecycler.setOrientation(DSVOrientation.HORIZONTAL);
+        convokeRecycler.addOnItemChangedListener(this);
+
+        infiniteAdapter = InfiniteScrollAdapter.wrap(new ConvokeAdapter(getContext(), convokeList));
+
+        convokeRecycler.setAdapter(infiniteAdapter);
+        convokeRecycler.setItemTransitionTimeMillis(250);
+        convokeRecycler.setItemTransformer(new ScaleTransformer.Builder().setMinScale(0.8f).build());
 
 
-        convokeRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
-        convokeRecycler.setAdapter(adapter);
+        convokeRecycler.setSlideOnFling(false);
+        convokeRecycler.setSlideOnFlingThreshold(5000);
 
         return rootView;
     }
 
+    @Override
+    public void onCurrentItemChanged(@Nullable RecyclerView.ViewHolder viewHolder, int position) {
+        int positionInDataSet = infiniteAdapter.getRealPosition(position);
+        onItemChanged(convokeList.get(positionInDataSet));
+    }
+
+    private void onItemChanged(ConvokeClass sponsor) {
+        //currentSponsorName.setText(sponsor.getName());
+        //currentSponsorType.setText(sponsor.getData());
+
+    }
 }

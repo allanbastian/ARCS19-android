@@ -11,7 +11,6 @@ public class ConvokeClass {
     //private String mDeveloperTwitter;
     private StorageReference mStorageReference;
     //private String mDeveloperImage; //For convoke speaker's / developers's image
-    private boolean mDeveloperBookmark = false; //boolean if the Convoke Speaker is bookmarked
 
     /*public DeveloperClass(String developerName, String developerCountry, String developerGithub, String developerFacebook,String developerInstagram, String developerTwitter, int developerImage){
         mDeveloperName = developerName;
@@ -55,9 +54,6 @@ public class ConvokeClass {
         return mDeveloperInstagram;
     }*/
 
-    public boolean getmConvokeBookmark() {
-        return mDeveloperBookmark;
-    }
 
     /*public String getmDeveloperTwitter() {
         return mDeveloperTwitter;
@@ -65,9 +61,5 @@ public class ConvokeClass {
 
     public StorageReference getmStorageReference() {
         return mStorageReference;
-    }
-
-    public void setmConvokeBookmark(boolean mDeveloperBookmark) {
-        this.mDeveloperBookmark = mDeveloperBookmark;
     }
 }

@@ -62,6 +62,10 @@ dependencies {
     //Custom tabs
     implementation 'com.github.devlight.navigationtabstrip:navigationtabstrip:1.0.4'
 
+    //Zxing - For barcode
+    implementation 'com.google.zxing:core:3.2.1'
+    implementation 'com.journeyapps:zxing-android-embedded:3.2.0@aar'
+
 
 }
 apply plugin: 'com.google.gms.google-services'

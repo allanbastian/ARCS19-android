@@ -1,10 +1,13 @@
 package android.ieeecsvit.com.arcs19.Profile;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.ieeecsvit.com.arcs19.APIClient;
 import android.ieeecsvit.com.arcs19.APIInterface;
 import android.ieeecsvit.com.arcs19.Login.LoginActivity;
@@ -27,6 +30,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.journeyapps.barcodescanner.BarcodeEncoder;
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
 import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
 
@@ -50,11 +58,11 @@ public class Profile extends AppCompatActivity {
     DiscreteScrollView scrollView;
     ArrayList<ProfileScrollClass> items;
     ProfileScrollAdapter adapter;
-    TextView phoneNumber,emailID, name, registration;
+    TextView phoneNumber,emailID, name, registration, barcodeText;
     ImageButton qrButton, backButton;
     FloatingActionButton signOutButton;
     LinearLayout progressSection;
-    ImageView profileImage;
+    ImageView profileImage, barcodeImage;
 
     String USERNAME = "";
     String EMAIL = "";
@@ -68,6 +76,8 @@ public class Profile extends AppCompatActivity {
     Boolean profileUpdateAvail = false;
 
     APIInterface apiInterface;
+
+    Dialog myDialog;
 
 
 
@@ -97,6 +107,14 @@ public class Profile extends AppCompatActivity {
         profileUpdateAvail = sp.getBoolean("profileUpdateAvail",false);
         regEvents = new ArrayList(sp.getStringSet("events",new HashSet<String>()));
 
+        //Barcode dialog
+        myDialog = new Dialog(this);
+        myDialog.setContentView(R.layout.dialog_barcode);
+        myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        myDialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+        barcodeImage = myDialog.findViewById(R.id.barcode_image);
+        barcodeText = myDialog.findViewById(R.id.barcode_regno);
+
         for(int i =0 ;i<regEvents.size() ; i++)
         {
             Log.e("events",regEvents.get(i));
@@ -121,6 +139,25 @@ public class Profile extends AppCompatActivity {
         qrButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+            }
+        });
+
+        //To display the barcode for scanning
+        qrButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
+                try {
+                    BitMatrix bitMatrix = multiFormatWriter.encode(REGNUMBER, BarcodeFormat.CODE_128,600,300);
+                    BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
+                    Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
+                    barcodeImage.setImageBitmap(bitmap);
+                } catch (WriterException e) {
+                    e.printStackTrace();
+                }
+                barcodeText.setText(REGNUMBER);
+                myDialog.show();
 
             }
         });
@@ -273,7 +310,7 @@ public class Profile extends AppCompatActivity {
         scrollView.setItemTransformer(new ScaleTransformer.Builder()
                 .setMinScale(0.8f)
                 .build());
-        onItemChanged(items.get(0));
+        //onItemChanged(items.get(0));
     }
 
     private void getEvents()
