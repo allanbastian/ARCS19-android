@@ -14,7 +14,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -35,8 +34,6 @@ import com.google.android.gms.tasks.OnSuccessListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.concurrent.Executor;
 import java.util.regex.Pattern;
 
 import retrofit2.Call;
@@ -57,7 +54,7 @@ public class SignUpFragment extends Fragment {
 
     String currentSize = "SIZE";
 
-    String RECAPTCHA_KEY = "6LchYpMUAAAAAFP2xwgA5FGmt6y9vxUec-wnBmGV";
+    String RECAPTCHA_KEY = "6LchYpMUAAAAAL-6YYGerqcUUVIawVozI4Tgu1kq";
     APIInterface apiInterface;
 
 
@@ -85,7 +82,7 @@ public class SignUpFragment extends Fragment {
         tSize = rootView.findViewById(R.id.t_shirt_size);
         membershipDetails = rootView.findViewById(R.id.membership_details);
         vitianDetails = rootView.findViewById(R.id.vitian_details);
-        progressSection = rootView.findViewById(R.id.progress_section);
+        progressSection = rootView.findViewById(R.id.signup_progress_section);
 
         //APi Interface Initialisation
         apiInterface = APIClient.getClient().create(APIInterface.class);
@@ -273,7 +270,7 @@ public class SignUpFragment extends Fragment {
         {
             //Checking if the fields are empty
             if (regNo.isEmpty()) {
-                regNumber.setError("VIT registration number r is required");
+                regNumber.setError("VIT registration number is required");
                 regNumber.requestFocus();
                 return;
             }
@@ -310,12 +307,12 @@ public class SignUpFragment extends Fragment {
         }
 
         //API Calling
-        APIwithrecaptcha(email,pass,username,genderText,roomNo,mobNo,ieeeNo,ieeeSec,uni,regNo);
+        APIwithRecaptcha(email,pass,username,genderText,roomNo,mobNo,ieeeNo,ieeeSec,uni,regNo);
 
     }
 
-    private void APIwithrecaptcha(final String email, final String pass, final String username, final String genderText, final String roomNo, final String mobNo
-            , final String ieeeNo, final String ieeeSec,final String uni, final String regNo)
+    private void APIwithRecaptcha(final String email, final String pass, final String username, final String genderText, final String roomNo, final String mobNo
+            , final String ieeeNo, final String ieeeSec, final String uni, final String regNo)
     {
         SafetyNet.getClient(getActivity()).verifyWithRecaptcha(RECAPTCHA_KEY)
                 .addOnSuccessListener(getActivity(),
@@ -343,15 +340,15 @@ public class SignUpFragment extends Fragment {
                                         @Override
                                         public void onResponse(Call<HashMap<String, String>> call, Response<HashMap<String, String>> response) {
                                             HashMap<String,String> hashMap = new HashMap<String, String>();
-                                            String resMsg = hashMap.get("message");
-                                            if(resMsg.equals("success"))
+                                            boolean resMsg = Boolean.parseBoolean(hashMap.get("Success"));
+                                            if(resMsg)
                                             {
                                                 Toast.makeText(getActivity(),"Success",Toast.LENGTH_SHORT).show();
                                                 progressSection.setVisibility(View.GONE);
                                             }
                                             else
                                             {
-                                                Toast.makeText(getActivity(),resMsg,Toast.LENGTH_SHORT).show();
+                                                //Toast.makeText(getActivity(),hashMap.get("Success").toString(),Toast.LENGTH_SHORT).show();
                                                 progressSection.setVisibility(View.GONE);
 
                                             }

@@ -68,6 +68,7 @@
 
             <EditText
                 android:id="@+id/phone_number"
+                android:fontFamily="@font/montserrat_regular"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawablePadding="10dp"
@@ -92,6 +93,7 @@
                 android:layout_height="wrap_content"
                 android:drawablePadding="10dp"
                 android:id="@+id/name"
+                android:fontFamily="@font/montserrat_regular"
                 android:textColor="@color/white"
                 android:textCursorDrawable="@drawable/cursor_color"
                 android:background="@drawable/edit_text_login"
@@ -111,6 +113,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="GENDER"
+                android:fontFamily="@font/montserrat_regular"
                 android:textColor="@color/primary_light"
                 android:textStyle="bold"
                 android:layout_marginStart="10dp"
@@ -120,12 +123,14 @@
                 android:id="@+id/gender"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_regular"
                 android:layout_marginBottom="10dp"
                 android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/male"
                     android:layout_width="0dp"
+                    android:fontFamily="@font/montserrat_regular"
                     android:layout_height="wrap_content"
                     android:text="Male"
                     android:textColor="@color/white"
@@ -135,6 +140,7 @@
                 <RadioButton
                     android:id="@+id/female"
                     android:layout_width="0dp"
+                    android:fontFamily="@font/montserrat_regular"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="Female"
@@ -143,6 +149,7 @@
 
                 <RadioButton
                     android:id="@+id/others"
+                    android:fontFamily="@font/montserrat_regular"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
@@ -158,6 +165,7 @@
                 android:layout_height="wrap_content"
                 android:drawablePadding="10dp"
                 android:id="@+id/email_id"
+                android:fontFamily="@font/montserrat_regular"
                 android:textColor="@color/white"
                 android:textCursorDrawable="@drawable/cursor_color"
                 android:background="@drawable/edit_text_login"
@@ -181,6 +189,7 @@
                 android:id="@+id/password"
                 android:textSize="14sp"
                 android:textColor="@color/white"
+                android:fontFamily="@font/montserrat_regular"
                 android:drawablePadding="10dp"
                 android:textCursorDrawable="@drawable/cursor_color"
                 android:hint="PASSWORD"
@@ -197,6 +206,7 @@
                 android:id="@+id/confirm_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_regular"
                 android:layout_marginTop="15dp"
                 android:textColor="@color/white"
                 android:textCursorDrawable="@drawable/cursor_color"
@@ -223,6 +233,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
+                    android:fontFamily="@font/montserrat_regular"
                     android:text="T-Shirt SIZE"
                     android:textColor="@color/primary_light"/>
 
@@ -234,9 +245,7 @@
                     android:popupBackground="@color/primary_light"
                     android:paddingStart="20dp"
                     android:paddingEnd="20dp"
-                    android:paddingBottom="10dp"
                     android:layout_marginStart="20dp"
-                    android:paddingTop="10dp"
                     android:background="@drawable/orange_border_curve">
 
                 </Spinner>
@@ -247,6 +256,7 @@
                 android:id="@+id/member"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_regular"
                 android:text="IEEE Member"
                 android:layout_marginTop="10dp"
                 android:textColor="@color/white"
@@ -264,6 +274,7 @@
                     android:layout_height="wrap_content"
                     android:drawablePadding="10dp"
                     android:id="@+id/membership_number"
+                    android:fontFamily="@font/montserrat_regular"
                     android:textColor="@color/white"
                     android:textCursorDrawable="@drawable/cursor_color"
                     android:background="@drawable/edit_text_login"
@@ -284,6 +295,7 @@
                     android:layout_height="wrap_content"
                     android:drawablePadding="10dp"
                     android:id="@+id/section"
+                    android:fontFamily="@font/montserrat_regular"
                     android:textColor="@color/white"
                     android:textCursorDrawable="@drawable/cursor_color"
                     android:background="@drawable/edit_text_login"
@@ -308,6 +320,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="I am from VIT"
+                android:fontFamily="@font/montserrat_regular"
                 android:textColor="@color/white"
                 android:buttonTint="@color/orange"/>
 
@@ -322,6 +335,7 @@
                 android:drawableLeft="@drawable/ic_university_24dp"
                 android:hint="UNIVERSITY"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat_regular"
                 android:layout_marginBottom="10dp"
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp"
@@ -335,6 +349,7 @@
                 android:id="@+id/vitian_details"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_regular"
                 android:visibility="gone"
                 android:orientation="vertical"
                 >
@@ -342,9 +357,11 @@
                 <EditText
                     android:id="@+id/reg_number"
                     android:layout_width="match_parent"
+                    android:fontFamily="@font/montserrat_regular"
                     android:layout_height="wrap_content"
                     android:drawablePadding="10dp"
                     android:textColor="@color/white"
+                    android:textAllCaps="true"
                     android:textCursorDrawable="@drawable/cursor_color"
                     android:background="@drawable/edit_text_login"
                     android:drawableLeft="@drawable/ic_registration_number_24dp"
@@ -364,7 +381,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawablePadding="10dp"
+                    android:fontFamily="@font/montserrat_regular"
                     android:textColor="@color/white"
+                    android:textAllCaps="true"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:paddingStart="20dp"
@@ -383,7 +402,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/progress_section"
+                android:id="@+id/signup_progress_section"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -398,6 +417,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_regular"
                     android:text="Creating User..."
                     android:textColor="@color/primary_light"/>
             </LinearLayout>
@@ -407,6 +427,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="30dp"
+                android:fontFamily="@font/montserrat_regular"
                 android:layout_marginBottom="30dp"
                 android:layout_marginHorizontal="80dp"
                 android:text="sign up"
