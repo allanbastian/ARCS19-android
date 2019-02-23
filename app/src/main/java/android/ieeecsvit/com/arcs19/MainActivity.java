@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         if(!updatedAvail)
         {
             progressSection.setVisibility(View.VISIBLE);
-            Call<UserClass> call = apiInterface.getProfile("dfghjkhvcvbnkjhgvhjkj");
+            Call<UserClass> call = apiInterface.getProfile(token);
             call.enqueue(new Callback<UserClass>() {
                 @Override
                 public void onResponse(Call<UserClass> call, Response<UserClass> response) {
@@ -129,10 +129,36 @@ public class MainActivity extends AppCompatActivity {
                 public void onResponse(Call<UserClass> call, Response<UserClass> response) {
                     UserClass userClass = response.body();
                     SharedPreferences.Editor editor = sp.edit();
-                    editor.putString("username",userClass.getName());
-                    editor.putString("regNumber",userClass.getRegNumber());
-                    editor.putString("phoneNumber",userClass.getPhoneNumber());
-                    editor.putBoolean("updateAvail",true);
+                    try {
+                        if (!userClass.getName().isEmpty()) {
+                            editor.putString("username", userClass.getName());
+                            editor.putString("regNumber", userClass.getRegNumber());
+                            editor.putString("phoneNumber", userClass.getPhoneNumber());
+                            editor.putBoolean("updateAvail", true);
+
+                            editor.commit();
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Toast.makeText(getApplicationContext(),userClass.getError(),Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                        editor.remove("username").commit();
+                        editor.remove("email").commit();
+                        editor.remove("password").commit();
+                        editor.remove("loginStatus").commit();
+                        editor.remove("image_data").commit();
+                        editor.remove("jwtToken").commit();
+                        editor.remove("phoneNumber").commit();
+                        editor.remove("updateAvail").commit();
+                        editor.remove("loginStatus").commit();
+                        editor.remove("teamName").commit();
+                        intent.setAction(Intent.ACTION_MAIN);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        intent.putExtra("EXIT", true);
+                        startActivity(intent);
+                        finish();
+                    }
                 }
 
                 @Override

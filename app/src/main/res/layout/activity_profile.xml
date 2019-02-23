@@ -238,13 +238,41 @@
                 android:textColor="@color/orange"
                 android:gravity="center_horizontal"/>
 
-
-            <com.yarolegovich.discretescrollview.DiscreteScrollView
-                android:id="@+id/profileScroll"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="25dp"
-                app:dsv_orientation="horizontal" />
+                android:layout_height="wrap_content">
+
+                <com.yarolegovich.discretescrollview.DiscreteScrollView
+                    android:id="@+id/profileScroll"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="25dp"
+                    app:dsv_orientation="horizontal" />
+
+                <LinearLayout
+                    android:id="@+id/progress_section"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <ProgressBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:indeterminateTint="@color/orange"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Loading..."
+                        android:fontFamily="@font/montserratregular"
+                        android:textColor="@color/primary_light"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
 
         </LinearLayout>
 

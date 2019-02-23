@@ -213,8 +213,8 @@ public class LoginActivity extends AppCompatActivity {
 
                 if(hashMap.get("success")) {
                     SharedPreferences.Editor editor = sp.edit();
-                    String resToken = response.headers().get("Token");
-                    editor.putString("jwtToken","sdfghjkvcffghjkjhgfghjkjhgf");                           //JWT Token
+                    String jwtToken = response.headers().get("Token");
+                    editor.putString("jwtToken",jwtToken);                           //JWT Token
                     editor.putBoolean("loginStatus", true);                          //Login Session set to true
                     editor.putString("email", emailID.getText().toString());         //Email
                     editor.putString("password", password.getText().toString());     //Password

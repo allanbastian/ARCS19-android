@@ -2,6 +2,8 @@ package android.ieeecsvit.com.arcs19;
 
 import android.ieeecsvit.com.arcs19.Login.UserClass;
 
+import java.sql.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import retrofit2.Call;
@@ -26,18 +28,7 @@ public interface APIInterface {
     @GET("api/user/app-profile")
     Call<UserClass> getProfile(@Header("token") String jwtToken);
 
-/*
-    @GET("/api/unknown")
-    Call<MultipleResource> doGetListResources();
-
-    @POST("/api/users")
-    Call<User> createUser(@Body User user);
-
-    @GET("/api/users?")
-    Call<UserList> doGetUserList(@Query("page") String page);
-
-    @FormUrlEncoded
-    @POST("/api/users?")
-    Call<UserList> doCreateUserWithField(@Field("name") String name, @Field("job") String job);*/
+    @GET("api/user/app-receipt")
+    Call<ArrayList<HashMap<String,String>>> getEvents(@Header("token") String jwtToken);
 
 }

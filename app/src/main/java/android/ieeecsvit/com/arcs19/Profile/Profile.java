@@ -5,8 +5,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.ieeecsvit.com.arcs19.APIClient;
+import android.ieeecsvit.com.arcs19.APIInterface;
 import android.ieeecsvit.com.arcs19.Login.LoginActivity;
 import android.ieeecsvit.com.arcs19.Login.UserClass;
+import android.ieeecsvit.com.arcs19.MainActivity;
 import android.ieeecsvit.com.arcs19.R;
 import android.net.Uri;
 import android.os.Bundle;
@@ -20,7 +23,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
 import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
@@ -31,6 +36,13 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class Profile extends AppCompatActivity {
@@ -41,13 +53,22 @@ public class Profile extends AppCompatActivity {
     TextView phoneNumber,emailID, name, registration;
     ImageButton qrButton, backButton;
     FloatingActionButton signOutButton;
+    LinearLayout progressSection;
     ImageView profileImage;
 
     String USERNAME = "";
     String EMAIL = "";
     String MOBNUMBER = "";
     String REGNUMBER = "";
+    String JWTTOKEN = "";
     SharedPreferences sp;
+
+    ArrayList<String> regEvents;
+
+    Boolean profileUpdateAvail = false;
+
+    APIInterface apiInterface;
+
 
 
     @Override
@@ -62,6 +83,9 @@ public class Profile extends AppCompatActivity {
         emailID = findViewById(R.id.email_id);
         phoneNumber = findViewById(R.id.mobile_number);
         registration = findViewById(R.id.registration_number);
+        progressSection = findViewById(R.id.progress_section);
+
+        apiInterface = APIClient.getClient().create(APIInterface.class);
 
         sp = getSharedPreferences("key",0);
 
@@ -69,6 +93,14 @@ public class Profile extends AppCompatActivity {
         EMAIL = sp.getString("email","");
         MOBNUMBER = sp.getString("phoneNumber","");
         REGNUMBER = sp.getString("regNumber","");
+        JWTTOKEN = sp.getString("jwtToken","");
+        profileUpdateAvail = sp.getBoolean("profileUpdateAvail",false);
+        regEvents = new ArrayList(sp.getStringSet("events",new HashSet<String>()));
+
+        for(int i =0 ;i<regEvents.size() ; i++)
+        {
+            Log.e("events",regEvents.get(i));
+        }
 
         name.setText(USERNAME);
         emailID.setText(EMAIL);
@@ -92,6 +124,10 @@ public class Profile extends AppCompatActivity {
 
             }
         });
+
+
+        //Registered Events retrieval
+        getEvents();
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,21 +155,9 @@ public class Profile extends AppCompatActivity {
 
 
         scrollView = findViewById(R.id.profileScroll);
-         //profile scroll adapter
-        adapter = new ProfileScrollAdapter();
 
-        items = new ArrayList<ProfileScrollClass>();
-        items = adapter.setList();
-
-        scrollView.setOffscreenItems(4);
-        scrollView.setOverScrollEnabled(true);
-        scrollView.setAdapter(adapter);
-        scrollView.setSlideOnFling(true);
-        scrollView.setItemTransitionTimeMillis(150);
-        scrollView.setItemTransformer(new ScaleTransformer.Builder()
-                .setMinScale(0.8f)
-                .build());
-        onItemChanged(items.get(0));
+        //Set events scroll view
+        setEvents();
 
 
     }
@@ -154,6 +178,8 @@ public class Profile extends AppCompatActivity {
         editor.remove("updateAvail").commit();
         editor.remove("loginStatus").commit();
         editor.remove("teamName").commit();
+        editor.remove("profileUpdateAvail").commit();
+        editor.remove("events").commit();
         Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
         intent.setAction(Intent.ACTION_MAIN);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -232,6 +258,107 @@ public class Profile extends AppCompatActivity {
         //saving image to shared preferences
         edit.putString("image_data",encodedImage);
         edit.commit();
+    }
+
+
+    private void setEvents()
+    {
+        adapter = new ProfileScrollAdapter();
+
+        items = new ArrayList<ProfileScrollClass>();
+        items = adapter.setList();
+
+        scrollView.setOffscreenItems(4);
+        scrollView.setOverScrollEnabled(true);
+        scrollView.setAdapter(adapter);
+        scrollView.setSlideOnFling(true);
+        scrollView.setItemTransitionTimeMillis(150);
+        scrollView.setItemTransformer(new ScaleTransformer.Builder()
+                .setMinScale(0.8f)
+                .build());
+        onItemChanged(items.get(0));
+    }
+
+    private void getEvents()
+    {
+        regEvents = new ArrayList<String>();
+        if(!profileUpdateAvail)
+        {
+            progressSection.setVisibility(View.VISIBLE);
+            Call<ArrayList<HashMap<String,String>>> call = apiInterface.getEvents(JWTTOKEN);
+
+            call.enqueue(new Callback<ArrayList<HashMap<String, String>>>() {
+                @Override
+                public void onResponse(Call<ArrayList<HashMap<String, String>>> call, Response<ArrayList<HashMap<String, String>>> response) {
+                    ArrayList<HashMap<String, String>> eventList = response.body();
+                    try {
+                        for (int i = 0; i < eventList.size(); i++) {
+                            String s = eventList.get(i).get("eventName");
+                            String tempList[] = s.split("\\+");
+                            for (int j = 0; j < tempList.length; j++) {
+                                regEvents.add(tempList[j]);
+                            }
+                        }
+                        progressSection.setVisibility(View.GONE);
+                        SharedPreferences.Editor editor = sp.edit();
+                        Set<String> eventSet = new HashSet<String>(regEvents);
+                        editor.putStringSet("events", eventSet);
+                        editor.putBoolean("profileUpdateAvail", true);
+                        editor.commit();
+                        setEvents();
+                    }
+                    catch (Exception e)
+                    {
+                        Toast.makeText(getApplicationContext(),eventList.get(0).get("error"),Toast.LENGTH_LONG).show();
+                        Logout();
+                    }
+
+                }
+
+                @Override
+                public void onFailure(Call<ArrayList<HashMap<String, String>>> call, Throwable t) {
+
+                }
+            });
+        }
+        else
+        {
+
+            Call<ArrayList<HashMap<String,String>>> call = apiInterface.getEvents(JWTTOKEN);
+            call.enqueue(new Callback<ArrayList<HashMap<String, String>>>() {
+                @Override
+                public void onResponse(Call<ArrayList<HashMap<String, String>>> call, Response<ArrayList<HashMap<String, String>>> response) {
+                    ArrayList<HashMap<String, String>> eventList = response.body();
+                    try {
+                        for (int i = 0; i < eventList.size(); i++) {
+                            String s = eventList.get(i).get("eventName");
+                            String tempList[] = s.split("\\+");
+                            for (int j = 0; j < tempList.length; j++) {
+                                regEvents.add(tempList[j]);
+                            }
+                        }
+                        SharedPreferences.Editor editor = sp.edit();
+                        Set<String> eventSet = new HashSet<String>(regEvents);
+                        editor.putStringSet("events", eventSet);
+                        editor.putBoolean("profileUpdateAvail", true);
+                        editor.commit();
+                        setEvents();
+                    }
+                    catch (Exception e)
+                    {
+                        Toast.makeText(getApplicationContext(),eventList.get(0).get("error"),Toast.LENGTH_LONG).show();
+                        Logout();
+                    }
+
+                }
+
+                @Override
+                public void onFailure(Call<ArrayList<HashMap<String, String>>> call, Throwable t) {
+
+                }
+            });
+
+        }
     }
 
 }
