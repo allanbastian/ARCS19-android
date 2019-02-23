@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="@color/colorPrimary"
     android:animateLayoutChanges="true"
     >
 
@@ -38,6 +38,7 @@
                     android:text="RCS"
                     android:fontFamily="@font/montserratregular"
                     android:visibility="gone"
+                    android:layout_marginStart="-15dp"
                     android:layout_toRightOf="@id/arcs_logo"
                     android:layout_alignBottom="@id/arcs_logo"
                     android:textStyle="bold"
@@ -172,6 +173,7 @@
             <Button
                 android:id="@+id/sign_up_button"
                 android:layout_width="150dp"
+                android:fontFamily="@font/montserrat_regular"
                 android:layout_height="wrap_content"
                 android:background="@drawable/orange_button_curve"
                 android:layout_gravity="center"

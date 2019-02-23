@@ -57,7 +57,7 @@ public class SignUpFragment extends Fragment {
 
     String currentSize = "SIZE";
 
-    String RECAPTCHA_KEY = "6Lf96n8UAAAAAIPzsRSuQtoOldpI14e76_a3oz9g";
+    String RECAPTCHA_KEY = "6LchYpMUAAAAAFP2xwgA5FGmt6y9vxUec-wnBmGV";
     APIInterface apiInterface;
 
 

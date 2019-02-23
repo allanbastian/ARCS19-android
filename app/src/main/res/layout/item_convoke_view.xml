@@ -109,7 +109,7 @@
                 android:id="@+id/developer_facebook"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/facebook_vector"/>
+                android:src="@drawable/linkedin_vector"/>
 
 
             <!--<ImageView

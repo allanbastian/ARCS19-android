@@ -8,12 +8,14 @@ import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.webkit.JavascriptInterface;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import java.net.URL;
 
@@ -22,7 +24,7 @@ public class RegisterWebView extends AppCompatActivity {
     WebView webView;
     ProgressBar progressBar;
 
-    String URL = "https://arcsportal19.herokuapp.com/login";
+    String URL = "https://register.ieeecsvit.com/login";
 
     SharedPreferences sp;
     String email, password;
@@ -74,6 +76,7 @@ public class RegisterWebView extends AppCompatActivity {
                 webView.evaluateJavascript(js, new ValueCallback<String>() {
                     @Override
                     public void onReceiveValue(String value) {
+                        Toast.makeText(getApplicationContext(),"Login to your account", Toast.LENGTH_LONG).show();
 
                     }
                 });
@@ -91,6 +94,7 @@ public class RegisterWebView extends AppCompatActivity {
         });
 
         webView.loadUrl(URL);
+        //webView.addJavascriptInterface(new JavaScriptInterface(this), "Android");
 
     }
 

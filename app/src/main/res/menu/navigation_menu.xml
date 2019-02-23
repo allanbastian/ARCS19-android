@@ -33,8 +33,8 @@
     <item
         android:id="@+id/hackathon"
         android:icon="@drawable/hackathon"
-        android:title="Hackathon"
-        android:checkable="true"
+        android:title="HackBattle"
+        android:checkable="false"
         />
 
 

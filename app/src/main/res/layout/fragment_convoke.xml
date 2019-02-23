@@ -7,6 +7,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/convoke_title"
+        android:layout_margin="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CONVOKE"
+        android:textAlignment="center"
+        android:fontFamily="@font/montserratregular"
+        android:textColor="@color/orange"
+        android:layout_gravity="center"
+        android:textSize="35sp"
+        />
+
     <ProgressBar
         android:layout_marginTop="20dp"
         android:layout_marginBottom="24dp"
@@ -20,7 +33,13 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_below="@+id/convoke_title">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/convoke_recycler_view"
@@ -30,6 +49,13 @@
             tools:listitem="@layout/item_convoke_view"
             android:paddingBottom="72dp"
             />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+        </LinearLayout>
+
 
 
 

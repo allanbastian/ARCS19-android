@@ -20,6 +20,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 public class BottomNavigationFragment extends BottomSheetDialogFragment {
 
@@ -60,12 +61,21 @@ public class BottomNavigationFragment extends BottomSheetDialogFragment {
                         menuItem.setChecked(true);
                                         break;
 
-                    case R.id.hackathon : fragment = new HackathonFragment();
-                        transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                        transaction.replace(R.id.fragment_container, fragment).commit();
-                        previousSelectedItem = menuId;
-                        menuItem.setChecked(true);
-                                        break;
+                    case R.id.hackathon :
+                        //need to replace "false" with verification for user registered for hackathon.
+                        if(false){
+
+
+                        }
+                        else{
+                            Toast.makeText(getContext(),"Coming Soon",Toast.LENGTH_LONG).show();
+                            /*fragment = new HackathonFragment();
+                            transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                            transaction.replace(R.id.fragment_container, fragment).commit();
+                            previousSelectedItem = menuId;
+                            menuItem.setChecked(true);*/
+                        }
+                        break;
 
                     case R.id.convoke : fragment = new ConvokeFragment();
                         transaction = getActivity().getSupportFragmentManager().beginTransaction();

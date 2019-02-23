@@ -49,7 +49,7 @@
                     android:fontFamily="@font/montserratregular"
                     android:textColor="@color/orange"
                     android:layout_gravity="center"
-                    android:textSize="25sp"
+                    android:textSize="35sp"
                     />
 
 

@@ -135,6 +135,7 @@ public class Profile extends AppCompatActivity {
                 .build());
         onItemChanged(items.get(0));
 
+
     }
 
     private void onItemChanged(ProfileScrollClass profileScrollClass) {
@@ -153,8 +154,11 @@ public class Profile extends AppCompatActivity {
         editor.remove("updateAvail").commit();
         editor.remove("loginStatus").commit();
         editor.remove("teamName").commit();
-        startActivity(new Intent(Profile.this, LoginActivity.class));
-        finish();
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+        intent.setAction(Intent.ACTION_MAIN);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("EXIT", true);
+        startActivity(intent);
     }
 
     //function to change profile picture
@@ -202,7 +206,7 @@ public class Profile extends AppCompatActivity {
 
     //Storing profile image using shared preferences
     private void storeImage(Bitmap thumbnail) {
-        // Removing image saved earlier in shared prefernces
+        // Removing image saved earlier in shared preferences
         SharedPreferences.Editor edit= sp.edit();
         edit.remove("image_data");
         edit.apply();

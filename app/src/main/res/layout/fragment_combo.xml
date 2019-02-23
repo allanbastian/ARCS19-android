@@ -13,7 +13,7 @@
         android:textAlignment="center"
         android:textColor="@color/orange"
         android:fontFamily="@font/montserrat_regular"
-        android:textSize="25sp"/>
+        android:textSize="35sp"/>
     <ProgressBar
         android:id="@+id/combo_progressbar"
         android:layout_width="wrap_content"
