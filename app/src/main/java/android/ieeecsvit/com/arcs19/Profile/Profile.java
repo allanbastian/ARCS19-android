@@ -263,10 +263,7 @@ public class Profile extends AppCompatActivity {
 
     private void setEvents()
     {
-        adapter = new ProfileScrollAdapter();
-
-        items = new ArrayList<ProfileScrollClass>();
-        items = adapter.setList();
+        adapter = new ProfileScrollAdapter(regEvents);
 
         scrollView.setOffscreenItems(4);
         scrollView.setOverScrollEnabled(true);

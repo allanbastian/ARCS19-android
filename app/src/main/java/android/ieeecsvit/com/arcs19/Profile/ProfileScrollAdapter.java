@@ -13,19 +13,16 @@ import java.util.ArrayList;
 
 public class ProfileScrollAdapter extends RecyclerView.Adapter<ProfileScrollAdapter.ScrollViewHolder>{
 
-    ArrayList<ProfileScrollClass> items = new ArrayList<ProfileScrollClass>();
+    ArrayList<String> items = new ArrayList<String>();
 
 
-    public ProfileScrollAdapter(){
-        items.add(new ProfileScrollClass(R.drawable.machine,"Machine Learning"));
-        items.add(new ProfileScrollClass(R.drawable.artificial_intelligence,"Artificial intelligence"));
-        items.add(new ProfileScrollClass(R.drawable.machine,"Machine Learning"));
-        items.add(new ProfileScrollClass(R.drawable.artificial_intelligence,"Artificial intelligence"));
+    public ProfileScrollAdapter(ArrayList<String> items){
+
+        this.items = items;
 
     }
-    public ArrayList<ProfileScrollClass> setList(){
-        return items;
-    }
+
+
     @Override
     public ProfileScrollAdapter.ScrollViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
@@ -35,7 +32,18 @@ public class ProfileScrollAdapter extends RecyclerView.Adapter<ProfileScrollAdap
 
     @Override
     public void onBindViewHolder(@NonNull ProfileScrollAdapter.ScrollViewHolder scrollViewHolder, int i) {
-        scrollViewHolder.icon.setImageResource(items.get(i).getIcon());
+//        scrollViewHolder.icon.setImageResource(items.get(i).getIcon());
+
+        switch (items.get(i))
+        {
+            case "UI/UX Workshop" : break;
+            case "Blockchain and Cryptocurrency Workshop" : break;
+            case "Convoke'19" : break;
+            case "Cloud Computing Workshop" : break;
+            case "Machine Learning Workshop" : break;
+            case "Cyber-Security Workshop" : break;
+            default: break;
+        }
 
     }
 
