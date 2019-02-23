@@ -88,6 +88,12 @@ public class UserClass {
     @SerializedName("g-recaptcha-response")
     public String recaptchaResponse;
 
+    @SerializedName("token")
+    public boolean token;
+
+    @SerializedName("error")
+    public String error;
+
     public String getEmail() {
         return email;
     }
@@ -182,5 +188,21 @@ public class UserClass {
 
     public void setRecaptchaResponse(String recaptchaResponse) {
         this.recaptchaResponse = recaptchaResponse;
+    }
+
+    public boolean isToken() {
+        return token;
+    }
+
+    public void setToken(boolean token) {
+        this.token = token;
+    }
+
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
     }
 }

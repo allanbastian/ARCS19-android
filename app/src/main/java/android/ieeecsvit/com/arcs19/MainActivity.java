@@ -2,6 +2,7 @@ package android.ieeecsvit.com.arcs19;
 
 import android.content.SharedPreferences;
 import android.content.Intent;
+import android.ieeecsvit.com.arcs19.Login.LoginActivity;
 import android.ieeecsvit.com.arcs19.Login.UserClass;
 import android.ieeecsvit.com.arcs19.Profile.Profile;
 import android.ieeecsvit.com.arcs19.Schedule.SchedulePageFragment;
@@ -16,6 +17,8 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import java.util.HashMap;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -59,26 +62,49 @@ public class MainActivity extends AppCompatActivity {
         if(!updatedAvail)
         {
             progressSection.setVisibility(View.VISIBLE);
-            Call<UserClass> call = apiInterface.getProfile(token);
+            Call<UserClass> call = apiInterface.getProfile("dfghjkhvcvbnkjhgvhjkj");
             call.enqueue(new Callback<UserClass>() {
                 @Override
                 public void onResponse(Call<UserClass> call, Response<UserClass> response) {
                     UserClass userClass = response.body();
                     progressSection.setVisibility(View.GONE);
                     SharedPreferences.Editor editor = sp.edit();
-                    editor.putString("username",userClass.getName());
-                    editor.putString("regNumber",userClass.getRegNumber());
-                    editor.putString("phoneNumber",userClass.getPhoneNumber());
-                    editor.putBoolean("updateAvail",true);
+                    try {
+                        if (!userClass.getName().isEmpty()) {
+                            editor.putString("username", userClass.getName());
+                            editor.putString("regNumber", userClass.getRegNumber());
+                            editor.putString("phoneNumber", userClass.getPhoneNumber());
+                            editor.putBoolean("updateAvail", true);
 
-                    editor.commit();
+                            editor.commit();
 
-                    //Home fragment here
-                    schedulePageFragment = new SchedulePageFragment();
-                    FragmentManager fragmentManager = getSupportFragmentManager();
-                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.add(R.id.fragment_container,schedulePageFragment).commit();
-
+                            //Home fragment here
+                            schedulePageFragment = new SchedulePageFragment();
+                            FragmentManager fragmentManager = getSupportFragmentManager();
+                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                            fragmentTransaction.add(R.id.fragment_container, schedulePageFragment).commit();
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Toast.makeText(getApplicationContext(),userClass.getError(),Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                        editor.remove("username").commit();
+                        editor.remove("email").commit();
+                        editor.remove("password").commit();
+                        editor.remove("loginStatus").commit();
+                        editor.remove("image_data").commit();
+                        editor.remove("jwtToken").commit();
+                        editor.remove("phoneNumber").commit();
+                        editor.remove("updateAvail").commit();
+                        editor.remove("loginStatus").commit();
+                        editor.remove("teamName").commit();
+                        intent.setAction(Intent.ACTION_MAIN);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        intent.putExtra("EXIT", true);
+                        startActivity(intent);
+                        finish();
+                    }
                 }
 
                 @Override
