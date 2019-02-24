@@ -67,7 +67,7 @@ public class UserClass {
     @SerializedName("room")
     public String roomNumber;
 
-    @SerializedName("ieeemember")
+    @SerializedName("memberNo")
     public String ieeeMember;
 
     @SerializedName("contact")
@@ -76,7 +76,7 @@ public class UserClass {
     @SerializedName("tShirtSize")
     public String tSize;
 
-    @SerializedName("ieeeSection")
+    @SerializedName("section")
     public String section;
 
     @SerializedName("university")

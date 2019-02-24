@@ -340,15 +340,16 @@ public class SignUpFragment extends Fragment {
                                         @Override
                                         public void onResponse(Call<HashMap<String, String>> call, Response<HashMap<String, String>> response) {
                                             HashMap<String,String> hashMap = new HashMap<String, String>();
-                                            boolean resMsg = Boolean.parseBoolean(hashMap.get("Success"));
-                                            if(resMsg)
+                                            hashMap = response.body();
+                                            String msg = hashMap.get("message");
+                                            if(msg.equals("ok"))
                                             {
                                                 Toast.makeText(getActivity(),"Success",Toast.LENGTH_SHORT).show();
                                                 progressSection.setVisibility(View.GONE);
                                             }
                                             else
                                             {
-                                                //Toast.makeText(getActivity(),hashMap.get("Success").toString(),Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(getActivity(),msg,Toast.LENGTH_SHORT).show();
                                                 progressSection.setVisibility(View.GONE);
 
                                             }
