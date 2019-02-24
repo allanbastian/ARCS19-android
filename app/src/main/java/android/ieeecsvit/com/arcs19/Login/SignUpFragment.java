@@ -233,7 +233,7 @@ public class SignUpFragment extends Fragment {
         }
 
         //Phone number length validation
-        if (mobNo.length() < 10) {
+        if (mobNo.length() != 10) {
             phoneNumber.setError("Enter a valid phone number");
             phoneNumber.requestFocus();
             return;
@@ -344,7 +344,8 @@ public class SignUpFragment extends Fragment {
                                             String msg = hashMap.get("message");
                                             if(msg.equals("ok"))
                                             {
-                                                Toast.makeText(getActivity(),"Success",Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(getActivity(),"Registration Successful",Toast.LENGTH_SHORT).show();
+                                                getActivity().onBackPressed();
                                                 progressSection.setVisibility(View.GONE);
                                             }
                                             else
@@ -357,15 +358,16 @@ public class SignUpFragment extends Fragment {
 
                                         @Override
                                         public void onFailure(Call<HashMap<String, String>> call, Throwable t) {
-                                            Toast.makeText(getActivity(),"Failed",Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getActivity(),"Registration Failed",Toast.LENGTH_SHORT).show();
                                             progressSection.setVisibility(View.GONE);
                                         }
                                     });
 
                                 }
-                                else
-                                    Log.e("response Token","empty");
+                                else {
+                                    Log.e("response Token", "empty");
                                     progressSection.setVisibility(View.GONE);
+                                }
                             }
                         })
                 .addOnFailureListener(getActivity(), new OnFailureListener() {
