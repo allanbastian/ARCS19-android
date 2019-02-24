@@ -3,10 +3,13 @@ package android.ieeecsvit.com.arcs19.Convoke;
 import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.ieeecsvit.com.arcs19.GlideApp;
 import android.ieeecsvit.com.arcs19.R;
 import android.net.Uri;
@@ -23,6 +26,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.github.siyamed.shapeimageview.RoundedImageView;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -32,6 +36,7 @@ public class ConvokeAdapter extends RecyclerView.Adapter<ConvokeAdapter.CustomVi
 
     private ArrayList<ConvokeClass> dataList;
     private Context context;
+    Dialog myDialog;
 
     public ConvokeAdapter(Context context, ArrayList<ConvokeClass> dataList) {
 
@@ -57,7 +62,6 @@ public class ConvokeAdapter extends RecyclerView.Adapter<ConvokeAdapter.CustomVi
 
             super(itemView);
             convokeItem = itemView.findViewById(R.id.convoke_root_item);
-            details = itemView.findViewById(R.id.convoke_details);
             topic = itemView.findViewById(R.id.convoke_topic);
             name = itemView.findViewById(R.id.convoke_name);
             image = itemView.findViewById(R.id.convoke_image);
@@ -80,63 +84,22 @@ public class ConvokeAdapter extends RecyclerView.Adapter<ConvokeAdapter.CustomVi
     public CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.item_convoke_view, parent, false);
-
         return new CustomViewHolder(parent.getContext(), view);
     }
 
     @SuppressLint("ResourceAsColor")
     @Override
     public void onBindViewHolder(@NonNull final ConvokeAdapter.CustomViewHolder holder, final int i) {
-        holder.details.setVisibility(View.GONE);
-        holder.details.setText(dataList.get(i).getmConvokeDetails());
         holder.topic.setText(dataList.get(i).getmConvokeCountry());
         holder.name.setText(dataList.get(i).getmConvokeName());
+
+        myDialog = new Dialog(context);
+        myDialog.setContentView(R.layout.dialog_about_speaker);
+        myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        myDialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
         //holder.image.setImageResource(dataList.get(i).getmConvokeImage());
         //example .load(FirebaseStorage.getInstance().getReference().child("Convoke").child("speakerName.png")) works
         GlideApp.with(context).load(dataList.get(i).getmStorageReference()).into(holder.image);
-
-
-        /*if (holder.bookmark.isChecked()){
-            holder.developer.setCardBackgroundColor(R.color.orange);
-            dataList.get(i).setmDeveloperBookmark(true);
-            notifyDataSetChanged();
-        }else {
-            holder.developer.setCardBackgroundColor(R.color.purple);
-            dataList.get(i).setmDeveloperBookmark(false);
-            notifyDataSetChanged();
-        }*/
-        //for FOLLOW button onClick
-        /*holder.follow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setAction(Intent.ACTION_VIEW);
-                intent.addCategory(Intent.CATEGORY_BROWSABLE);
-                intent.setData(Uri.parse(dataList.get(i).getmConvokeGithub()));
-                context.startActivity(intent);
-            }
-        });*/
-        /*holder.twitter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setAction(Intent.ACTION_VIEW);
-                intent.addCategory(Intent.CATEGORY_BROWSABLE);
-                intent.setData(Uri.parse(dataList.get(i).getmDeveloperTwitter()));
-                context.startActivity(intent);
-            }
-        });
-        holder.instagram.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setAction(Intent.ACTION_VIEW);
-                intent.addCategory(Intent.CATEGORY_BROWSABLE);
-                intent.setData(Uri.parse(dataList.get(i).getmDeveloperInstagram()));
-                context.startActivity(intent);
-            }
-        });*/
-
 
         //for FaceBook button onClick- open FaceBook Link
         holder.facebook.setOnClickListener(new View.OnClickListener() {
@@ -153,61 +116,11 @@ public class ConvokeAdapter extends RecyclerView.Adapter<ConvokeAdapter.CustomVi
         holder.convokeItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(holder.details.getVisibility() == View.GONE){
-                    holder.details.setVisibility(View.VISIBLE);
-
-                    final int widthSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
-                    final int heightSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
-                    holder.details.measure(widthSpec, heightSpec);
-
-                    ValueAnimator mAnimator = slideAnimator(0, holder.details.getMeasuredHeight());
-                    mAnimator.start();
-                }
-                else {
-                    int finalHeight = holder.details.getHeight();
-
-                    ValueAnimator mAnimator = slideAnimator(finalHeight, 0);
-
-                    mAnimator.addListener(new Animator.AnimatorListener() {
-                        @Override
-                        public void onAnimationStart(Animator animation) {
-
-                        }
-
-                        @Override
-                        public void onAnimationEnd(Animator animator) {
-                            //Height=0, but it set visibility to GONE
-                            holder.details.setVisibility(View.GONE);
-                        }
-
-                        @Override
-                        public void onAnimationCancel(Animator animation) {
-
-                        }
-
-                        @Override
-                        public void onAnimationRepeat(Animator animation) {
-
-                        }
-                    });
-                    mAnimator.start();
-                }
-            }
-            private ValueAnimator slideAnimator(int start, int end) {
-
-                ValueAnimator animator = ValueAnimator.ofInt(start, end);
-
-                animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-                    @Override
-                    public void onAnimationUpdate(ValueAnimator valueAnimator) {
-                        //Update Height
-                        int value = (Integer) valueAnimator.getAnimatedValue();
-                        ViewGroup.LayoutParams layoutParams = holder.details.getLayoutParams();
-                        layoutParams.height = value;
-                        holder.details.setLayoutParams(layoutParams);
-                    }
-                });
-                return animator;
+                ImageView imageView = myDialog.findViewById(R.id.about_speaker_image);
+                TextView textView = myDialog.findViewById(R.id.about_speaker_details);
+                GlideApp.with(context).load(dataList.get(i).getmStorageReference()).into(imageView);
+                textView.setText(dataList.get(i).getmConvokeDetails());
+                myDialog.show();
             }
         });
 
@@ -219,18 +132,6 @@ public class ConvokeAdapter extends RecyclerView.Adapter<ConvokeAdapter.CustomVi
     @Override
     public int getItemCount() {
         return dataList.size();
-    }
-
-
-    public Bitmap StringToBitMap(String encodedString) {
-        try {
-            byte[] encodeByte = Base64.decode(encodedString, Base64.DEFAULT);
-            Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
-            return bitmap;
-        } catch (Exception e) {
-            e.getMessage();
-            return null;
-        }
     }
 
 

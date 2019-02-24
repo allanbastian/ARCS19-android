@@ -16,6 +16,7 @@ import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import com.google.firebase.FirebaseError;
@@ -49,6 +50,7 @@ public class ConvokeFragment extends Fragment implements DiscreteScrollView.OnIt
     ProgressBar convokeProgress;
     //convokeList is used to store the list of convoke speakers
     ArrayList<ConvokeClass> convokeList = new ArrayList<ConvokeClass>();
+    ImageView previousConvokeButton, nextConvokeButton;
 
     //Cache
     SharedPreferences sp;
@@ -130,6 +132,25 @@ public class ConvokeFragment extends Fragment implements DiscreteScrollView.OnIt
 
          */
 
+
+        previousConvokeButton = rootView.findViewById(R.id.previous_sponsor_button);
+        nextConvokeButton = rootView.findViewById(R.id.next_sponsor_button);
+
+        rootView.findViewById(R.id.previous_convoke_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int realPosition = infiniteAdapter.getRealPosition(convokeRecycler.getCurrentItem());
+                smoothScrollToPreviousPosition(convokeRecycler,realPosition);
+            }
+        });
+        rootView.findViewById(R.id.next_convoke_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int realPosition = infiniteAdapter.getRealPosition(convokeRecycler.getCurrentItem());
+                smoothScrollToNextPosition(convokeRecycler,realPosition);
+            }
+        });
+
         convokeRecycler.setOrientation(DSVOrientation.HORIZONTAL);
         convokeRecycler.addOnItemChangedListener(this);
 
@@ -144,6 +165,30 @@ public class ConvokeFragment extends Fragment implements DiscreteScrollView.OnIt
         convokeRecycler.setSlideOnFlingThreshold(5000);
 
         return rootView;
+    }
+
+    private void smoothScrollToNextPosition( DiscreteScrollView scrollView, int pos) {
+        InfiniteScrollAdapter adapter = (InfiniteScrollAdapter) scrollView.getAdapter();
+        int destination;
+        if  (pos< convokeList.size()-1){
+            destination = pos + 1;
+        }else
+        {
+            destination = 0;
+        }
+        if (adapter != null) {
+            destination = adapter.getClosestPosition(destination);
+        }
+        scrollView.smoothScrollToPosition(destination);
+    }
+
+    private void smoothScrollToPreviousPosition( DiscreteScrollView scrollView, int pos) {
+        InfiniteScrollAdapter adapter = (InfiniteScrollAdapter) scrollView.getAdapter();
+        int destination = pos - 1;
+        if (adapter != null) {
+            destination = adapter.getClosestPosition(destination);
+        }
+        scrollView.smoothScrollToPosition(destination);
     }
 
     @Override

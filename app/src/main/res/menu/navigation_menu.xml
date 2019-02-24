@@ -42,7 +42,7 @@
     <item
         android:id="@+id/sponsors"
         android:icon="@drawable/sponsors"
-        android:title="Sponsors"
+        android:title="Previous Sponsors"
         android:checkable="true"
         />
 

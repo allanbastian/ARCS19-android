@@ -4,11 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_pattern"
     android:orientation="vertical">
 
-    <Space
-        android:layout_width="wrap_content"
-        android:layout_height="64dp" />
+    <TextView
+        android:id="@+id/sponsors_title"
+        android:layout_margin="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SPONSORS"
+        android:textAlignment="center"
+        android:fontFamily="@font/montserratregular"
+        android:textColor="@color/orange"
+        android:layout_gravity="center"
+        android:textSize="35sp"
+        />
 
 
     <LinearLayout

@@ -59,10 +59,10 @@ public class Profile extends AppCompatActivity {
     ArrayList<ProfileScrollClass> items;
     ProfileScrollAdapter adapter;
     TextView phoneNumber,emailID, name, registration, barcodeText;
-    ImageButton qrButton, backButton;
+    ImageButton  backButton;
     FloatingActionButton signOutButton;
     LinearLayout progressSection;
-    ImageView profileImage, barcodeImage;
+    ImageView profileImage,qrButton, barcodeImage;
 
     String USERNAME = "";
     String EMAIL = "";

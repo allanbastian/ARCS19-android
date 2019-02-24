@@ -5,108 +5,83 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:clickable="true"
+    android:layout_centerInParent="true"
     android:foreground="?android:attr/selectableItemBackground"
-    android:layout_width="300dp"
-    android:layout_height="400dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     app:cardBackgroundColor="@color/orange"
     android:layout_gravity="center"
-    android:layout_marginTop="16dp"
     android:layout_marginLeft="40dp"
     android:layout_marginRight="40dp"
-    android:layout_marginBottom="16dp"
     app:cardCornerRadius="8dp"
     app:cardElevation="12dp">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <LinearLayout
+        <android.support.v7.widget.CardView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_gravity="center"
+            app:cardBackgroundColor="@color/orange"
+            app:cardCornerRadius="100dp"
+            android:elevation="24dp">
+
+            <com.github.siyamed.shapeimageview.RoundedImageView
+                android:id="@+id/convoke_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:siRadius="100dp"
+                android:scaleType="centerCrop"
+                tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+        </android.support.v7.widget.CardView>
+
+        <TextView
+            android:id="@+id/convoke_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:textAlignment="center"
+            android:fontFamily="@font/montserrat_regular"
+            android:textSize="26sp"
+            android:textColor="@color/secondary_dark"
+            tools:text="Trisha Samson" />
 
-            <android.support.v7.widget.CardView
-                android:layout_width="180dp"
-                android:layout_height="180dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:layout_gravity="center"
-                app:cardBackgroundColor="@color/orange"
-                app:cardCornerRadius="90dp"
-                android:elevation="24dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:fontFamily="@font/montserrat_regular"
+            android:layout_height="wrap_content"
+            android:id="@+id/convoke_topic"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            android:layout_marginTop="8dp"
+            android:text="Germany"
+            android:textColor="@color/secondary_dark"/>
+        <!--<Button
+            android:id="@+id/convoke_follow_button"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:textColor="@android:color/white"
+            android:layout_margin="12dp"
+            android:layout_height="32dp"
+            android:text="Follow"
+            android:background="@drawable/convoke_follow_button_layout"
+            android:drawableLeft="@drawable/ic_add_black_8dp"/>-->
 
-                <com.github.siyamed.shapeimageview.RoundedImageView
-                    android:id="@+id/convoke_image"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:siRadius="80dp"
-                    android:scaleType="centerCrop"
-                    tools:srcCompat="@tools:sample/backgrounds/scenic" />
-
-            </android.support.v7.widget.CardView>
-
-            <TextView
-                android:id="@+id/convoke_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:fontFamily="@font/montserrat_regular"
-                android:textSize="26sp"
-                android:textColor="@color/secondary_dark"
-                tools:text="Trisha Samson" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:fontFamily="@font/montserrat_regular"
-                android:layout_height="wrap_content"
-                android:id="@+id/convoke_topic"
-                android:textAlignment="center"
-                android:textSize="14sp"
-                android:layout_marginTop="8dp"
-                android:text="Germany"
-                android:textColor="@color/secondary_dark"/>
-
-            <TextView
-                android:layout_margin="16dp"
-                android:id="@+id/convoke_details"
-                android:fontFamily="@font/montserrat_regular"
-                android:layout_width="match_parent"
-                android:textSize="18sp"
-                android:textColor="@color/white"
-                android:text="She will be at VIT"
-                android:textAlignment="center"
-                android:layout_height="wrap_content" />
-
-            <!--<Button
-                android:id="@+id/convoke_follow_button"
-                android:layout_gravity="center_horizontal"
-                android:layout_width="wrap_content"
-                android:textColor="@android:color/white"
-                android:layout_margin="12dp"
-                android:layout_height="32dp"
-                android:text="Follow"
-                android:background="@drawable/convoke_follow_button_layout"
-                android:drawableLeft="@drawable/ic_add_black_8dp"/>-->
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="4dp" />
-
-        </LinearLayout>
-
-
-
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="4dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/convoke_follow_bar"
             android:orientation="horizontal"
-            android:layout_alignParentBottom="true"
             android:layout_margin="16dp">
-
             <Space
                 android:layout_width="0dp"
                 android:layout_height="24dp"
@@ -114,8 +89,8 @@
 
             <ImageView
                 android:id="@+id/developer_facebook"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:src="@drawable/linkedin_vector"/>
 
 
@@ -137,9 +112,13 @@
 
         </LinearLayout>
 
+    </LinearLayout>
 
 
-    </RelativeLayout>
+
+
+
+
 
 
 

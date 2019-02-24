@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/developer_root_layout"
     android:overScrollMode="always"
+    android:background="@drawable/bg_pattern"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -13,19 +14,32 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-    <android.support.v7.widget.RecyclerView
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:id="@+id/dev_recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:listitem="@layout/developers_card"
-        />
+        <TextView
+            android:id="@+id/convoke_title"
+            android:layout_margin="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DEVELOPERS"
+            android:textAlignment="center"
+            android:fontFamily="@font/montserratregular"
+            android:textColor="@color/orange"
+            android:layout_gravity="center"
+            android:textSize="35sp"
+            />
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="50dp" />
+        <android.support.v7.widget.RecyclerView
+            android:layout_marginBottom="16dp"
+            android:id="@+id/dev_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            tools:listitem="@layout/developers_card"
+            />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
 
     </LinearLayout>
 
