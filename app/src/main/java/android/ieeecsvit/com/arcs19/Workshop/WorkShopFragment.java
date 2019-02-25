@@ -50,7 +50,7 @@ public class WorkShopFragment extends Fragment implements DiscreteScrollView.OnI
     StorageReference storageReference, filepath, speakerImage;
 
     FirebaseDatabase firebaseDatabase;
-    DatabaseReference eventRef,fileUploadref;
+    DatabaseReference eventRef;
 
 
     @Nullable
@@ -60,9 +60,8 @@ public class WorkShopFragment extends Fragment implements DiscreteScrollView.OnI
 
         //Initialise Firebase
         firebaseDatabase = FirebaseDatabase.getInstance();
-        storageReference = FirebaseStorage.getInstance().getReference().child("Events"); //Reference to the Hackathon folder of firebase storage
-        eventRef = firebaseDatabase.getReference().child("Events");   //Hackathon database reference
-        fileUploadref = firebaseDatabase.getReference().child("FileUpload"); //FileUpload database reference
+        storageReference = FirebaseStorage.getInstance().getReference().child("Events"); //Reference to the Workshop folder of firebase storage
+        eventRef = firebaseDatabase.getReference().child("Events");   //Events database reference
         eventRef.keepSynced(true);
 
         //initialisation of the view objects
@@ -184,7 +183,7 @@ public class WorkShopFragment extends Fragment implements DiscreteScrollView.OnI
         price.setText(String.valueOf(obj.getPrice()));
         location.setText(obj.getLocation());
         authDesc.setText(obj.getAuthDesc());
-        GlideApp.with(getContext()).load(obj.getsImage()).into(authImg);
+        //GlideApp.with(getContext()).load(obj.getsImage()).into(authImg);
         authName.setText(obj.getAuthName());
     }
 }
