@@ -17,9 +17,11 @@ import android.ieeecsvit.com.arcs19.Login.UserClass;
 import android.ieeecsvit.com.arcs19.MainActivity;
 import android.ieeecsvit.com.arcs19.R;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -84,6 +86,7 @@ public class Profile extends AppCompatActivity {
 
 
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -146,12 +149,6 @@ public class Profile extends AppCompatActivity {
             }
         });
 
-        int MY_CAMERA_REQUEST_CODE = 100;
-        if (checkSelfPermission(Manifest.permission.CAMERA)
-                != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(new String[]{Manifest.permission.CAMERA},
-                    MY_CAMERA_REQUEST_CODE);
-        }
 
         //To display the barcode for scanning
         qrButton.setOnClickListener(new View.OnClickListener() {
@@ -195,6 +192,12 @@ public class Profile extends AppCompatActivity {
         profileImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int MY_CAMERA_REQUEST_CODE = 100;
+                if (checkSelfPermission(Manifest.permission.CAMERA)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    requestPermissions(new String[]{Manifest.permission.CAMERA},
+                            MY_CAMERA_REQUEST_CODE);
+                }
                 changePic(profileImage);
             }
         });
