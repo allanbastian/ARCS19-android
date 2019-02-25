@@ -235,10 +235,9 @@
                 <ImageView
                     android:layout_gravity="center"
                     android:layout_margin="16dp"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:id="@+id/workshop_speaker_img"
-                    android:background="@drawable/ic_launcher_foreground" />
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/workshop_speaker_img" />
 
                 <TextView
                     android:layout_width="wrap_content"

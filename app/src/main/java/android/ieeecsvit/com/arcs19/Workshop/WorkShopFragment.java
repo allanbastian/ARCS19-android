@@ -12,6 +12,7 @@ import android.support.design.widget.AppBarLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -84,7 +85,6 @@ public class WorkShopFragment extends Fragment implements DiscreteScrollView.OnI
         appbar.setVisibility(View.GONE);
         nestedScrollView.setVisibility(View.GONE);
         speakerLayout = rootview.findViewById(R.id.workshop_speaker_layout);
-        speakerLayout.setVisibility(View.GONE);
 
         rootview.findViewById(R.id.workshop_previous_button).setOnClickListener(this);
         rootview.findViewById(R.id.workshop_next_button).setOnClickListener(this);
@@ -93,6 +93,7 @@ public class WorkShopFragment extends Fragment implements DiscreteScrollView.OnI
 
 
         eventRef.addValueEventListener(new ValueEventListener() {
+
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 //Getting each object and storing in variable, and storing them in ArrayList
@@ -112,6 +113,7 @@ public class WorkShopFragment extends Fragment implements DiscreteScrollView.OnI
                 workshopProgress.setVisibility(View.GONE);
                 appbar.setVisibility(View.VISIBLE);
                 nestedScrollView.setVisibility(View.VISIBLE);
+                onItemChanged(workshopList.get(0));
 
             }
 
@@ -182,18 +184,21 @@ public class WorkShopFragment extends Fragment implements DiscreteScrollView.OnI
     //Changing the data as the button is clicked
     public void onItemChanged(DiscreteScrollClass obj)
     {
+        speakerLayout.setVisibility(View.GONE);
         date.setText(obj.getDate());
         header.setText(obj.getName());
         description.setText(obj.getDes());
         price.setText(String.valueOf(obj.getPrice()));
         location.setText(obj.getLocation());
+        Log.e("Speaker",speaker);
+        if(!speaker.equals("ARCS")) {
 
-        if(!speaker.equals("NULL")) {
-
-            authDesc.setText(obj.getAuthDesc());
-            GlideApp.with(getContext()).load(obj.getsImage()).into(authImg);
-            authName.setText(obj.getAuthName());
             speakerLayout.setVisibility(View.VISIBLE);
+            authDesc.setText(obj.getAuthDesc());
+            GlideApp.with(getContext()).load(obj.getsImage())
+                    .fitCenter()
+                    .into(authImg);
+            authName.setText(obj.getAuthName());
         }
 
     }
