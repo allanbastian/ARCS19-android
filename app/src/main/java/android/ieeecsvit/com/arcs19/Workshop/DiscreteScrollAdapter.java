@@ -1,6 +1,7 @@
 package android.ieeecsvit.com.arcs19.Workshop;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.ieeecsvit.com.arcs19.DiscreteScrollClass;
 import android.ieeecsvit.com.arcs19.GlideApp;
 import android.ieeecsvit.com.arcs19.R;
@@ -73,7 +74,10 @@ public class DiscreteScrollAdapter extends RecyclerView.Adapter<DiscreteScrollAd
     public void onBindViewHolder(@NonNull ScrollViewHolder holder, int position) {
 
         //setting the image from firebase into the discrete scroll adapter
-        GlideApp.with(mContext).load(dataList.get(position).getImage()).into(holder.icon);
+        //GlideApp.with(mContext).load(dataList.get(position).getImage()).into(holder.icon);
+        int id = mContext.getResources().getIdentifier(dataList.get(position).getIcon(), "drawable", mContext.getPackageName());
+        Drawable drawable = mContext.getResources().getDrawable(id);
+        holder.icon.setImageDrawable(drawable);
 
         //holder.icon.setImageResource(dataList.get(position).getIcon());
     }

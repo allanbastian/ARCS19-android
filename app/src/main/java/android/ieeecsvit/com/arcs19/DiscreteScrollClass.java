@@ -5,10 +5,8 @@ package android.ieeecsvit.com.arcs19;
 import com.google.firebase.storage.StorageReference;
 
 public class DiscreteScrollClass {
-
-    int icon;
     StorageReference image, sImage;
-    String name,price,sname, date ;
+    String name,price,icon,sname, date ;
     String des,loc, sDesc;
 
     public DiscreteScrollClass(){}
@@ -23,9 +21,9 @@ public class DiscreteScrollClass {
     }
 
     //Used in the Workshop Fragment
-    public DiscreteScrollClass(StorageReference image, String date, String name, String des, String loc, String sDesc, String price, StorageReference sImage, String sname) {
+    public DiscreteScrollClass(String image, String date, String name, String des, String loc, String sDesc, String price, StorageReference sImage, String sname) {
 
-        this.image = image; //Event image
+        this.icon = image; //Event image
         this.date = date;   //Event date
         this.name = name;   //Event Name
         this.des = des;     //Event des
@@ -48,11 +46,11 @@ public class DiscreteScrollClass {
         return sImage;
     }
 
-    public int getIcon() {
+    public String getIcon() {
         return icon;
     }
 
-    public void setIcon(int icon) {
+    public void setIcon(String icon) {
         this.icon = icon;
     }
 

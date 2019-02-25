@@ -32,12 +32,12 @@ public class DeveloperFragment extends Fragment {
 
         //Loading data for the Developer's list
         //DiscreteScrollClass(StorageReference developerImage, null,String developerName,String developerPost, null, String LinkedLink,  null,null, String GithubLink));
-        developerList.add(new DiscreteScrollClass(storageReference.child("allanBastian.png"),null,"Allan Bastian", "Mentor",null,"https://www.linkedin.com/in/allan-bastian-31b4aa13b",null,null,"https://github.com/allanbastian"));
-        developerList.add(new DiscreteScrollClass(storageReference.child("siddharthGoradia.png"),null,"Siddharth Goradia", "Designer and Developer",null,"https://www.linkedin.com/in/siddharth-goradia-831979155",null,null,"https://github.com/Siddharth-14"));
-        developerList.add(new DiscreteScrollClass(storageReference.child("gauravJha.png"),null,"Gaurav Jha", "Developer",null,"https://www.linkedin.com/in/gaurav-jha-90aa9b152",null,null,"https://github.com/gauravjha70"));
-        developerList.add(new DiscreteScrollClass(storageReference.child("koushikSaha.png"),null,"Koushik Saha", "Developer",null,"https://www.linkedin.com/in/koushik-saha-42317315b/",null,null,"https://github.com/Kshik02"));
-        developerList.add(new DiscreteScrollClass(storageReference.child("devarshPatel.png"),null,"Devarsh Patel", "Developer",null,"https://www.linkedin.com/in/devarsh-patel-399971146",null,null,"https://github.com/dbpatel2000"));
-        developerList.add(new DiscreteScrollClass(storageReference.child("anishGanguly.png"),null,"Anish Ganguly", "Developer",null,"https://www.linkedin.com/in/anish-ganguly-5b4615142/",null,null,"https://github.com/Ragingvenomicity"));
+        developerList.add(new DiscreteScrollClass("cloud",null,"Allan Bastian", "Mentor",null,"https://www.linkedin.com/in/allan-bastian-31b4aa13b",null,null,"https://github.com/allanbastian"));
+        developerList.add(new DiscreteScrollClass("cloud",null,"Siddharth Goradia", "Designer and Developer",null,"https://www.linkedin.com/in/siddharth-goradia-831979155",null,null,"https://github.com/Siddharth-14"));
+        developerList.add(new DiscreteScrollClass("cloud",null,"Gaurav Jha", "Developer",null,"https://www.linkedin.com/in/gaurav-jha-90aa9b152",null,null,"https://github.com/gauravjha70"));
+        developerList.add(new DiscreteScrollClass("cloud",null,"Koushik Saha", "Developer",null,"https://www.linkedin.com/in/koushik-saha-42317315b/",null,null,"https://github.com/Kshik02"));
+        developerList.add(new DiscreteScrollClass("cloud",null,"Devarsh Patel", "Developer",null,"https://www.linkedin.com/in/devarsh-patel-399971146",null,null,"https://github.com/dbpatel2000"));
+        developerList.add(new DiscreteScrollClass("cloud",null,"Anish Ganguly", "Developer",null,"https://www.linkedin.com/in/anish-ganguly-5b4615142/",null,null,"https://github.com/Ragingvenomicity"));
 
 
         DeveloperAdapter adapter = new DeveloperAdapter(developerList,getContext());

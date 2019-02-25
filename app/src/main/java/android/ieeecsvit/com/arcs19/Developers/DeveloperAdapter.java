@@ -3,6 +3,7 @@ package android.ieeecsvit.com.arcs19.Developers;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.ieeecsvit.com.arcs19.DiscreteScrollClass;
 import android.ieeecsvit.com.arcs19.GlideApp;
 import android.ieeecsvit.com.arcs19.R;
@@ -62,7 +63,10 @@ public class DeveloperAdapter extends RecyclerView.Adapter<DeveloperAdapter.Cust
         holder.post.setText(dataList.get(i).getDes());
         holder.github.setClickable(true);
         holder.linkedin.setClickable(true);
-        GlideApp.with(mContext).load(dataList.get(i).getImage()).into(holder.image);
+        //GlideApp.with(mContext).load(dataList.get(i).getImage()).into(holder.image);
+        int id = mContext.getResources().getIdentifier(dataList.get(i).getIcon(), "drawable", mContext.getPackageName());
+        Drawable drawable = mContext.getResources().getDrawable(id);
+        holder.image.setImageDrawable(drawable);
         holder.github.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

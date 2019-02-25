@@ -45,9 +45,9 @@ public class WorkShopFragment extends Fragment implements DiscreteScrollView.OnI
     ProgressBar workshopProgress;
 
     // for name of the event, description of the event, Location of the event, price of the event, speaker for the event and deatails of the speaker, respectively
-    String eventName, eventDate, eventDescription, eventLocation, eventPrice, speaker, speakerDetails;
+    String eventName, eventDate, eventDescription, eventLocation, eventPrice, speaker, speakerDetails, eventImage;
 
-    StorageReference storageReference, filepath, eventImage, speakerImage;
+    StorageReference storageReference, filepath, speakerImage;
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference eventRef,fileUploadref;
@@ -96,7 +96,7 @@ public class WorkShopFragment extends Fragment implements DiscreteScrollView.OnI
                         //
                         eventName= snapshot.getKey().toString(); //Event Name
                         eventDate = snapshot.child("date").getValue().toString(); // Event Date
-                        eventImage = storageReference.child(eventName+".png"); //Event Logo
+                        eventImage = snapshot.child("image").getValue().toString(); //Event Logo
                         eventDescription= snapshot.child("description").getValue().toString(); // Event Description
                         eventLocation=snapshot.child("location").getValue().toString(); // Event location
                         eventPrice=snapshot.child("price").getValue().toString(); //Event price
