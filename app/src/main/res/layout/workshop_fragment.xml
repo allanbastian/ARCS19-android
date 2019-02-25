@@ -227,6 +227,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="24dp"
+                android:id="@+id/workshop_speaker_layout"
                 android:background="@color/orange"
                 android:orientation="vertical"
                 android:gravity="center">
@@ -261,11 +262,11 @@
                     android:textColor="#fff"
                     android:text="Praesent ac lacus eu turpis viverra hendrerit in eget leo. Nulla tincidunt rhoncus turpis pulvinar egestas. Phasellus eget sem nibh. Nulla non mauris vel erat dapibus eleifend sed lobortis orci. In a tempor neque."/>
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp" />
-            </LinearLayout>
 
+            </LinearLayout>
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="100dp" />
 
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>

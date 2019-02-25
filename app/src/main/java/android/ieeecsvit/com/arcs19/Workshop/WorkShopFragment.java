@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -43,6 +44,8 @@ public class WorkShopFragment extends Fragment implements DiscreteScrollView.OnI
     AppBarLayout appbar;
     NestedScrollView nestedScrollView;
     ProgressBar workshopProgress;
+
+    LinearLayout speakerLayout;
 
     // for name of the event, description of the event, Location of the event, price of the event, speaker for the event and deatails of the speaker, respectively
     String eventName, eventDate, eventDescription, eventLocation, eventPrice, speaker, speakerDetails, eventImage;
@@ -80,6 +83,8 @@ public class WorkShopFragment extends Fragment implements DiscreteScrollView.OnI
         nestedScrollView = rootview.findViewById(R.id.workshop_nested_scroll);
         appbar.setVisibility(View.GONE);
         nestedScrollView.setVisibility(View.GONE);
+        speakerLayout = rootview.findViewById(R.id.workshop_speaker_layout);
+        speakerLayout.setVisibility(View.GONE);
 
         rootview.findViewById(R.id.workshop_previous_button).setOnClickListener(this);
         rootview.findViewById(R.id.workshop_next_button).setOnClickListener(this);
@@ -182,8 +187,14 @@ public class WorkShopFragment extends Fragment implements DiscreteScrollView.OnI
         description.setText(obj.getDes());
         price.setText(String.valueOf(obj.getPrice()));
         location.setText(obj.getLocation());
-        authDesc.setText(obj.getAuthDesc());
-        //GlideApp.with(getContext()).load(obj.getsImage()).into(authImg);
-        authName.setText(obj.getAuthName());
+
+        if(!speaker.equals("NULL")) {
+
+            authDesc.setText(obj.getAuthDesc());
+            GlideApp.with(getContext()).load(obj.getsImage()).into(authImg);
+            authName.setText(obj.getAuthName());
+            speakerLayout.setVisibility(View.VISIBLE);
+        }
+
     }
 }
