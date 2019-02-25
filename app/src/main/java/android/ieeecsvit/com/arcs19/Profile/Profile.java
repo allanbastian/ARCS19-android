@@ -1,9 +1,11 @@
 package android.ieeecsvit.com.arcs19.Profile;
 
+import android.Manifest;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -46,6 +48,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 import retrofit2.Call;
@@ -142,6 +145,13 @@ public class Profile extends AppCompatActivity {
 
             }
         });
+
+        int MY_CAMERA_REQUEST_CODE = 100;
+        if (checkSelfPermission(Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.CAMERA},
+                    MY_CAMERA_REQUEST_CODE);
+        }
 
         //To display the barcode for scanning
         qrButton.setOnClickListener(new View.OnClickListener() {
@@ -243,6 +253,7 @@ public class Profile extends AppCompatActivity {
 
                 } else if (items[which].equals("Take picture")) {
 
+
                     Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                     startActivityForResult(i, CAPTURE_IMAGE);
                 }
@@ -252,10 +263,17 @@ public class Profile extends AppCompatActivity {
     }
     //Handling the Request cases from changePic
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == CAPTURE_IMAGE) {
-            Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
+        if (requestCode == CAPTURE_IMAGE && data !=null) {
+            Bitmap thumbnail = null;
+            try{
+                thumbnail = (Bitmap) data.getExtras().get("data");
+            }catch (NullPointerException e){
+                e.printStackTrace();
+            }
+
+            assert thumbnail != null;
             storeImage(thumbnail);
-        } else if (requestCode == SELECT_PICTURE) {
+        } else if (requestCode == SELECT_PICTURE && data !=null) {
             Uri mImageUri = data.getData();
             Bitmap thumbnail = null;
             try {

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Profile.Profile"
-    android:background="@drawable/profile_background">
+    android:background="@color/colorPrimary">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
@@ -90,6 +90,7 @@
         android:layout_width="match_parent"
         android:overScrollMode="always"
         android:layout_height="match_parent"
+        android:background="@drawable/bg_pattern"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
