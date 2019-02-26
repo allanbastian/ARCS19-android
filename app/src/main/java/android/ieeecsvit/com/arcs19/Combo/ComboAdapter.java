@@ -50,7 +50,7 @@ public class ComboAdapter extends RecyclerView.Adapter<ComboAdapter.CustomViewHo
 
     @Override
     public void onBindViewHolder(@NonNull final ComboAdapter.CustomViewHolder holder, final int i) {
-        Glide.with(holder.itemView.getContext()).load(dataList.get(i).getIcon()).into(holder.image);
+        Glide.with(holder.itemView.getContext()).load(dataList.get(i).getImage()).into(holder.image);
         holder.name.setText(dataList.get(i).getName());
         holder.price.setText(dataList.get(i).getPrice());
         holder.shortDes.setText(dataList.get(i).getsDesc());

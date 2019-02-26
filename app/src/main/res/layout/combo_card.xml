@@ -21,6 +21,7 @@
 
             <ImageView
                 android:id="@+id/combo_image"
+                android:scaleType="centerCrop"
                 android:layout_width="match_parent"
                 android:layout_height="150dp" />
 
@@ -31,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:text="COMBO 1"
                 android:textAllCaps="true"
-                android:textColor="@color/white"
+                android:textColor="@color/orange"
                 android:fontFamily="@font/montserrat_regular"
                 android:textSize="20sp"
                 android:textAlignment="center"/>
@@ -45,7 +46,7 @@
                 android:maxLines="4"
                 android:textColor="@color/white"
                 android:autoSizeTextType="uniform"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:text="This is the best combo for this price!"
                 android:fontFamily="@font/montserrat_regular"
                 android:textAlignment="center"/>
