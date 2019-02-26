@@ -63,7 +63,7 @@ public class Profile extends AppCompatActivity {
     DiscreteScrollView scrollView;
     ArrayList<ProfileScrollClass> items;
     ProfileScrollAdapter adapter;
-    TextView phoneNumber,emailID, name, registration, barcodeText;
+    TextView phoneNumber,emailID, name, registration, barcodeText, regEventsText;
     ImageButton  backButton;
     FloatingActionButton signOutButton;
     LinearLayout progressSection;
@@ -100,6 +100,7 @@ public class Profile extends AppCompatActivity {
         phoneNumber = findViewById(R.id.mobile_number);
         registration = findViewById(R.id.registration_number);
         progressSection = findViewById(R.id.progress_section);
+        regEventsText = findViewById(R.id.registered_events_text);
 
         apiInterface = APIClient.getClient().create(APIInterface.class);
 
@@ -352,6 +353,7 @@ public class Profile extends AppCompatActivity {
                             String tempList[] = s.split("\\+");
                             for (int j = 0; j < tempList.length; j++) {
                                 regEvents.add(tempList[j]);
+                                Log.e("regEvents",tempList[j]);
                             }
                         }
                         progressSection.setVisibility(View.GONE);
@@ -396,24 +398,38 @@ public class Profile extends AppCompatActivity {
                         Set<String> eventSet = new HashSet<String>(regEvents);
                         editor.putStringSet("events", eventSet);
                         editor.putBoolean("profileUpdateAvail", true);
+                        Log.e("event",regEvents.get(0));
                         editor.commit();
                         setEvents();
                     }
                     catch (Exception e)
                     {
-                        Toast.makeText(getApplicationContext(),eventList.get(0).get("error"),Toast.LENGTH_LONG).show();
-                        Logout();
+                        try {
+                            Toast.makeText(getApplicationContext(), eventList.get(0).get("error"), Toast.LENGTH_LONG).show();
+                            Logout();
+                        }
+                        catch (Exception ex){}
                     }
 
                 }
 
                 @Override
                 public void onFailure(Call<ArrayList<HashMap<String, String>>> call, Throwable t) {
-
+                    Log.e("Failure",t.getMessage());
                 }
             });
 
         }
+
+        if(regEvents.size() == 0)
+        {
+            regEventsText.setText("No Events Registered Yet");
+        }
+        else
+        {
+            regEventsText.setText("Your Registered Events");
+        }
+
     }
 
 }

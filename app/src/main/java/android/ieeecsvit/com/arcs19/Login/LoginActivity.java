@@ -12,6 +12,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -219,6 +220,8 @@ public class LoginActivity extends AppCompatActivity {
                     editor.putString("email", emailID.getText().toString());         //Email
                     editor.putString("password", password.getText().toString());     //Password
                     editor.apply();
+
+                    Log.e("JWTToken",jwtToken);
 
                     //Initialising the username
                     editor.putString("username", USERNAME);
