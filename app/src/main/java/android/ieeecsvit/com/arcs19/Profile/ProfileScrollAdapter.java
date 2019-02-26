@@ -31,17 +31,22 @@ public class ProfileScrollAdapter extends RecyclerView.Adapter<ProfileScrollAdap
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ProfileScrollAdapter.ScrollViewHolder scrollViewHolder, int i) {
-//        scrollViewHolder.icon.setImageResource(items.get(i).getIcon());
+    public void onBindViewHolder(@NonNull ProfileScrollAdapter.ScrollViewHolder holder, int i) {
 
         switch (items.get(i))
         {
-            case "UI/UX Workshop" : break;
-            case "Blockchain and Cryptocurrency Workshop" : break;
-            case "Convoke'19" : break;
-            case "Cloud Computing Workshop" : break;
-            case "Machine Learning Workshop" : break;
-            case "Cyber-Security Workshop" : break;
+            case "UI/UX Workshop" : holder.icon.setImageResource(R.drawable.uiux);
+                                    break;
+            case "Blockchain and Cryptocurrency Workshop" : holder.icon.setImageResource(R.drawable.blockchain);
+                                                            break;
+            case "Convoke'19" : holder.icon.setImageResource(R.drawable.convoke);
+                                break;
+            case "Cloud Computing Workshop" : holder.icon.setImageResource(R.drawable.cloud);
+                                              break;
+            case "Machine Learning Workshop" : holder.icon.setImageResource(R.drawable.machinelearning);
+                                               break;
+            case "Cyber-Security Workshop" : holder.icon.setImageResource(R.drawable.cybersecurity);
+                                             break;
             default: break;
         }
 
