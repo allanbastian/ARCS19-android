@@ -21,10 +21,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -58,12 +60,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class Profile extends AppCompatActivity {
+public class Profile extends AppCompatActivity implements DiscreteScrollView.OnItemChangedListener{
     private static final int SELECT_PICTURE = 1, CAPTURE_IMAGE = 2;
     DiscreteScrollView scrollView;
     ArrayList<ProfileScrollClass> items;
     ProfileScrollAdapter adapter;
-    TextView phoneNumber,emailID, name, registration, barcodeText, regEventsText;
+    TextView phoneNumber,emailID, name, registration, barcodeText, regEventsText, eventName;
     ImageButton  backButton;
     FloatingActionButton signOutButton;
     LinearLayout progressSection;
@@ -101,6 +103,7 @@ public class Profile extends AppCompatActivity {
         registration = findViewById(R.id.registration_number);
         progressSection = findViewById(R.id.progress_section);
         regEventsText = findViewById(R.id.registered_events_text);
+        eventName = findViewById(R.id.event_name);
 
         apiInterface = APIClient.getClient().create(APIInterface.class);
 
@@ -206,14 +209,13 @@ public class Profile extends AppCompatActivity {
 
 
         scrollView = findViewById(R.id.profileScroll);
+        scrollView.addOnItemChangedListener(this);
+
+        onItemChanged("");
 
         //Set events scroll view
         setEvents();
 
-
-    }
-
-    private void onItemChanged(ProfileScrollClass profileScrollClass) {
     }
 
     private void Logout()
@@ -363,6 +365,17 @@ public class Profile extends AppCompatActivity {
                         editor.putBoolean("profileUpdateAvail", true);
                         editor.commit();
                         setEvents();
+                        if(regEvents.size() == 0)
+                        {
+                            regEventsText.setText("No Events Registered Yet");
+                            eventName.setVisibility(View.GONE);
+                        }
+                        else
+                        {
+                            regEventsText.setText("Your Registered Events");
+                            eventName.setVisibility(View.VISIBLE);
+                            onItemChanged(regEvents.get(0));
+                        }
                     }
                     catch (Exception e)
                     {
@@ -398,9 +411,20 @@ public class Profile extends AppCompatActivity {
                         Set<String> eventSet = new HashSet<String>(regEvents);
                         editor.putStringSet("events", eventSet);
                         editor.putBoolean("profileUpdateAvail", true);
-                        Log.e("event",regEvents.get(0));
                         editor.commit();
                         setEvents();
+                        if(regEvents.size() == 0)
+                        {
+                            regEventsText.setText("No Events Registered Yet");
+                            eventName.setVisibility(View.GONE);
+                        }
+                        else
+                        {
+                            regEventsText.setText("Your Registered Events");
+                            eventName.setVisibility(View.VISIBLE);
+                            onItemChanged(regEvents.get(0));
+                        }
+
                     }
                     catch (Exception e)
                     {
@@ -421,15 +445,18 @@ public class Profile extends AppCompatActivity {
 
         }
 
-        if(regEvents.size() == 0)
-        {
-            regEventsText.setText("No Events Registered Yet");
-        }
-        else
-        {
-            regEventsText.setText("Your Registered Events");
-        }
+        Log.e("size",regEvents.size()+"");
+
 
     }
 
+    public void onItemChanged(String currentEvent)
+    {
+        eventName.setText(currentEvent);
+    }
+
+    @Override
+    public void onCurrentItemChanged(@Nullable RecyclerView.ViewHolder viewHolder, int adapterPosition) {
+        onItemChanged(regEvents.get(adapterPosition));
+    }
 }
