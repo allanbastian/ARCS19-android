@@ -158,17 +158,23 @@ public class Profile extends AppCompatActivity implements DiscreteScrollView.OnI
         qrButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
-                try {
-                    BitMatrix bitMatrix = multiFormatWriter.encode(REGNUMBER, BarcodeFormat.CODE_128,600,300);
-                    BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
-                    Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
-                    barcodeImage.setImageBitmap(bitmap);
-                } catch (WriterException e) {
-                    e.printStackTrace();
+                if(!REGNUMBER.isEmpty()) {
+                    MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
+                    try {
+                        BitMatrix bitMatrix = multiFormatWriter.encode(REGNUMBER, BarcodeFormat.CODE_128, 600, 300);
+                        BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
+                        Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
+                        barcodeImage.setImageBitmap(bitmap);
+                    } catch (WriterException e) {
+                        e.printStackTrace();
+                    }
+                    barcodeText.setText(REGNUMBER);
+                    myDialog.show();
                 }
-                barcodeText.setText(REGNUMBER);
-                myDialog.show();
+                else
+                {
+                    Toast.makeText(getApplicationContext(),"This feature is currently unavailable",Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
