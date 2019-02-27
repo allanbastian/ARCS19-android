@@ -20,7 +20,7 @@ import java.util.ArrayList;
 public class DeveloperFragment extends Fragment {
 
     //developerList is used to store the list of developers for the ARCS 2019 Androdi app.
-    ArrayList<DiscreteScrollClass> developerList = new ArrayList<DiscreteScrollClass>();
+    ArrayList<DeveloperClass> developerList = new ArrayList<DeveloperClass>();
     StorageReference storageReference;
 
 
@@ -33,12 +33,12 @@ public class DeveloperFragment extends Fragment {
 
         //Loading data for the Developer's list
         //DiscreteScrollClass(StorageReference developerImage, null,String developerName,String developerPost, null, String LinkedLink,  null,null, String GithubLink));
-        developerList.add(new DiscreteScrollClass("allan_bastian",null,"Allan Bastian", "Mentor",null,"https://www.linkedin.com/in/allan-bastian-31b4aa13b",null,null,"https://github.com/allanbastian"));
-        developerList.add(new DiscreteScrollClass("siddharth",null,"Siddharth Goradia", "Designer and Developer",null,"https://www.linkedin.com/in/siddharth-goradia-831979155",null,null,"https://github.com/Siddharth-14"));
-        developerList.add(new DiscreteScrollClass("gaurav_jha",null,"Gaurav Jha", "Developer",null,"https://www.linkedin.com/in/gaurav-jha-90aa9b152",null,null,"https://github.com/gauravjha70"));
-        developerList.add(new DiscreteScrollClass("koushik_saha",null,"Koushik Saha", "Developer",null,"https://www.linkedin.com/in/koushik-saha-42317315b/",null,null,"https://github.com/Kshik02"));
-        developerList.add(new DiscreteScrollClass("devarsh",null,"Devarsh Patel", "Developer",null,"https://www.linkedin.com/in/devarsh-patel-399971146",null,null,"https://github.com/dbpatel2000"));
-        developerList.add(new DiscreteScrollClass("anish_ganguly",null,"Anish Ganguly", "Developer",null,"https://www.linkedin.com/in/anish-ganguly-5b4615142/",null,null,"https://github.com/Ragingvenomicity"));
+        developerList.add(new DeveloperClass(R.drawable.allan_bastian,"Allan Bastian", "Mentor","https://www.linkedin.com/in/allan-bastian-31b4aa13b","https://github.com/allanbastian"));
+        developerList.add(new DeveloperClass(R.drawable.siddharth,"Siddharth Goradia", "Designer and Developer","https://www.linkedin.com/in/siddharth-goradia-831979155","https://github.com/Siddharth-14"));
+        developerList.add(new DeveloperClass(R.drawable.gaurav_jha,"Gaurav Jha", "Developer","https://www.linkedin.com/in/gaurav-jha-90aa9b152","https://github.com/gauravjha70"));
+        developerList.add(new DeveloperClass(R.drawable.koushik_saha,"Koushik Saha", "Developer","https://www.linkedin.com/in/koushik-saha-42317315b/","https://github.com/Kshik02"));
+        developerList.add(new DeveloperClass(R.drawable.devarsh,"Devarsh Patel", "Developer","https://www.linkedin.com/in/devarsh-patel-399971146","https://github.com/dbpatel2000"));
+        developerList.add(new DeveloperClass(R.drawable.anish_ganguly,"Anish Ganguly", "Developer","https://www.linkedin.com/in/anish-ganguly-5b4615142/","https://github.com/Ragingvenomicity"));
 
 
         DeveloperAdapter adapter = new DeveloperAdapter(developerList,getContext());

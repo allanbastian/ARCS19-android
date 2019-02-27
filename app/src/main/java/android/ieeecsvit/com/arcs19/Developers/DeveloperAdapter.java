@@ -20,10 +20,10 @@ import java.util.ArrayList;
 
 public class DeveloperAdapter extends RecyclerView.Adapter<DeveloperAdapter.CustomViewHolder> {
 
-    private ArrayList<DiscreteScrollClass> dataList;
+    private ArrayList<DeveloperClass> dataList;
     private Context mContext;
 
-    public DeveloperAdapter(ArrayList<DiscreteScrollClass> dataList, Context mContext){
+    public DeveloperAdapter(ArrayList<DeveloperClass> dataList, Context mContext){
 
         this.dataList = dataList;
         this.mContext = mContext;
@@ -60,21 +60,20 @@ public class DeveloperAdapter extends RecyclerView.Adapter<DeveloperAdapter.Cust
     @Override
     public void onBindViewHolder(@NonNull final DeveloperAdapter.CustomViewHolder holder, final int i) {
         holder.name.setText(dataList.get(i).getName());
-        holder.post.setText(dataList.get(i).getDes());
+        holder.post.setText(dataList.get(i).getPost());
         holder.github.setClickable(true);
         holder.linkedin.setClickable(true);
 
 //        GlideApp.with(mContext).load(dataList.get(i).getImage()).into(holder.image);
-        int id = mContext.getResources().getIdentifier(dataList.get(i).getIcon(), "drawable", mContext.getPackageName());
-        Drawable drawable = mContext.getResources().getDrawable(id);
-        holder.image.setImageDrawable(drawable);
+
+        holder.image.setImageResource(dataList.get(i).getIcon());
         holder.github.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_VIEW);
                 intent.addCategory(Intent.CATEGORY_BROWSABLE);
-                intent.setData(Uri.parse(dataList.get(i).getSname()));
+                intent.setData(Uri.parse(dataList.get(i).getGithub()));
                 mContext.startActivity(intent);
             }
         });
@@ -85,7 +84,7 @@ public class DeveloperAdapter extends RecyclerView.Adapter<DeveloperAdapter.Cust
                 Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_VIEW);
                 intent.addCategory(Intent.CATEGORY_BROWSABLE);
-                intent.setData(Uri.parse(dataList.get(i).getsDesc()));
+                intent.setData(Uri.parse(dataList.get(i).getLinkedIn()));
                 mContext.startActivity(intent);
             }
         });

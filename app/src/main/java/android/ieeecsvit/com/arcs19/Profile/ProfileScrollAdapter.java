@@ -39,7 +39,7 @@ public class ProfileScrollAdapter extends RecyclerView.Adapter<ProfileScrollAdap
                                     break;
             case "Blockchain and Cryptocurrency Workshop" : holder.icon.setImageResource(R.drawable.blockchain);
                                                             break;
-            case "Convoke'19" : holder.icon.setImageResource(R.drawable.convoke);
+            case "Convoke'19" : holder.icon.setImageResource(R.drawable.convoke_black);
                                 break;
             case "Cloud Computing Workshop" : holder.icon.setImageResource(R.drawable.cloud);
                                               break;
