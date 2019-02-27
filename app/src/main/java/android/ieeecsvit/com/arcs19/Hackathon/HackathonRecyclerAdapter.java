@@ -58,10 +58,7 @@ public class HackathonRecyclerAdapter extends RecyclerView.Adapter<HackathonRecy
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
         myViewHolder.tv_Question.setText(mData.get(i).getQuestion());
-        //myViewHolder.projectLink.setVisibility(View.GONE);
-        //myViewHolder.tv_Describe.setText(mData.get(i).getDescribe());
         GlideApp.with(mContext).load(mData.get(i).getLogo()).into(myViewHolder.tv_logo);
-        //myViewHolder.tv_logo.setImageResource(mData.get(i).getLogo());
     }
 
     @Override

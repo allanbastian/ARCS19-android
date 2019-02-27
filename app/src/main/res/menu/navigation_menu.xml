@@ -24,17 +24,17 @@
         />
 
     <item
-        android:id="@+id/combos"
-        android:icon="@drawable/combo"
-        android:title="Combos"
-        android:checkable="true"
-        />
-
-    <item
         android:id="@+id/hackathon"
         android:icon="@drawable/hackathon"
         android:title="HackBattle"
         android:checkable="false"
+        />
+
+    <item
+        android:id="@+id/combos"
+        android:icon="@drawable/combo"
+        android:title="Combos"
+        android:checkable="true"
         />
 
 
@@ -47,17 +47,19 @@
         />
 
     <item
+        android:id="@+id/forum"
+        android:icon="@drawable/forum"
+        android:title="Forum"
+        />
+
+    <item
         android:id="@+id/developers"
         android:icon="@drawable/team"
         android:title="Developers"
         android:checkable="true"
         />
 
-    <item
-        android:id="@+id/forum"
-        android:icon="@drawable/forum"
-        android:title="Forum"
-        />
+
 
 
 </menu>

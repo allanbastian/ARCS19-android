@@ -60,7 +60,7 @@
             android:textSize="14sp"
             android:layout_marginTop="8dp"
             android:text="Germany"
-            android:textColor="@color/secondary_dark"/>
+            android:textColor="@color/white"/>
         <!--<Button
             android:id="@+id/convoke_follow_button"
             android:layout_gravity="center_horizontal"

@@ -60,17 +60,7 @@ public class ConvokeFragment extends Fragment implements DiscreteScrollView.OnIt
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_convoke, container, false);
-
-        //Cache
-        /*sp = this.getActivity().getSharedPreferences("key",0);
-
-        sp.getBoolean("cacheAvailable",false);
-
-
-
-        editor = sp.edit();
-        editor.putBoolean("cache",false);*/
-        ConvokeAdapter adapter = new ConvokeAdapter(getContext(),convokeList);
+        //ConvokeAdapter adapter = new ConvokeAdapter(getContext(),convokeList);
         convokeRecycler = rootView.findViewById(R.id.convoke_recycler_view);
         convokeRecycler.setVisibility(View.GONE);
         convokeProgress=rootView.findViewById(R.id.convoke_fragment_progressbar);
@@ -104,34 +94,6 @@ public class ConvokeFragment extends Fragment implements DiscreteScrollView.OnIt
 
             }
         });
-        /*
-        convokeList.add(new ConvokeClass("Developer 1", "Country 1", "https://www.github.com", "https://www.facebook.com", R.drawable.artificial_intelligence));
-        convokeList.add(new ConvokeClass("Developer 2", "Country 2", "https://www.github.com","https://www.facebook.com",R.drawable.machine));
-        convokeList.add(new ConvokeClass("Developer 3", "Country 3", "https://www.github.com","https://www.facebook.com",R.drawable.artificial_intelligence));
-        convokeList.add(new ConvokeClass("Developer 4", "Country 4", "https://www.github.com","https://www.facebook.com",R.drawable.machine));
-        convokeList.add(new ConvokeClass("Developer 5", "Country 5", "https://www.github.com","https://www.facebook.com",R.drawable.artificial_intelligence));
-
-        //For caching, after FireBase integration
-
-
-
-        int noOfSpeakers;
-        for(int i=0;i<noOfSpeakers;++i)
-        {
-            convokeList.add(new ConvokeList(database.getChild...);
-
-        }
-
-         SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());;
-         SharedPreferences.Editor editor = sharedPreferences.edit();
-         Editor prefsEditor = appSharedPrefs.edit();
-         Gson gson = new Gson();
-         String json = gson.toJson(convokeList);
-         prefsEditor.putString("ConvokeListData", json);
-         prefsEditor.commit();
-
-         */
-
 
         previousConvokeButton = rootView.findViewById(R.id.previous_sponsor_button);
         nextConvokeButton = rootView.findViewById(R.id.next_sponsor_button);
@@ -198,8 +160,6 @@ public class ConvokeFragment extends Fragment implements DiscreteScrollView.OnIt
     }
 
     private void onItemChanged(ConvokeClass sponsor) {
-        //currentSponsorName.setText(sponsor.getName());
-        //currentSponsorType.setText(sponsor.getData());
 
     }
 }

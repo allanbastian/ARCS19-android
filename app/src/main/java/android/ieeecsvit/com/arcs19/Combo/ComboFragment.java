@@ -28,10 +28,6 @@ import java.util.ArrayList;
 
 public class ComboFragment extends Fragment implements DiscreteScrollView.OnItemChangedListener{
     ArrayList<DiscreteScrollClass> comboList = new ArrayList<DiscreteScrollClass>();
-    //TextView currentSponsorName;
-    //TextView currentSponsorType;
-
-    ProgressBar sponsorsProgress;
 
     String name, price, shortDes , longDes;
 

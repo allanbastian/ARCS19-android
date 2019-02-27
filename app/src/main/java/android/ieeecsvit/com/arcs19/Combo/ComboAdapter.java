@@ -61,17 +61,6 @@ public class ComboAdapter extends RecyclerView.Adapter<ComboAdapter.CustomViewHo
                 context.startActivity(new Intent(context, RegisterWebView.class));
             }
         });
-        // Opening Sponsor's website via browser
-        /*holder.sponsor.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setAction(Intent.ACTION_VIEW);
-                intent.addCategory(Intent.CATEGORY_BROWSABLE);
-                intent.setData(Uri.parse(dataList.get(i).getsDesc()));
-                context.startActivity(intent);
-            }
-        });*/
     }
 
     @Override

@@ -53,9 +53,6 @@ public class ConvokeAdapter extends RecyclerView.Adapter<ConvokeAdapter.CustomVi
         private TextView details;
         private TextView topic;
         private ImageView facebook;
-        //private ImageView instagram;
-        //private ImageView twitter;
-        //private Button follow;
 
 
         public CustomViewHolder(Context context, View itemView) {
@@ -66,9 +63,6 @@ public class ConvokeAdapter extends RecyclerView.Adapter<ConvokeAdapter.CustomVi
             name = itemView.findViewById(R.id.convoke_name);
             image = itemView.findViewById(R.id.convoke_image);
             facebook = itemView.findViewById(R.id.developer_facebook);
-            //instagram = itemView.findViewById(R.id.developer_instagram);
-            //twitter = itemView.findViewById(R.id.developer_twitter);
-            //follow = itemView.findViewById(R.id.convoke_follow_button);
 
 
         }

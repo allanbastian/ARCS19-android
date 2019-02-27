@@ -81,13 +81,6 @@ public class SponsorFragment extends Fragment implements DiscreteScrollView.OnIt
 
             }
         });
-
-
-        /*sponsorList.add(new DiscreteScrollClass(R.drawable.machine,"Sponsor 1","https://www.google.com"));
-        sponsorList.add(new DiscreteScrollClass(R.drawable.artificial_intelligence,"Sponsor 2","https://www.google.com"));
-        sponsorList.add(new DiscreteScrollClass(R.drawable.machine,"Sponsor 3","https://www.google.com"));
-        sponsorList.add(new DiscreteScrollClass(R.drawable.artificial_intelligence,"Sponsor 4","https://www.google.com"));
-*/
         previousSponsorButton = rootView.findViewById(R.id.previous_sponsor_button);
         nextSponsorButton = rootView.findViewById(R.id.next_sponsor_button);
 
