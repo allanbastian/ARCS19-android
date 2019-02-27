@@ -63,7 +63,8 @@ public class DeveloperAdapter extends RecyclerView.Adapter<DeveloperAdapter.Cust
         holder.post.setText(dataList.get(i).getDes());
         holder.github.setClickable(true);
         holder.linkedin.setClickable(true);
-        //GlideApp.with(mContext).load(dataList.get(i).getImage()).into(holder.image);
+
+//        GlideApp.with(mContext).load(dataList.get(i).getImage()).into(holder.image);
         int id = mContext.getResources().getIdentifier(dataList.get(i).getIcon(), "drawable", mContext.getPackageName());
         Drawable drawable = mContext.getResources().getDrawable(id);
         holder.image.setImageDrawable(drawable);
