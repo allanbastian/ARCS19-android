@@ -1,5 +1,6 @@
 package android.ieeecsvit.com.arcs19.Developers;
 
+import android.ieeecsvit.com.arcs19.Developers.DeveloperAdapter;
 import android.ieeecsvit.com.arcs19.DiscreteScrollClass;
 import android.ieeecsvit.com.arcs19.R;
 import android.os.Bundle;

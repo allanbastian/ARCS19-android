@@ -5,7 +5,6 @@ import android.ieeecsvit.com.arcs19.Combo.ComboFragment;
 import android.ieeecsvit.com.arcs19.Convoke.ConvokeFragment;
 import android.ieeecsvit.com.arcs19.Developers.DeveloperFragment;
 import android.ieeecsvit.com.arcs19.Forum.ForumActivity;
-import android.ieeecsvit.com.arcs19.Hackathon.HackathonFragment;
 import android.ieeecsvit.com.arcs19.Schedule.SchedulePageFragment;
 import android.ieeecsvit.com.arcs19.Sponsor.SponsorFragment;
 import android.ieeecsvit.com.arcs19.Workshop.WorkShopFragment;
