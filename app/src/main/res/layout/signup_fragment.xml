@@ -61,7 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat_regular"
-                android:text="Sign Up now in simple steps !"
+                android:text="Sign Up in few simple steps !"
                 android:textColor="@color/primary_light"
                 android:textAlignment="center"
                 android:layout_marginBottom="15dp"/>
@@ -243,7 +243,7 @@
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:popupBackground="@color/primary_light"
+                    android:popupBackground="@color/colorPrimary"
                     android:paddingStart="20dp"
                     android:paddingEnd="20dp"
                     android:layout_marginStart="20dp"
