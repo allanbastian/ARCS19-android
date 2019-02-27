@@ -91,13 +91,6 @@ public class ForumActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 connected = snapshot.getValue(Boolean.class);
-                if (!connected) {
-                    Toast.makeText(getApplicationContext(),"Connection Lost !",Toast.LENGTH_LONG).show();
-                }
-                else
-                {
-                    Toast.makeText(getApplicationContext(),"Connection established !",Toast.LENGTH_LONG).show();
-                }
             }
 
             @Override
