@@ -76,7 +76,7 @@ public class RegisterWebView extends AppCompatActivity {
                 webView.evaluateJavascript(js, new ValueCallback<String>() {
                     @Override
                     public void onReceiveValue(String value) {
-                        Toast.makeText(getApplicationContext(),"Login to your account", Toast.LENGTH_LONG).show();
+
 
                     }
                 });

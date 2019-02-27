@@ -21,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -143,6 +144,7 @@ public class WorkShopFragment extends Fragment implements DiscreteScrollView.OnI
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), RegisterWebView.class));
+                Toast.makeText(getContext(),"Login to your account", Toast.LENGTH_LONG).show();
             }
         });
 
