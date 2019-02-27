@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     catch (Exception e)
                     {
-                        Toast.makeText(getApplicationContext(),userClass.getError(),Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),"Session Expired ! Login !",Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                         editor.remove("username").commit();
                         editor.remove("email").commit();
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     catch (Exception e)
                     {
-                        Toast.makeText(getApplicationContext(),userClass.getError(),Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),"Session Expired ! Login !",Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                         editor.remove("username").commit();
                         editor.remove("email").commit();

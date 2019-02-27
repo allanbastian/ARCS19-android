@@ -355,6 +355,7 @@ public class Profile extends AppCompatActivity implements DiscreteScrollView.OnI
                 @Override
                 public void onResponse(Call<ArrayList<HashMap<String, String>>> call, Response<ArrayList<HashMap<String, String>>> response) {
                     ArrayList<HashMap<String, String>> eventList = response.body();
+
                     try {
                         for (int i = 0; i < eventList.size(); i++) {
                             String s = eventList.get(i).get("eventName");
@@ -385,15 +386,19 @@ public class Profile extends AppCompatActivity implements DiscreteScrollView.OnI
                     }
                     catch (Exception e)
                     {
-                        Toast.makeText(getApplicationContext(),eventList.get(0).get("error"),Toast.LENGTH_LONG).show();
-                        Logout();
+                        try {
+                            Toast.makeText(getApplicationContext(), eventList.get(1).get("error"), Toast.LENGTH_LONG).show();
+                            Logout();
+                        }
+                        catch (Exception ex){}
                     }
 
                 }
 
                 @Override
                 public void onFailure(Call<ArrayList<HashMap<String, String>>> call, Throwable t) {
-
+                    Toast.makeText(getApplicationContext(), "Session Expired ! Login !", Toast.LENGTH_LONG).show();
+                    Logout();
                 }
             });
         }
@@ -435,7 +440,7 @@ public class Profile extends AppCompatActivity implements DiscreteScrollView.OnI
                     catch (Exception e)
                     {
                         try {
-                            Toast.makeText(getApplicationContext(), eventList.get(0).get("error"), Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), eventList.get(1).get("error"), Toast.LENGTH_LONG).show();
                             Logout();
                         }
                         catch (Exception ex){}
@@ -445,7 +450,8 @@ public class Profile extends AppCompatActivity implements DiscreteScrollView.OnI
 
                 @Override
                 public void onFailure(Call<ArrayList<HashMap<String, String>>> call, Throwable t) {
-                    Log.e("Failure",t.getMessage());
+                    Toast.makeText(getApplicationContext(), "Session Expired ! Login !", Toast.LENGTH_LONG).show();
+                    Logout();
                 }
             });
 
