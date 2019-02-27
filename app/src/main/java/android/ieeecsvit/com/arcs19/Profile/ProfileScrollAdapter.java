@@ -47,7 +47,8 @@ public class ProfileScrollAdapter extends RecyclerView.Adapter<ProfileScrollAdap
                                                break;
             case "Cyber-Security Workshop" : holder.icon.setImageResource(R.drawable.cybersecurity);
                                              break;
-            default: break;
+            default: holder.icon.setImageResource(R.drawable.combo_black);
+                        break;
         }
 
     }
