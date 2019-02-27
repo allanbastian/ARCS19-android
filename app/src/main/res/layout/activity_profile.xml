@@ -301,6 +301,7 @@
         android:src="@drawable/ic_sign_out_white_24dp"
         android:backgroundTint="@color/orange"
         android:layout_gravity="center_horizontal|bottom"
+        android:elevation="20dp"
         android:layout_marginBottom="10dp"
         app:maxImageSize="30dp"
         />
