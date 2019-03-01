@@ -8,58 +8,6 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:632980327232:android:6910bfb104578e99",
-        "android_client_info": {
-          "package_name": "android.gaurav.com.arcs19"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "632980327232-3td2tfv85odiil8c3nssbdt7tr2ooig5.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "android.gaurav.com.arcs19",
-            "certificate_hash": "653d0ddbe1fbb48f22a8b56e5546621210a2d833"
-          }
-        },
-        {
-          "client_id": "632980327232-6j5o0h89cis2pb5f2trr3vkj42an57nc.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "android.gaurav.com.arcs19",
-            "certificate_hash": "f98cc00970b5be165ebcb523b2bf2884a2bd943a"
-          }
-        },
-        {
-          "client_id": "632980327232-p02infmalomb9f2min2u4ffgbvh4adre.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBI9Qx7VCH2dDCBLv1sm4Yf5WV3agplpQo"
-        }
-      ],
-      "services": {
-        "analytics_service": {
-          "status": 1
-        },
-        "appinvite_service": {
-          "status": 2,
-          "other_platform_oauth_client": [
-            {
-              "client_id": "632980327232-p02infmalomb9f2min2u4ffgbvh4adre.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        },
-        "ads_service": {
-          "status": 2
-        }
-      }
-    },
-    {
-      "client_info": {
         "mobilesdk_app_id": "1:632980327232:android:1ae659f7ee363184",
         "android_client_info": {
           "package_name": "android.ieeecsvit.com.arcs19"
@@ -94,6 +42,95 @@
             {
               "client_id": "632980327232-p02infmalomb9f2min2u4ffgbvh4adre.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "632980327232-n56abbpfi6ehbukn65hja7kpd0pubdom.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ieeecsvit.arcs19"
+              }
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:632980327232:android:dbbe0d5089d83b7e",
+        "android_client_info": {
+          "package_name": "com.example.arcs19admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "632980327232-p02infmalomb9f2min2u4ffgbvh4adre.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBI9Qx7VCH2dDCBLv1sm4Yf5WV3agplpQo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:632980327232:android:f95c17added5ad84",
+        "android_client_info": {
+          "package_name": "com.ieeecsvit.arcs19"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "632980327232-v74l9a8vl9kmgp7u3vv74h21mt2qejlp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ieeecsvit.arcs19",
+            "certificate_hash": "f98cc00970b5be165ebcb523b2bf2884a2bd943a"
+          }
+        },
+        {
+          "client_id": "632980327232-p02infmalomb9f2min2u4ffgbvh4adre.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBI9Qx7VCH2dDCBLv1sm4Yf5WV3agplpQo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "632980327232-p02infmalomb9f2min2u4ffgbvh4adre.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "632980327232-n56abbpfi6ehbukn65hja7kpd0pubdom.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ieeecsvit.arcs19"
+              }
             }
           ]
         },
