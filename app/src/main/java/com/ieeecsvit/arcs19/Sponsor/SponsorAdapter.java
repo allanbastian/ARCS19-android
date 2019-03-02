@@ -30,11 +30,11 @@ public class SponsorAdapter extends RecyclerView.Adapter<SponsorAdapter.CustomVi
     class CustomViewHolder extends RecyclerView.ViewHolder {
         private CardView sponsor;
         private ImageView image;
-        private TextView name;
+        //private TextView name;
         public CustomViewHolder(View itemView) {
             super(itemView);
             sponsor = itemView.findViewById(R.id.sponsor_root_layout);
-            name = itemView.findViewById(R.id.sponsor_name);
+            //name = itemView.findViewById(R.id.sponsor_name);
             image = itemView.findViewById(R.id.sponsor_image);
 
         }
@@ -51,7 +51,7 @@ public class SponsorAdapter extends RecyclerView.Adapter<SponsorAdapter.CustomVi
     @Override
     public void onBindViewHolder(@NonNull final SponsorAdapter.CustomViewHolder holder, final int i) {
         Glide.with(holder.itemView.getContext()).load(dataList.get(i).getImage()).into(holder.image);
-        holder.name.setText(dataList.get(i).getName());
+        //holder.name.setText(dataList.get(i).getName());
         // Opening Sponsor's website via browser
         holder.sponsor.setOnClickListener(new View.OnClickListener() {
             @Override
