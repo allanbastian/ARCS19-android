@@ -49,7 +49,7 @@ public class HackathonFragment extends Fragment implements DiscreteScrollView.On
     List<HackathonClass> lstquestion;
     //private ArrayList<DiscreteScrollClass> members;
     private EditText getName, getLink;
-    private TextView teamName,questionAbout;
+    private TextView teamName,questionAbout,hackBattleSite;
     private LinearLayout displayTeam,teamNameLayout;
     private Button docUploadButton,linkUploadButton;
     private Dialog linkDialog;
@@ -115,6 +115,8 @@ public class HackathonFragment extends Fragment implements DiscreteScrollView.On
         docUplaodProgress= v.findViewById(R.id.doc_upload_progressbar);
         questionUploadProgress = v.findViewById(R.id.question_upload_progressbar);
         docUplaodProgress.setVisibility(View.GONE);
+
+        hackBattleSite = v.findViewById(R.id.hackbattle_website);
 
         sp = getActivity().getSharedPreferences("key", 0);
 
@@ -226,6 +228,17 @@ public class HackathonFragment extends Fragment implements DiscreteScrollView.On
                     Toast.makeText(getContext(), "GitHub link uploaded successfully!", Toast.LENGTH_SHORT).show();
 
                 }
+            }
+        });
+
+        hackBattleSite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent.setData(Uri.parse("https://hackbattle19.hackerearth.com"));
+                getContext().startActivity(intent);
             }
         });
 
