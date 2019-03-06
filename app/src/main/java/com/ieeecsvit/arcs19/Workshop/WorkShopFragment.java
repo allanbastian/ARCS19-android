@@ -51,6 +51,7 @@ public class WorkShopFragment extends Fragment implements DiscreteScrollView.OnI
 
     // for name of the event, description of the event, Location of the event, price of the event, speaker for the event and deatails of the speaker, respectively
     String eventName, eventDate, eventDescription, eventLocation, eventPrice, speaker, speakerDetails, eventImage;
+    String currentEvent="";
 
     StorageReference storageReference, filepath, speakerImage;
 
@@ -143,8 +144,23 @@ public class WorkShopFragment extends Fragment implements DiscreteScrollView.OnI
         bookNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), RegisterWebView.class));
-                Toast.makeText(getContext(),"Login to your account", Toast.LENGTH_LONG).show();
+
+                switch (header.getText().toString())
+                {
+                    case "Blockchain": currentEvent = "Blockchain and Cryptocurrency Workshop";
+                                       break;
+                    case "Cloud Computing":  currentEvent = "Cloud Computing Workshop";
+                                             break;
+                    case "Cyber Security": currentEvent = "Cyber-Security Workshop";
+                                           break;
+                    case "Machine Learning": currentEvent = "Machine Learning Workshop";
+                                             break;
+                    case "UI UX": currentEvent = "UI/UX Workshop";
+                                  break;
+                }
+                Intent i = new Intent(getActivity(), RegisterWebView.class);
+                i.putExtra("eventName", currentEvent);
+                startActivity(i);
             }
         });
 

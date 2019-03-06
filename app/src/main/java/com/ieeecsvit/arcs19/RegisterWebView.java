@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
@@ -13,15 +14,21 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class RegisterWebView extends AppCompatActivity {
 
     WebView webView;
     ProgressBar progressBar;
 
-    String URL = "https://register.ieeecsvit.com/login";
+    String URL = "https://register.ieeecsvit.com/api/login-webview?ename=";
+    String eventName;
 
     SharedPreferences sp;
-    String email, password;
+    String email, password,jwtToken;
+
+    Map<String,String> header;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,6 +43,14 @@ public class RegisterWebView extends AppCompatActivity {
         sp = getSharedPreferences("key",0);
         email = sp.getString("email","");
         password = sp.getString("password","");
+        jwtToken = sp.getString("jwtToken","");
+
+        Bundle bundle = getIntent().getExtras();
+        if(bundle!=null) {
+            eventName = bundle.getString("eventName");
+            Log.e("EventName",eventName);
+        }
+
 
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
@@ -62,18 +77,6 @@ public class RegisterWebView extends AppCompatActivity {
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
                 progressBar.setVisibility(View.GONE);
-                String js = "javascript:function(){" +
-                        "document.getElementById('email').value='"+email+"';" +
-                        "document.getElementById('pwd').value = '" + password +"';" +
-                        "document.getElementByClassName('waves-effect btn btncolor').click()}";
-
-                webView.evaluateJavascript(js, new ValueCallback<String>() {
-                    @Override
-                    public void onReceiveValue(String value) {
-
-
-                    }
-                });
 
             }
         });
@@ -87,8 +90,11 @@ public class RegisterWebView extends AppCompatActivity {
             }
         });
 
-        webView.loadUrl(URL);
-        //webView.addJavascriptInterface(new JavaScriptInterface(this), "Android");
+        header = new HashMap<String,String>();
+        header.put("token",jwtToken);
+        URL = URL+eventName;
+        webView.loadUrl(URL, header);
+
 
     }
 
