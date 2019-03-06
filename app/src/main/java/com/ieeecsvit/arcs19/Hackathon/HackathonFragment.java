@@ -251,6 +251,8 @@ public class HackathonFragment extends Fragment implements DiscreteScrollView.On
         mRecyclerView.setAdapter(infiniteAdapter);
         mRecyclerView.setItemTransitionTimeMillis(150);
         mRecyclerView.setItemTransformer(new ScaleTransformer.Builder().setMinScale(0.75f).build());
+        mRecyclerView.setSlideOnFling(true);
+
 
 
         //HackathonRecyclerAdapter recyclerAdapter = new HackathonRecyclerAdapter(getContext(),lstquestion);
