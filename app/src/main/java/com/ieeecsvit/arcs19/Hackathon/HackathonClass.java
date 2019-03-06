@@ -7,11 +7,13 @@ public class HackathonClass {
     private String Question; //Store the domain name / question title
     private String Describe; //Description of the domain/ title
     private StorageReference Logo; // Logo of the the related domain
+    private String About;
 
-    public HackathonClass(String question, String describe, StorageReference logo) {
+    public HackathonClass(String question, String describe, StorageReference logo, String About) {
         Question = question;
         Describe = describe;
         Logo = logo;
+        this.About = About;
     }
     // get and set functions for retriving class variable values and modifying class variable values respectively
     public String getQuestion() {
@@ -28,6 +30,10 @@ public class HackathonClass {
 
     public StorageReference getLogo() {
         return Logo;
+    }
+
+    public String getAbout() {
+        return About;
     }
 
     public void setDescribe(String describe) {

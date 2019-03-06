@@ -6,6 +6,7 @@ import com.ieeecsvit.arcs19.Convoke.ConvokeFragment;
 import com.ieeecsvit.arcs19.Developers.DeveloperFragment;
 import com.ieeecsvit.arcs19.Forum.ForumActivity;
 
+import com.ieeecsvit.arcs19.Hackathon.HackathonFragment;
 import com.ieeecsvit.arcs19.R;
 
 import com.ieeecsvit.arcs19.Schedule.SchedulePageFragment;
@@ -70,12 +71,12 @@ public class BottomNavigationFragment extends BottomSheetDialogFragment {
 
                         }
                         else{
-                            Toast.makeText(getContext(),"Coming Soon",Toast.LENGTH_LONG).show();
-                            /*fragment = new HackathonFragment();
+                            //Toast.makeText(getContext(),"Coming Soon",Toast.LENGTH_LONG).show();
+                            fragment = new HackathonFragment();
                             transaction = getActivity().getSupportFragmentManager().beginTransaction();
                             transaction.replace(R.id.fragment_container, fragment).commit();
                             previousSelectedItem = menuId;
-                            menuItem.setChecked(true);*/
+                            menuItem.setChecked(true);
                         }
                         break;
 
