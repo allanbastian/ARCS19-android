@@ -57,6 +57,7 @@ public class RegisterWebView extends AppCompatActivity {
         webSettings.setUseWideViewPort(true);
         webSettings.setLoadWithOverviewMode(true);
         webSettings.setSaveFormData(false);
+        webSettings.setBuiltInZoomControls(true);
         webView.setWebViewClient(new WebViewClient() {
 
 
