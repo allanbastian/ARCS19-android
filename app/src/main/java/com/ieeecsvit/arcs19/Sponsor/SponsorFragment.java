@@ -53,6 +53,10 @@ public class SponsorFragment extends Fragment implements DiscreteScrollView.OnIt
         itemPicker = rootView.findViewById(R.id.sponsors_item_picker);
         sponsorsProgress = rootView.findViewById(R.id.sponsors_fragment_progressbar);
         itemPicker.setVisibility(View.GONE);
+        previousSponsorButton = rootView.findViewById(R.id.previous_sponsor_button);
+        nextSponsorButton = rootView.findViewById(R.id.next_sponsor_button);
+        previousSponsorButton.setVisibility(View.GONE);
+        nextSponsorButton.setVisibility(View.GONE);
 
         //Setting up firebase
         storageReference = FirebaseStorage.getInstance().getReference().child("Sponsors"); //Reference of firebase stoorage for the sponsors logos
@@ -73,6 +77,8 @@ public class SponsorFragment extends Fragment implements DiscreteScrollView.OnIt
                 }
                 sponsorsProgress.setVisibility(View.GONE);
                 itemPicker.setVisibility(View.VISIBLE);
+                previousSponsorButton.setVisibility(View.VISIBLE);
+                nextSponsorButton.setVisibility(View.VISIBLE);
 
             }
 
@@ -81,8 +87,7 @@ public class SponsorFragment extends Fragment implements DiscreteScrollView.OnIt
 
             }
         });
-        previousSponsorButton = rootView.findViewById(R.id.previous_sponsor_button);
-        nextSponsorButton = rootView.findViewById(R.id.next_sponsor_button);
+
 
 
         itemPicker.setOrientation(DSVOrientation.HORIZONTAL);

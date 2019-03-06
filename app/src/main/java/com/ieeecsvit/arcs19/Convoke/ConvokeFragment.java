@@ -57,6 +57,10 @@ public class ConvokeFragment extends Fragment implements DiscreteScrollView.OnIt
         convokeRecycler = rootView.findViewById(R.id.convoke_recycler_view);
         convokeRecycler.setVisibility(View.GONE);
         convokeProgress=rootView.findViewById(R.id.convoke_fragment_progressbar);
+        previousConvokeButton = rootView.findViewById(R.id.previous_convoke_button);
+        nextConvokeButton = rootView.findViewById(R.id.next_convoke_button);
+        previousConvokeButton.setVisibility(View.GONE);
+        nextConvokeButton.setVisibility(View.GONE);
 
         //Initialise Firebase
         firebaseDatabase = FirebaseDatabase.getInstance();
@@ -79,6 +83,8 @@ public class ConvokeFragment extends Fragment implements DiscreteScrollView.OnIt
                 }
                 convokeProgress.setVisibility(View.GONE);
                 convokeRecycler.setVisibility(View.VISIBLE);
+                previousConvokeButton.setVisibility(View.VISIBLE);
+                nextConvokeButton.setVisibility(View.VISIBLE);
 
             }
 
@@ -88,8 +94,7 @@ public class ConvokeFragment extends Fragment implements DiscreteScrollView.OnIt
             }
         });
 
-        previousConvokeButton = rootView.findViewById(R.id.previous_sponsor_button);
-        nextConvokeButton = rootView.findViewById(R.id.next_sponsor_button);
+
 
         rootView.findViewById(R.id.previous_convoke_button).setOnClickListener(new View.OnClickListener() {
             @Override
