@@ -80,12 +80,6 @@ public class ComboFragment extends Fragment implements DiscreteScrollView.OnItem
         });
 
 
-        /*comboList.add(new DiscreteScrollClass(R.drawable.artificial_intelligence,"Combo 1","Convoke + ML + Cloud","Rs. 500/-",""));
-        comboList.add(new DiscreteScrollClass(R.drawable.machine,"Combo 2","Convoke + Crypto + Cyber Security","Rs. 500/-",""));
-        comboList.add(new DiscreteScrollClass(R.drawable.artificial_intelligence,"Combo 3","UI/UX + ML + Cloud","Rs. 500/-",""));
-        comboList.add(new DiscreteScrollClass(R.drawable.machine,"Combo 4","UI/UX + Crypto + Cyber Security","Rs. 500/-",""));*/
-
-
         itemPicker.setOrientation(DSVOrientation.HORIZONTAL);
         itemPicker.addOnItemChangedListener(this);
 
@@ -110,46 +104,7 @@ public class ComboFragment extends Fragment implements DiscreteScrollView.OnItem
 
     }
 
-    /*private void smoothScrollToNextPosition( DiscreteScrollView scrollView, int pos) {
-        InfiniteScrollAdapter adapter = (InfiniteScrollAdapter) scrollView.getAdapter();
-        int destination;
-        if  (pos< comboList.size()-1){
-            destination = pos + 1;
-        }else
-        {
-            destination = 0;
-        }
-        if (adapter != null) {
-            destination = adapter.getClosestPosition(destination);
-        }
-        scrollView.smoothScrollToPosition(destination);
-    }
 
-    private void smoothScrollToPreviousPosition( DiscreteScrollView scrollView, int pos) {
-        InfiniteScrollAdapter adapter = (InfiniteScrollAdapter) scrollView.getAdapter();
-        int destination = pos - 1;
-        if (adapter != null) {
-            destination = adapter.getClosestPosition(destination);
-        }
-        scrollView.smoothScrollToPosition(destination);
-    }
-
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.previous_sponsor_button:
-                int realPosition = infiniteAdapter.getRealPosition(itemPicker.getCurrentItem());
-                smoothScrollToPreviousPosition(itemPicker,realPosition);
-                break;
-            case R.id.next_sponsor_button:
-                realPosition = infiniteAdapter.getRealPosition(itemPicker.getCurrentItem());
-                smoothScrollToNextPosition(itemPicker,realPosition);
-                break;
-
-        }
-
-    }*/
 
     @Override
     public void onCurrentItemChanged(@Nullable RecyclerView.ViewHolder viewHolder, int position) {

@@ -81,7 +81,7 @@
                 android:textColor="@color/white"
                 android:fontFamily="@font/montserrat_regular"
                 android:gravity="center"
-                android:text="View more"/>
+                android:text="BOOK NOW"/>
 
         </LinearLayout>
 

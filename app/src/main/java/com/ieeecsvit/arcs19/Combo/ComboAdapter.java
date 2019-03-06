@@ -50,16 +50,19 @@ public class ComboAdapter extends RecyclerView.Adapter<ComboAdapter.CustomViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final ComboAdapter.CustomViewHolder holder, final int i) {
+    public void onBindViewHolder(@NonNull final ComboAdapter.CustomViewHolder holder, int i) {
         Glide.with(holder.itemView.getContext()).load(dataList.get(i).getImage()).into(holder.image);
-        holder.name.setText(dataList.get(i).getName());
+        final String eventName = dataList.get(i).getName();
+        holder.name.setText(eventName);
         holder.price.setText(dataList.get(i).getPrice());
         holder.shortDes.setText(dataList.get(i).getsDesc());
 
         holder.viewMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                context.startActivity(new Intent(context, RegisterWebView.class));
+                Intent intent = new Intent(context, RegisterWebView.class);
+                intent.putExtra("eventName",eventName);
+                context.startActivity(intent);
             }
         });
     }
