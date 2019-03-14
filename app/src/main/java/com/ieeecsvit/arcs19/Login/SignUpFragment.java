@@ -136,6 +136,7 @@ public class SignUpFragment extends Fragment {
                 }
                 else
                 {
+                    university.setEnabled(true);                            //Enabling the university again
                     vitianDetails.setVisibility(View.GONE);                 //Hiding the VIT details fields
                     university.getText().clear();                           //Reset the university field
                 }

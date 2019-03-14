@@ -30,6 +30,7 @@
                 android:id="@+id/arcs_logo"
                 android:layout_width="300dp"
                 android:layout_height="300dp"
+                android:layout_marginStart="-15dp"
                 android:src="@drawable/arcs"/>
 
                 <TextView
