@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,24 +34,30 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.yarolegovich.discretescrollview.DSVOrientation;
+import com.yarolegovich.discretescrollview.DiscreteScrollView;
+import com.yarolegovich.discretescrollview.InfiniteScrollAdapter;
+import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class HackathonFragment extends Fragment {
+public class HackathonFragment extends Fragment implements DiscreteScrollView.OnItemChangedListener{
 
     View v;
-    RecyclerView mRecyclerView,membersRecyclerView;
+    DiscreteScrollView mRecyclerView,membersRecyclerView;
     List<HackathonClass> lstquestion;
     //private ArrayList<DiscreteScrollClass> members;
     private EditText getName, getLink;
-    private TextView teamName,questionAbout;
+    private TextView teamName,questionAbout,hackBattleSite;
     private LinearLayout displayTeam,teamNameLayout;
     private Button docUploadButton,linkUploadButton;
     private Dialog linkDialog;
     private ImageButton enterButton, uploadEnter;
     private ProgressBar docUplaodProgress, questionUploadProgress;
-    String domain, question, name, link;
+    String domain, question, name, link, desc;
+    InfiniteScrollAdapter infiniteAdapter;
+
 
     SharedPreferences sp;
     SharedPreferences.Editor editor;
@@ -91,7 +96,6 @@ public class HackathonFragment extends Fragment {
         //View objects defined
         mRecyclerView = v.findViewById(R.id.hackathon_recyclerview);
         mRecyclerView.setVisibility(View.GONE);
-        questionAbout = v.findViewById(R.id.question_about);
 
         getName = v.findViewById(R.id.et_team_name);
         teamName = v.findViewById(R.id.hackathon_team_name_tv);
@@ -112,6 +116,8 @@ public class HackathonFragment extends Fragment {
         questionUploadProgress = v.findViewById(R.id.question_upload_progressbar);
         docUplaodProgress.setVisibility(View.GONE);
 
+        hackBattleSite = v.findViewById(R.id.hackbattle_website);
+
         sp = getActivity().getSharedPreferences("key", 0);
 
 
@@ -125,7 +131,8 @@ public class HackathonFragment extends Fragment {
                         domain= snapshot.getKey().toString(); //
                         question= snapshot.child("question").getValue().toString();
                         icon = storageReference.child(domain+".png");
-                        lstquestion.add(new HackathonClass(domain,question, icon));
+                        desc = snapshot.child("desc").getValue().toString();
+                        lstquestion.add(new HackathonClass(domain,question, icon, desc));
                     }
                 }
                 questionUploadProgress.setVisibility(View.GONE);
@@ -224,14 +231,34 @@ public class HackathonFragment extends Fragment {
             }
         });
 
+        hackBattleSite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent.setData(Uri.parse("https://hackbattle19.hackerearth.com"));
+                getContext().startActivity(intent);
+            }
+        });
+
+
+        mRecyclerView.setOrientation(DSVOrientation.HORIZONTAL);
+        mRecyclerView.addOnItemChangedListener(this);
+
+        infiniteAdapter = InfiniteScrollAdapter.wrap(new HackathonRecyclerAdapter(getContext(),lstquestion));
+
+        mRecyclerView.setAdapter(infiniteAdapter);
+        mRecyclerView.setItemTransitionTimeMillis(150);
+        mRecyclerView.setItemTransformer(new ScaleTransformer.Builder().setMinScale(0.75f).build());
+        mRecyclerView.setSlideOnFling(true);
 
 
 
+        //HackathonRecyclerAdapter recyclerAdapter = new HackathonRecyclerAdapter(getContext(),lstquestion);
+        //mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
 
-        HackathonRecyclerAdapter recyclerAdapter = new HackathonRecyclerAdapter(getContext(),lstquestion);
-        mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
-
-        mRecyclerView.setAdapter(recyclerAdapter);
+        mRecyclerView.setAdapter(infiniteAdapter);
 
         /*DeveloperAdapter memberAdapter = new DeveloperAdapter(members);
         membersRecyclerView = v.findViewById(R.id.hackathon_team_list);
@@ -266,5 +293,10 @@ public class HackathonFragment extends Fragment {
             });
 
         }
+    }
+
+    @Override
+    public void onCurrentItemChanged(@Nullable RecyclerView.ViewHolder viewHolder, int adapterPosition) {
+
     }
 }

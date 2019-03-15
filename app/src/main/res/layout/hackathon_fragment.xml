@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_marginBottom="50dp"
     android:background="@color/colorPrimary">
 
 
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_pattern">
 
 
         <LinearLayout
@@ -51,19 +51,22 @@
                     android:layout_marginBottom="24dp"
                     android:id="@+id/question_upload_progressbar"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:indeterminateTint ="@color/orange"
                     android:layout_gravity="center_horizontal" />
 
-                <android.support.v7.widget.RecyclerView
+                <com.yarolegovich.discretescrollview.DiscreteScrollView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_margin="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_gravity="center_horizontal"
                     android:id="@+id/hackathon_recyclerview"/>
 
             </LinearLayout>
 
             <LinearLayout
+                android:visibility="gone"
                 android:layout_margin="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -141,6 +144,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
@@ -194,11 +198,46 @@
                     android:layout_gravity="center_horizontal" />
 
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp" />
+
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="To register, Log in to:"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:gravity="center"
+                    android:textColor="@color/orange"/>
+
+                <TextView
+                    android:id="@+id/hackbattle_website"
+                    android:layout_margin="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textIsSelectable="true"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:textSize="20sp"
+                    android:text="https://hackbattle19.hackerearth.com/"
+                    />
+
+
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="100dp" />
 
         </LinearLayout>
 
