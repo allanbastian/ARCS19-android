@@ -1,5 +1,6 @@
 package com.ieeecsvit.arcs19;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 import android.widget.ProgressBar;
 
 import java.util.HashMap;
@@ -21,6 +23,7 @@ public class RegisterWebView extends AppCompatActivity {
 
     WebView webView;
     ProgressBar progressBar;
+    Button cancelButton;
 
     String URL = "https://register.ieeecsvit.com/api/login-webview?ename=";
     String eventName;
@@ -37,6 +40,7 @@ public class RegisterWebView extends AppCompatActivity {
 
         webView = findViewById(R.id.web_view);
         progressBar = findViewById(R.id.progress_bar);
+        cancelButton = findViewById(R.id.cancel_button);
 
         progressBar.setMax(100);
 
@@ -78,6 +82,29 @@ public class RegisterWebView extends AppCompatActivity {
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
                 progressBar.setVisibility(View.GONE);
+                if(url == "https://register.ieeecsvit.com/payment/success")
+                {
+                    Intent intent = new Intent();
+                    intent.putExtra("payment","success");
+                    setResult(RESULT_OK,intent);
+                    finish();
+                }
+                if(url == "https://register.ieeecsvit.com/payment/failure")
+                {
+                    Intent intent = new Intent();
+                    intent.putExtra("payment","failed");
+                    setResult(RESULT_OK,intent);
+                    finish();
+                }
+
+                if(url == "https://register.ieeecsvit.com/payment/pay")
+                {
+                    cancelButton.setVisibility(View.VISIBLE);
+                }
+                else
+                {
+                    cancelButton.setVisibility(View.GONE);
+                }
 
             }
         });
@@ -91,6 +118,16 @@ public class RegisterWebView extends AppCompatActivity {
             }
         });
 
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.putExtra("payment","failed");
+                setResult(RESULT_OK,intent);
+                finish();
+            }
+        });
+
         header = new HashMap<String,String>();
         header.put("token",jwtToken);
         URL = URL+eventName;
@@ -98,6 +135,7 @@ public class RegisterWebView extends AppCompatActivity {
 
 
     }
+
 
     @Override
     public void onBackPressed() {

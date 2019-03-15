@@ -35,6 +35,8 @@ import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
 
 import java.util.ArrayList;
 
+import static android.app.Activity.RESULT_OK;
+
 public class WorkShopFragment extends Fragment implements DiscreteScrollView.OnItemChangedListener, View.OnClickListener{
 
     DiscreteScrollView scrollView;
@@ -160,7 +162,7 @@ public class WorkShopFragment extends Fragment implements DiscreteScrollView.OnI
                 }
                 Intent i = new Intent(getActivity(), RegisterWebView.class);
                 i.putExtra("eventName", currentEvent);
-                startActivity(i);
+                startActivityForResult(i,300);
             }
         });
 
@@ -219,5 +221,23 @@ public class WorkShopFragment extends Fragment implements DiscreteScrollView.OnI
             authName.setText(obj.getAuthName());
         }
 
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == 300 && resultCode == RESULT_OK)
+        {
+            if(data!=null)
+            {
+                String result = data.getParcelableExtra("payment");
+                if(result == "success") {
+                    Toast.makeText(getContext(), "Payment Successful",Toast.LENGTH_LONG).show();
+                }
+                else
+                    Toast.makeText(getContext(), "Payment Failed",Toast.LENGTH_LONG).show();
+
+
+            }
+        }
     }
 }
