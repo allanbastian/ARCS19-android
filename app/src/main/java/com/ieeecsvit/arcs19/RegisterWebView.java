@@ -82,14 +82,15 @@ public class RegisterWebView extends AppCompatActivity {
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
                 progressBar.setVisibility(View.GONE);
-                if(url == "https://register.ieeecsvit.com/payment/success")
+                Log.e("url",url);
+                if(url.equals("https://register.ieeecsvit.com/payment/success"))
                 {
                     Intent intent = new Intent();
                     intent.putExtra("payment","success");
                     setResult(RESULT_OK,intent);
                     finish();
                 }
-                if(url == "https://register.ieeecsvit.com/payment/failure")
+                if(url.equals("https://register.ieeecsvit.com/payment/failure"))
                 {
                     Intent intent = new Intent();
                     intent.putExtra("payment","failed");
@@ -97,7 +98,10 @@ public class RegisterWebView extends AppCompatActivity {
                     finish();
                 }
 
-                if(url == "https://register.ieeecsvit.com/payment/pay")
+                if(url.equals("https://register.ieeecsvit.com/payment/pay") || url.equals("https://academics.vit.ac.in/ChecksumDLL/checksum.asp?")
+                || url.equals("https://www.tpsl-india.in/PaymentGateway/TransactionRequest.jsp?") || url.equals(" https://www.tpsl-india.in/PaymentGateway/PaymentTransactionCharges.jsp?CARDTYPE=DBT")
+                || url.equals("https://www.tpsl-india.in/PaymentGateway/PaymentTransactionCharges.jsp") || url.equals("https://www.tpsl-india.in/PaymentGateway/PaymentTransactionCharges.jsp?CARDTYPE=NET")
+                || url.equals("https://www.tpsl-india.in/PaymentGateway/PaymentTransactionCharges.jsp?CARDTYPE=CRT"))
                 {
                     cancelButton.setVisibility(View.VISIBLE);
                 }
@@ -144,6 +148,9 @@ public class RegisterWebView extends AppCompatActivity {
             webView.goBack();
         }
         else {
+            Intent intent = new Intent();
+            intent.putExtra("payment","failed");
+            setResult(RESULT_OK,intent);
             finish();
         }
     }
