@@ -121,8 +121,8 @@ public class ConvokeFragment extends Fragment implements DiscreteScrollView.OnIt
         convokeRecycler.setItemTransformer(new ScaleTransformer.Builder().setMinScale(0.8f).build());
 
 
-        convokeRecycler.setSlideOnFling(false);
-        convokeRecycler.setSlideOnFlingThreshold(5000);
+        convokeRecycler.setSlideOnFling(true);
+        convokeRecycler.setSlideOnFlingThreshold(2800);
 
         return rootView;
     }

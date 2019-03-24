@@ -192,40 +192,13 @@
 
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Amenities Available"
-                android:fontFamily="@font/robotoregular"
-                android:textAllCaps="true"
-                android:layout_margin="30dp"
-                android:textColor="@color/white_with_alpha"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="30dp"
-                android:gravity="center">
-
-                <ImageView
-                    android:id="@+id/amenity1"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic_wifi_white_24dp" />
-
-                <ImageView
-                    android:id="@+id/amenity2"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="80dp"
-                    android:src="@drawable/snacks" />
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="24dp"
+                android:layout_marginTop="60dp"
                 android:id="@+id/workshop_speaker_layout"
                 android:background="@color/orange"
                 android:orientation="vertical"

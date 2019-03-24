@@ -10,6 +10,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.StorageReference;
 import com.ieeecsvit.arcs19.APIClient;
 import com.ieeecsvit.arcs19.APIInterface;
 import com.ieeecsvit.arcs19.Login.LoginActivity;
@@ -84,7 +88,10 @@ public class Profile extends AppCompatActivity implements DiscreteScrollView.OnI
 
     Dialog myDialog;
 
+    StorageReference storageReference;
+    DatabaseReference CouponRef;
 
+    FirebaseDatabase firebaseDatabase;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -114,6 +121,11 @@ public class Profile extends AppCompatActivity implements DiscreteScrollView.OnI
         JWTTOKEN = sp.getString("jwtToken","");
         profileUpdateAvail = sp.getBoolean("profileUpdateAvail",false);
         regEvents = new ArrayList(sp.getStringSet("events",new HashSet<String>()));
+
+
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        CouponRef = firebaseDatabase.getReference().child("Coupons");
+        CouponRef.keepSynced(true);
 
         //Barcode dialog
         myDialog = new Dialog(this);
@@ -360,6 +372,7 @@ public class Profile extends AppCompatActivity implements DiscreteScrollView.OnI
                             String tempList[] = s.split("\\+");
                             for (int j = 0; j < tempList.length; j++) {
                                 regEvents.add(tempList[j]);
+
                                 Log.e("regEvents",tempList[j]);
                             }
                         }

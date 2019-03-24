@@ -19,6 +19,13 @@
             android:orientation="vertical"
             android:layout_alignParentTop="true">
 
+            <ProgressBar
+                android:id="@+id/combo_image_progressbar"
+                android:layout_width="30dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center_horizontal"
+                android:indeterminateTint="@color/orange"/>
+
             <ImageView
                 android:id="@+id/combo_image"
                 android:scaleType="centerCrop"

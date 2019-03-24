@@ -49,6 +49,7 @@ public class HackathonRecyclerAdapter extends RecyclerView.Adapter<HackathonRecy
         GlideApp.with(mContext).load(mData.get(i).getLogo()).into(myViewHolder.tv_logo);
 
 
+
         myDialog = new Dialog(mContext);
         myDialog.setContentView(R.layout.dialog_hackathon);
         myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));

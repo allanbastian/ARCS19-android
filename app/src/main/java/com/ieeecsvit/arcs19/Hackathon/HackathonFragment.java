@@ -1,15 +1,19 @@
 package com.ieeecsvit.arcs19.Hackathon;
 
+import android.Manifest;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import com.ieeecsvit.arcs19.R;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -50,7 +54,7 @@ public class HackathonFragment extends Fragment implements DiscreteScrollView.On
     //private ArrayList<DiscreteScrollClass> members;
     private EditText getName, getLink;
     private TextView teamName,questionAbout,hackBattleSite;
-    private LinearLayout displayTeam,teamNameLayout;
+    private LinearLayout displayTeam,teamNameLayout, hackBattleRegister;
     private Button docUploadButton,linkUploadButton;
     private Dialog linkDialog;
     private ImageButton enterButton, uploadEnter;
@@ -58,6 +62,8 @@ public class HackathonFragment extends Fragment implements DiscreteScrollView.On
     String domain, question, name, link, desc;
     InfiniteScrollAdapter infiniteAdapter;
 
+
+    LinearLayout teamSetLayout, uploadLinkLayout;
 
     SharedPreferences sp;
     SharedPreferences.Editor editor;
@@ -69,6 +75,7 @@ public class HackathonFragment extends Fragment implements DiscreteScrollView.On
     FirebaseDatabase firebaseDatabase;
     DatabaseReference hackathonRef,fileUploadref;
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -83,6 +90,7 @@ public class HackathonFragment extends Fragment implements DiscreteScrollView.On
         fileUploadref = firebaseDatabase.getReference().child("FileUpload"); //FileUpload database reference
         hackathonRef.keepSynced(true);                                       //Synced with database
         fileUploadref.keepSynced(true);
+
         //Traversing the Hackathon branch for collecting the domains and questions, and storing in lstquestion
 
 
@@ -96,6 +104,12 @@ public class HackathonFragment extends Fragment implements DiscreteScrollView.On
         //View objects defined
         mRecyclerView = v.findViewById(R.id.hackathon_recyclerview);
         mRecyclerView.setVisibility(View.GONE);
+
+
+        /*teamSetLayout = v.findViewById(R.id.hackbattle_team_name);
+        uploadLinkLayout = v.findViewById(R.id.hackbattle_file_upload);
+        teamSetLayout.setVisibility(View.GONE);
+        uploadLinkLayout.setVisibility(View.GONE);*/
 
         getName = v.findViewById(R.id.et_team_name);
         teamName = v.findViewById(R.id.hackathon_team_name_tv);
@@ -112,14 +126,42 @@ public class HackathonFragment extends Fragment implements DiscreteScrollView.On
         enterButton = v.findViewById(R.id.team_name_button);
         displayTeam.setVisibility(View.GONE);
 
+        teamSetLayout = v.findViewById(R.id.hackbattle_team_name);
+        uploadLinkLayout = v.findViewById(R.id.hackbattle_file_upload);
+        teamSetLayout.setVisibility(View.GONE);
+        uploadLinkLayout.setVisibility(View.GONE);
+
         docUplaodProgress= v.findViewById(R.id.doc_upload_progressbar);
         questionUploadProgress = v.findViewById(R.id.question_upload_progressbar);
         docUplaodProgress.setVisibility(View.GONE);
 
         hackBattleSite = v.findViewById(R.id.hackbattle_website);
+        hackBattleRegister = v.findViewById(R.id.hackbattle_register);
 
         sp = getActivity().getSharedPreferences("key", 0);
 
+        fileUploadref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    if(snapshot.getKey().toString().equals("enable")) {
+                        if (!snapshot.child("final").getValue().toString().equals("0")){
+                            teamSetLayout.setVisibility(View.VISIBLE);
+                            uploadLinkLayout.setVisibility(View.VISIBLE);
+                            hackBattleRegister.setVisibility(View.GONE);
+
+                        }
+                    }
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
 
         hackathonRef.addValueEventListener(new ValueEventListener() {
@@ -222,6 +264,20 @@ public class HackathonFragment extends Fragment implements DiscreteScrollView.On
         uploadEnter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                int EXTERNAL_STORAGE_WRITE_REQUEST_CODE = 101;
+                int EXTERNAL_STORAGE_READ_REQUEST_CODE = 102;
+                if (getContext().checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                            EXTERNAL_STORAGE_READ_REQUEST_CODE);
+                }
+                if (getContext().checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                            EXTERNAL_STORAGE_WRITE_REQUEST_CODE);
+                }
+
                 link = getLink.getText().toString();
                 if(!link.isEmpty()) {
                     fileUploadref.child(name).child("GitHub").setValue(link);

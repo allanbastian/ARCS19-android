@@ -7,8 +7,8 @@
     android:clickable="true"
     android:layout_centerInParent="true"
     android:foreground="?android:attr/selectableItemBackground"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_width="300dp"
+    android:layout_height="380dp"
     app:cardBackgroundColor="@color/orange"
     android:layout_gravity="center"
     android:layout_marginLeft="40dp"
@@ -16,26 +16,39 @@
     app:cardCornerRadius="8dp"
     app:cardElevation="12dp">
 
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:orientation="vertical">
 
+        <ProgressBar
+            android:id="@+id/convoke_item_progressbar"
+            android:layout_width="36dp"
+            android:layout_height="212dp"
+            android:layout_gravity="center_horizontal"
+            android:indeterminateTint="@color/secondary_dark"/>
+
         <android.support.v7.widget.CardView
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:layout_gravity="center"
             app:cardBackgroundColor="@color/orange"
-            app:cardCornerRadius="100dp"
+            app:cardCornerRadius="90dp"
             android:elevation="24dp">
 
             <com.github.siyamed.shapeimageview.RoundedImageView
                 android:id="@+id/convoke_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:siRadius="100dp"
+                app:siRadius="90dp"
                 android:scaleType="centerCrop"
                 tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
@@ -46,10 +59,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
+            android:autoSizeTextType ="uniform"
+            android:maxLines="2"
             android:fontFamily="@font/montserrat_regular"
-            android:textSize="26sp"
+            android:textSize="25sp"
             android:textColor="@color/secondary_dark"
-            tools:text="Trisha Samson" />
+            tools:text="Trisha Samson is so awesome" />
 
         <TextView
             android:layout_width="match_parent"
@@ -76,50 +91,48 @@
             android:layout_width="wrap_content"
             android:layout_height="4dp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/convoke_follow_bar"
-            android:orientation="horizontal"
-            android:layout_margin="16dp">
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="24dp"
-                android:layout_weight="1"/>
 
-            <ImageView
-                android:id="@+id/developer_facebook"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/linkedin_vector"/>
-
-
-            <!--<ImageView
-                android:id="@+id/developer_twitter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/twitter_vector"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"/>
-
-            <ImageView
-                android:id="@+id/developer_instagram"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/instagram_vector" />-->
-
-
-
-        </LinearLayout>
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/convoke_follow_bar"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:layout_margin="16dp">
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="24dp"
+            android:layout_weight="1"/>
+
+        <ImageView
+            android:id="@+id/developer_facebook"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/linkedin_vector"/>
+
+
+        <!--<ImageView
+            android:id="@+id/developer_twitter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/twitter_vector"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"/>
+
+        <ImageView
+            android:id="@+id/developer_instagram"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/instagram_vector" />-->
 
 
 
+    </LinearLayout>
 
-
-
+</RelativeLayout>
 
 
 

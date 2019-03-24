@@ -3,6 +3,10 @@ package com.ieeecsvit.arcs19;
 import android.content.SharedPreferences;
 import android.content.Intent;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.ieeecsvit.arcs19.Login.LoginActivity;
 import com.ieeecsvit.arcs19.Login.UserClass;
 import com.ieeecsvit.arcs19.Profile.Profile;
@@ -39,6 +43,11 @@ public class MainActivity extends AppCompatActivity {
 
     APIInterface apiInterface;
 
+    StorageReference storageReference;
+    DatabaseReference CouponRef;
+
+    FirebaseDatabase firebaseDatabase;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +57,12 @@ public class MainActivity extends AppCompatActivity {
         bottomAppBar = findViewById(R.id.bottom_app_bar);                               //Bottom navigation App bar
         arcsFloatingActionButton = findViewById(R.id.arcs_floating_action_button);      //Center Arcs Button
         progressSection = findViewById(R.id.progress_section);                          //Loading progress bar
+
+
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        CouponRef = firebaseDatabase.getReference().child("Coupons");
+        CouponRef.keepSynced(true);
+
 
         apiInterface = APIClient.getClient().create(APIInterface.class);
 

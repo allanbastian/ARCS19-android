@@ -17,6 +17,8 @@
             android:orientation="vertical"
             android:gravity="center_vertical">
 
+
+
         <ImageView
             android:id="@+id/sponsor_image"
             android:layout_margin="2dp"
@@ -24,6 +26,12 @@
             android:layout_height="260dp"
             android:padding="24dp"
             android:scaleType="fitCenter"/>
+                <ProgressBar
+                    android:id="@+id/sponsor_image_progressbar"
+                    android:layout_width="36dp"
+                    android:indeterminateTint="@color/secondary_dark"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"/>
 
         </LinearLayout>
 

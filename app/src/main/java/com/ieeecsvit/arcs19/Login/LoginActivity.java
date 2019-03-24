@@ -80,7 +80,7 @@ public class LoginActivity extends AppCompatActivity {
         emailID = findViewById(R.id.email_id);
         password = findViewById(R.id.password);
         fragmentContainer = findViewById(R.id.fragment_container);
-        forgotPassword = findViewById(R.id.forgot_password);
+        //forgotPassword = findViewById(R.id.forgot_password);
         signInField = findViewById(R.id.sign_in_field);
         signUpField = findViewById(R.id.sign_up_field);
         arcsText = findViewById(R.id.arcs_text);
@@ -150,22 +150,22 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         //Forgot Password
-        forgotPassword.setOnClickListener(new View.OnClickListener() {
+        /*forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Toast.makeText(getApplicationContext(),"This feature is currently unavailable",Toast.LENGTH_SHORT).show();
 
-              /*  //Starting OTP process
+              *//*  //Starting OTP process
                 fragmentManager = getSupportFragmentManager();
                 fragmentContainer.setClickable(true);
                 otpFragment = new OTPFragment();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
                 transaction.setCustomAnimations(R.anim.enter_from_right,R.anim.exit_from_right);
                 transaction.add(R.id.fragment_container,otpFragment).commit();
-                otpFrag = true;*/
+                otpFrag = true;*//*
             }
-        });
+        });*/
 
 
     }

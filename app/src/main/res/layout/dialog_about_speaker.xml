@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="300dp"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="300dp"
+    android:layout_centerInParent="true"
+        android:layout_height="wrap_content"
         android:elevation="12dp"
         app:cardCornerRadius="8dp">
     <LinearLayout
@@ -22,16 +21,18 @@
             android:text="About the Speaker"
             android:textAlignment="center"
             android:textColor="@color/orange"
-            android:textSize="25sp"
+            android:textSize="18sp"
             android:fontFamily="@font/montserrat_regular"
-            android:layout_margin="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:textAllCaps="true"/>
 
         <android.support.v7.widget.CardView
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
             android:layout_gravity="center"
             app:cardBackgroundColor="@color/orange"
             app:cardCornerRadius="75dp"
@@ -45,16 +46,30 @@
             
         </android.support.v7.widget.CardView>
 
-        <TextView
-            android:id="@+id/about_speaker_details"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:text="All about the speaker"
-            android:textSize="16sp"
-            android:layout_margin="15dp"
-            android:fontFamily="@font/montserrat_regular"
-            android:textAlignment="center"/>
+            android:layout_height="150dp"
+            android:scrollbars="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/about_speaker_details"
+                    android:layout_width="match_parent"
+                    android:text="About the question.."
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:textSize="15sp"/>
+            </LinearLayout>
+
+        </ScrollView>
         
         
         
@@ -63,4 +78,3 @@
 
     </android.support.v7.widget.CardView>
 
-</ScrollView>

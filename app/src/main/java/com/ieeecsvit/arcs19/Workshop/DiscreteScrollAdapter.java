@@ -76,6 +76,11 @@ public class DiscreteScrollAdapter extends RecyclerView.Adapter<DiscreteScrollAd
         //setting the image from firebase into the discrete scroll adapter
         //GlideApp.with(mContext).load(dataList.get(position).getImage()).into(holder.icon);
         int id = mContext.getResources().getIdentifier(dataList.get(position).getIcon(), "drawable", mContext.getPackageName());
+        if (dataList.get(position).getName().equals("Machine Learning")) {
+            holder.icon.setScaleX(1.4f);
+            holder.icon.setScaleY(1.4f);
+
+        }
         Drawable drawable = mContext.getResources().getDrawable(id);
         holder.icon.setImageDrawable(drawable);
 
