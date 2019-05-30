@@ -64,7 +64,6 @@ public class HackathonRecyclerAdapter extends RecyclerView.Adapter<HackathonRecy
                 dialog_name_tv.setText(mData.get(i).getDescribe());
                 tv_question_about.setText(mData.get(i).getAbout());
                 tv_question_about.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
-                //Toast.makeText(mContext,"Test Click"+String.valueOf(vHolder.getAdapterPosition()),Toast.LENGTH_SHORT).show();
                 myDialog.show();
             }
         });
@@ -77,19 +76,14 @@ public class HackathonRecyclerAdapter extends RecyclerView.Adapter<HackathonRecy
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         private CardView item_question;
-        private TextView tv_Question, tv_question_about;
-        //private TextView tv_Describe;
+        private TextView tv_Question;
         private ImageView tv_logo;
-        //private LinearLayout projectLink;
-
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            //projectLink = itemView.findViewById(R.id.hackathon_project_link);
             item_question =  itemView.findViewById(R.id.question_item);
             tv_Question = (TextView) itemView.findViewById(R.id.question);
-            //tv_Describe = (TextView) itemView.findViewById(R.id.describe);
             tv_logo = itemView.findViewById(R.id.hackathon_question_logo);
         }
     }

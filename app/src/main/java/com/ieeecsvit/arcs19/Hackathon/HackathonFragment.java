@@ -94,22 +94,9 @@ public class HackathonFragment extends Fragment implements DiscreteScrollView.On
         //Traversing the Hackathon branch for collecting the domains and questions, and storing in lstquestion
 
 
-
-        //members=new ArrayList<>();
-
-        /*members.add(new DiscreteScrollClass(0,"Memeber 1", "AppDev"));
-        members.add(new DiscreteScrollClass(0,"Member 2", "WebDev"));
-        members.add(new DiscreteScrollClass(0,"Member 3", "Pitching"));*/
-
         //View objects defined
         mRecyclerView = v.findViewById(R.id.hackathon_recyclerview);
         mRecyclerView.setVisibility(View.GONE);
-
-
-        /*teamSetLayout = v.findViewById(R.id.hackbattle_team_name);
-        uploadLinkLayout = v.findViewById(R.id.hackbattle_file_upload);
-        teamSetLayout.setVisibility(View.GONE);
-        uploadLinkLayout.setVisibility(View.GONE);*/
 
         getName = v.findViewById(R.id.et_team_name);
         teamName = v.findViewById(R.id.hackathon_team_name_tv);
@@ -187,9 +174,6 @@ public class HackathonFragment extends Fragment implements DiscreteScrollView.On
 
             }
         });
-
-
-
 
 
         //Setting up dialog box for link upload
@@ -310,16 +294,7 @@ public class HackathonFragment extends Fragment implements DiscreteScrollView.On
         mRecyclerView.setSlideOnFling(true);
 
 
-
-        //HackathonRecyclerAdapter recyclerAdapter = new HackathonRecyclerAdapter(getContext(),lstquestion);
-        //mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
-
         mRecyclerView.setAdapter(infiniteAdapter);
-
-        /*DeveloperAdapter memberAdapter = new DeveloperAdapter(members);
-        membersRecyclerView = v.findViewById(R.id.hackathon_team_list);
-        membersRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        membersRecyclerView.setAdapter(memberAdapter);*/
         return v;
     }
 

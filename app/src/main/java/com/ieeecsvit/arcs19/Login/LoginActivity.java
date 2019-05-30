@@ -149,24 +149,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        //Forgot Password
-        /*forgotPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Toast.makeText(getApplicationContext(),"This feature is currently unavailable",Toast.LENGTH_SHORT).show();
-
-              *//*  //Starting OTP process
-                fragmentManager = getSupportFragmentManager();
-                fragmentContainer.setClickable(true);
-                otpFragment = new OTPFragment();
-                FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.setCustomAnimations(R.anim.enter_from_right,R.anim.exit_from_right);
-                transaction.add(R.id.fragment_container,otpFragment).commit();
-                otpFrag = true;*//*
-            }
-        });*/
-
 
     }
 

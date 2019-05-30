@@ -48,7 +48,7 @@ public class ConvokeAdapter extends RecyclerView.Adapter<ConvokeAdapter.CustomVi
     class CustomViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private int originalHeight = 0;
         private boolean isViewExpanded = false;
-        private CardView convokeItem;
+        private CardView convokeItem, convokeImageCardview;
         private ImageView image;
         private TextView name;
         private TextView details;
@@ -60,6 +60,7 @@ public class ConvokeAdapter extends RecyclerView.Adapter<ConvokeAdapter.CustomVi
         public CustomViewHolder(Context context, View itemView) {
 
             super(itemView);
+            convokeImageCardview = itemView.findViewById(R.id.convoke_image_cardview);
             progressBar = itemView.findViewById(R.id.convoke_item_progressbar);
             convokeItem = itemView.findViewById(R.id.convoke_root_item);
             topic = itemView.findViewById(R.id.convoke_topic);
@@ -89,26 +90,22 @@ public class ConvokeAdapter extends RecyclerView.Adapter<ConvokeAdapter.CustomVi
     public void onBindViewHolder(@NonNull final ConvokeAdapter.CustomViewHolder holder, final int i) {
         holder.topic.setText(dataList.get(i).getmConvokeCountry());
         holder.name.setText(dataList.get(i).getmConvokeName());
-
         myDialog = new Dialog(context);
         myDialog.setContentView(R.layout.dialog_about_speaker);
         myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         myDialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
-        //holder.image.setImageResource(dataList.get(i).getmConvokeImage());
-        //example .load(FirebaseStorage.getInstance().getReference().child("Convoke").child("speakerName.png")) works
-        //GlideApp.with(context).load(dataList.get(i).getmStorageReference()).into(holder.image);
         GlideApp.with(context).load(dataList.get(i).getmStorageReference()).listener(new RequestListener<Drawable>() {
             @Override
             public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
                 holder.progressBar.setVisibility(View.GONE);
-                holder.image.setVisibility(View.VISIBLE);
+                holder.convokeImageCardview.setVisibility(View.VISIBLE);
                 return false;
             }
 
             @Override
             public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
                 holder.progressBar.setVisibility(View.GONE);
-                holder.image.setVisibility(View.VISIBLE);
+                holder.convokeImageCardview.setVisibility(View.VISIBLE);
                 return false;
             }
         }).into(holder.image);

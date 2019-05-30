@@ -63,35 +63,6 @@
 
         </ScrollView>
 
-        <!--<LinearLayout
-            android:id="@+id/hackathon_project_link"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <EditText
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:id="@+id/hackathon_prolink_display"
-                android:maxLines="1"
-                android:inputType="text"
-                android:layout_marginEnd="8dp"
-                android:hint="Team Name"
-                android:textColor="@color/white"
-                app:backgroundTint="@color/white_with_alpha"
-                android:textColorHint="@color/orange"
-                android:layout_height="wrap_content" />
-
-            <ImageButton
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_arrow_forward_white_24dp"
-                android:background="@drawable/primary_color"/>
-
-        </LinearLayout>-->
-
 
     </LinearLayout>
 

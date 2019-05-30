@@ -3,7 +3,7 @@ package com.ieeecsvit.arcs19.Developers;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import com.ieeecsvit.arcs19.GlideApp;
+
 import com.ieeecsvit.arcs19.R;
 import android.net.Uri;
 import android.support.annotation.NonNull;
