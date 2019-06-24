@@ -83,7 +83,7 @@ public class HackathonRecyclerAdapter extends RecyclerView.Adapter<HackathonRecy
             super(itemView);
 
             item_question =  itemView.findViewById(R.id.question_item);
-            tv_Question = (TextView) itemView.findViewById(R.id.question);
+            tv_Question = itemView.findViewById(R.id.question);
             tv_logo = itemView.findViewById(R.id.hackathon_question_logo);
         }
     }

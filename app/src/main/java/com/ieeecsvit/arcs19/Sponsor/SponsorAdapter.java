@@ -41,12 +41,10 @@ public class SponsorAdapter extends RecyclerView.Adapter<SponsorAdapter.CustomVi
         private CardView sponsor;
         private ImageView image;
         private ProgressBar progressBar;
-        //private TextView name;
         public CustomViewHolder(View itemView) {
             super(itemView);
             progressBar = itemView.findViewById(R.id.sponsor_image_progressbar);
             sponsor = itemView.findViewById(R.id.sponsor_root_layout);
-            //name = itemView.findViewById(R.id.sponsor_name);
             image = itemView.findViewById(R.id.sponsor_image);
 
         }
@@ -78,7 +76,6 @@ public class SponsorAdapter extends RecyclerView.Adapter<SponsorAdapter.CustomVi
                 return false;
             }
         }).into(holder.image);
-        //holder.name.setText(dataList.get(i).getName());
         // Opening Sponsor's website via browser
         holder.sponsor.setOnClickListener(new View.OnClickListener() {
             @Override

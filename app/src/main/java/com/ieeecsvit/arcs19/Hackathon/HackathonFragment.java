@@ -45,13 +45,13 @@ import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class HackathonFragment extends Fragment implements DiscreteScrollView.OnItemChangedListener{
 
     View v;
-    DiscreteScrollView mRecyclerView,membersRecyclerView;
+    DiscreteScrollView mRecyclerView;
     List<HackathonClass> lstquestion;
-    //private ArrayList<DiscreteScrollClass> members;
     private EditText getName, getLink;
     private TextView teamName,questionAbout,hackBattleSite;
     private LinearLayout displayTeam,teamNameLayout, hackBattleRegister;
@@ -204,10 +204,10 @@ public class HackathonFragment extends Fragment implements DiscreteScrollView.On
                 @Override
                 public void onClick(View v) {
                     name = getName.getText().toString();
-                    editor = sp.edit();
-                    editor.putString("teamName", name);
-                    editor.apply();
-                    if (!name.isEmpty()) {
+                    if (!name.isEmpty()|| Pattern.matches("\\s+",name)) {
+                        editor = sp.edit();
+                        editor.putString("teamName", name);
+                        editor.apply();
                         teamName.setText(name);
                         displayTeam.setVisibility(View.VISIBLE);
                         teamNameLayout.setVisibility(View.GONE);

@@ -99,8 +99,6 @@ public class ComboFragment extends Fragment implements DiscreteScrollView.OnItem
 
 
     private void onItemChanged(DiscreteScrollClass sponsor) {
-        //currentSponsorName.setText(sponsor.getName());
-        //currentSponsorType.setText(sponsor.getData());
 
     }
 

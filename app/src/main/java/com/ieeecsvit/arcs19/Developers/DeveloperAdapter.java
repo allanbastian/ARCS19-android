@@ -41,8 +41,6 @@ public class DeveloperAdapter extends RecyclerView.Adapter<DeveloperAdapter.Cust
             linkedin = itemView.findViewById(R.id.developers_linkedin);
             github = itemView.findViewById(R.id.developers_github);
 
-
-
         }
     }
 
@@ -61,8 +59,6 @@ public class DeveloperAdapter extends RecyclerView.Adapter<DeveloperAdapter.Cust
         holder.post.setText(dataList.get(i).getPost());
         holder.github.setClickable(true);
         holder.linkedin.setClickable(true);
-
-//        GlideApp.with(mContext).load(dataList.get(i).getImage()).into(holder.image);
 
         holder.image.setImageResource(dataList.get(i).getIcon());
         holder.github.setOnClickListener(new View.OnClickListener() {

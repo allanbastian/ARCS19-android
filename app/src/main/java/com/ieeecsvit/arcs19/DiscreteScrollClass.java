@@ -9,7 +9,6 @@ public class DiscreteScrollClass {
     String name,price,icon,sname, date ;
     String des,loc, sDesc;
 
-    public DiscreteScrollClass(){}
     //using des for sponsors to store website url, also in the combo fragment
     public DiscreteScrollClass(StorageReference image, String name, String sDesc, String price, String des) {
         this.image=image;

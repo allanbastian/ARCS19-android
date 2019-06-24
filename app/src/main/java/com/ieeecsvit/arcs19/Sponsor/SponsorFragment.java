@@ -30,8 +30,6 @@ import java.util.ArrayList;
 public class SponsorFragment extends Fragment implements DiscreteScrollView.OnItemChangedListener,View.OnClickListener{
 
     ArrayList<DiscreteScrollClass> sponsorList = new ArrayList<DiscreteScrollClass>();
-    //TextView currentSponsorName;
-    //TextView currentSponsorType;
     ImageView previousSponsorButton;
     ImageView nextSponsorButton;
 
@@ -112,8 +110,6 @@ public class SponsorFragment extends Fragment implements DiscreteScrollView.OnIt
 
 
     private void onItemChanged(DiscreteScrollClass sponsor) {
-        //currentSponsorName.setText(sponsor.getName());
-        //currentSponsorType.setText(sponsor.getData());
 
     }
 

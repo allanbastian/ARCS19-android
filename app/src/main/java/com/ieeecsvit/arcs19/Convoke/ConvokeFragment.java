@@ -53,7 +53,6 @@ public class ConvokeFragment extends Fragment implements DiscreteScrollView.OnIt
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_convoke, container, false);
-        //ConvokeAdapter adapter = new ConvokeAdapter(getContext(),convokeList);
         convokeRecycler = rootView.findViewById(R.id.convoke_recycler_view);
         convokeRecycler.setVisibility(View.GONE);
         convokeProgress=rootView.findViewById(R.id.convoke_fragment_progressbar);
